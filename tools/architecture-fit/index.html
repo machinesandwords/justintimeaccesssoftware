@@ -8,13 +8,24 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
 
   <title>JIT Architecture Fit Assessment | Just-in-Time Access Software</title>
-  <meta name="description" content="Five questions about your environment return one of four JIT architecture paths: cloud-native JIT, PAM overlay, PAM replacement, or IdP-native. Know the architecture before the sales cycle.">
+  <meta name="description" content="Five questions about your environment return one of four JIT architecture paths: cloud-native JIT, PAM overlay, PAM replacement, or IdP-native, plus guidance on non-human identity scope and your primary driver. Know the architecture before the sales cycle.">
   <link rel="canonical" href="https://justintimeaccesssoftware.com/tools/architecture-fit/">
 
   <meta property="og:title" content="JIT Architecture Fit Assessment | Just-in-Time Access Software">
   <meta property="og:description" content="Five questions about your environment return one of four JIT architecture paths. Know the architecture before the sales cycle.">
   <meta property="og:url" content="https://justintimeaccesssoftware.com/tools/architecture-fit/">
   <meta property="og:type" content="website">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "JIT Architecture Fit Assessment",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://justintimeaccesssoftware.com/tools/architecture-fit/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +41,7 @@
     .q-label { font-weight: 700; font-size: 13px; margin-bottom: 0.6rem; }
     .q-num { color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
     .radio-options { display: flex; flex-direction: column; gap: 0.4rem; }
-    .radio-option { display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; }
+    .radio-option { display: flex; align-items: flex-start; gap: 0.5rem; }
     .radio-option input { margin-top: 2px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
     .radio-option label { font-size: 12px; cursor: pointer; line-height: 1.5; }
 
@@ -42,14 +53,14 @@
     .assess-btn:hover { background: var(--accent-dim); }
     .assess-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .result-block { display: none; margin-top: 1.5rem; }
+    .result-block { display: none; margin-top: 1.5rem; max-width: 640px; }
     .result-block.visible { display: block; }
-    .result-arch {
-      font-size: 18px; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem;
-    }
+    .result-arch { font-size: 18px; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem; }
     .result-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
     .result-summary { font-size: 13px; line-height: 1.7; margin-bottom: 1rem; }
-    .result-links { display: flex; flex-direction: column; gap: 0.3rem; }
+    .result-callout { border-left: 3px solid var(--accent); background: var(--surface); border: var(--hairline); border-left: 3px solid var(--accent); padding: 14px 18px; margin-bottom: 1rem; font-size: 12px; line-height: 1.6; color: var(--mid); }
+    .result-callout strong { color: var(--charcoal); }
+    .result-links { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
     .result-links a { font-size: 12px; }
 
     .retake-btn {
@@ -58,36 +69,58 @@
       border: 1px solid var(--accent); padding: 7px 18px; cursor: pointer; margin-top: 1rem;
     }
     .retake-btn:hover { background: var(--accent-pale); }
+
+    .export-gate {
+      margin-top: 1.5rem; background: var(--accent-pale); border: none;
+      padding: 28px 32px; display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .export-gate-text { flex: 1; min-width: 260px; }
+    .export-gate-text strong { color: var(--charcoal); }
+    .export-gate-text .gate-desc { color: var(--mid); font-size: 13px; line-height: 1.6; }
+    .export-cta-btn {
+      flex-shrink: 0; background: var(--accent-dim); color: #fff; font-family: inherit;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      border: none; padding: 14px 28px; cursor: pointer; white-space: nowrap;
+    }
+    .export-cta-btn:hover { background: var(--accent); }
+    .export-gate-form.newsletter-form { margin-top: 0.75rem; width: 100%; display: none; }
+    .export-gate-form.newsletter-form.visible { display: flex; }
+
+    @media print {
+      .topbar, .sidebar, .breadcrumb, .assessment-form, .retake-btn, .export-gate, .export-cta-btn { display: none !important; }
+      .layout { padding-top: 0; }
+      .main { margin-left: 0; padding: 0; }
+      body { background: #fff; }
+    }
   </style>
 </head>
 <body>
 
   <header class="topbar">
-    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-brand">Just-in-Time Access <span>Software</span></div>
     <div class="topbar-divider"></div>
-    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
-    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+    <div class="topbar-tagline">an independent guide to JIT access software</div>
+    <div class="topbar-right"><a href="/subscribe">Subscribe</a></div>
   </header>
 
   <div class="layout">
-    <nav class="sidebar">
-      <div id="sidebar-nav"></div>
-    </nav>
+    <nav class="sidebar" aria-label="Site navigation"><div id="sidebar-nav"></div></nav>
 
     <main class="main">
       <article class="content">
 
-        <nav class="breadcrumb">
+        <div class="breadcrumb">
           <a href="/">Home</a>
           <span class="breadcrumb-sep">/</span>
           <a href="/tools/">Tools</a>
           <span class="breadcrumb-sep">/</span>
           <span>Architecture Fit</span>
-        </nav>
+        </div>
 
         <span class="page-label">Tool</span>
         <h1>Architecture Fit Assessment</h1>
-        <p>Answer five questions about your environment. The result identifies one of four JIT architecture paths and explains what conditions drove the recommendation. No export needed — the result displays immediately.</p>
+        <p class="lead">Answer five questions about your environment. The result identifies one of four JIT architecture paths, flags whether non-human identity scope needs a second platform alongside it, and points you to the guide most relevant to what's actually driving the initiative.</p>
 
         <div class="assessment-form" id="assessment-form">
 
@@ -95,9 +128,9 @@
             <div class="q-num">Question 1 of 5</div>
             <div class="q-label">What does the majority of your access control environment look like today?</div>
             <div class="radio-options">
-              <label class="radio-option"><input type="radio" name="q1" value="cloud"> <label>Primarily cloud — AWS, Azure, GCP, or cloud SaaS, with little or no on-premises infrastructure</label></label>
-              <label class="radio-option"><input type="radio" name="q1" value="hybrid"> <label>Hybrid — meaningful on-premises infrastructure alongside cloud workloads</label></label>
-              <label class="radio-option"><input type="radio" name="q1" value="onprem"> <label>Primarily on-premises — legacy servers, databases, and AD-centric infrastructure</label></label>
+              <div class="radio-option"><input type="radio" name="q1" value="cloud" id="q1-cloud"><label for="q1-cloud">Primarily cloud, AWS, Azure, GCP, or cloud SaaS, with little or no on-premises infrastructure</label></div>
+              <div class="radio-option"><input type="radio" name="q1" value="hybrid" id="q1-hybrid"><label for="q1-hybrid">Hybrid, meaningful on-premises infrastructure alongside cloud workloads</label></div>
+              <div class="radio-option"><input type="radio" name="q1" value="onprem" id="q1-onprem"><label for="q1-onprem">Primarily on-premises, legacy servers, databases, and AD-centric infrastructure</label></div>
             </div>
           </div>
 
@@ -105,9 +138,9 @@
             <div class="q-num">Question 2 of 5</div>
             <div class="q-label">Do you have an existing PAM platform deployed and actively used?</div>
             <div class="radio-options">
-              <label class="radio-option"><input type="radio" name="q2" value="none"> <label>No existing PAM — starting fresh</label></label>
-              <label class="radio-option"><input type="radio" name="q2" value="partial"> <label>Partial deployment — PAM exists but coverage is limited and adoption is low</label></label>
-              <label class="radio-option"><input type="radio" name="q2" value="mature"> <label>Mature deployment — PAM is deeply integrated and used across the environment</label></label>
+              <div class="radio-option"><input type="radio" name="q2" value="none" id="q2-none"><label for="q2-none">No existing PAM, starting fresh</label></div>
+              <div class="radio-option"><input type="radio" name="q2" value="partial" id="q2-partial"><label for="q2-partial">Partial deployment, PAM exists but coverage is limited and adoption is low</label></div>
+              <div class="radio-option"><input type="radio" name="q2" value="mature" id="q2-mature"><label for="q2-mature">Mature deployment, PAM is deeply integrated and used across the environment</label></div>
             </div>
           </div>
 
@@ -115,9 +148,9 @@
             <div class="q-num">Question 3 of 5</div>
             <div class="q-label">Is your identity infrastructure dominated by a single IdP (Okta or Microsoft)?</div>
             <div class="radio-options">
-              <label class="radio-option"><input type="radio" name="q3" value="single-ms"> <label>Yes — Microsoft (Entra/Azure AD) is the single IdP across the environment</label></label>
-              <label class="radio-option"><input type="radio" name="q3" value="single-okta"> <label>Yes — Okta is the primary IdP across the environment</label></label>
-              <label class="radio-option"><input type="radio" name="q3" value="multi"> <label>Multi-IdP or no dominant single provider</label></label>
+              <div class="radio-option"><input type="radio" name="q3" value="single-ms" id="q3-ms"><label for="q3-ms">Yes, Microsoft (Entra/Azure AD) is the single IdP across the environment</label></div>
+              <div class="radio-option"><input type="radio" name="q3" value="single-okta" id="q3-okta"><label for="q3-okta">Yes, Okta is the primary IdP across the environment</label></div>
+              <div class="radio-option"><input type="radio" name="q3" value="multi" id="q3-multi"><label for="q3-multi">Multi-IdP or no dominant single provider</label></div>
             </div>
           </div>
 
@@ -125,9 +158,9 @@
             <div class="q-num">Question 4 of 5</div>
             <div class="q-label">Is non-human identity (service accounts, pipelines, AI agents) a significant part of the JIT scope?</div>
             <div class="radio-options">
-              <label class="radio-option"><input type="radio" name="q4" value="nhi-primary"> <label>Yes — NHI credentials are a primary concern; there are many service accounts and pipeline tokens to address</label></label>
-              <label class="radio-option"><input type="radio" name="q4" value="nhi-secondary"> <label>Somewhat — NHI is in scope but secondary to human access</label></label>
-              <label class="radio-option"><input type="radio" name="q4" value="human-only"> <label>No — JIT scope is human access only</label></label>
+              <div class="radio-option"><input type="radio" name="q4" value="nhi-primary" id="q4-primary"><label for="q4-primary">Yes, NHI credentials are a primary concern; there are many service accounts and pipeline tokens to address</label></div>
+              <div class="radio-option"><input type="radio" name="q4" value="nhi-secondary" id="q4-secondary"><label for="q4-secondary">Somewhat, NHI is in scope but secondary to human access</label></div>
+              <div class="radio-option"><input type="radio" name="q4" value="human-only" id="q4-human"><label for="q4-human">No, JIT scope is human access only</label></div>
             </div>
           </div>
 
@@ -135,14 +168,14 @@
             <div class="q-num">Question 5 of 5</div>
             <div class="q-label">What is the primary driver for this JIT initiative?</div>
             <div class="radio-options">
-              <label class="radio-option"><input type="radio" name="q5" value="compliance"> <label>Compliance or audit requirement — a specific framework requires JIT controls documentation</label></label>
-              <label class="radio-option"><input type="radio" name="q5" value="cloud-security"> <label>Cloud security posture — reduce standing IAM roles and over-privileged access in cloud environments</label></label>
-              <label class="radio-option"><input type="radio" name="q5" value="breach-risk"> <label>Breach risk reduction — minimize lateral movement potential from compromised credentials</label></label>
-              <label class="radio-option"><input type="radio" name="q5" value="devex"> <label>Developer experience — reduce access friction while maintaining governance</label></label>
+              <div class="radio-option"><input type="radio" name="q5" value="compliance" id="q5-compliance"><label for="q5-compliance">Compliance or audit requirement, a specific framework requires JIT controls documentation</label></div>
+              <div class="radio-option"><input type="radio" name="q5" value="cloud-security" id="q5-cloud"><label for="q5-cloud">Cloud security posture, reduce standing IAM roles and over-privileged access in cloud environments</label></div>
+              <div class="radio-option"><input type="radio" name="q5" value="breach-risk" id="q5-breach"><label for="q5-breach">Breach risk reduction, minimize lateral movement potential from compromised credentials</label></div>
+              <div class="radio-option"><input type="radio" name="q5" value="devex" id="q5-devex"><label for="q5-devex">Developer experience, reduce access friction while maintaining governance</label></div>
             </div>
           </div>
 
-          <button class="assess-btn" id="assess-btn" disabled>Show My Architecture Path</button>
+          <button type="button" class="assess-btn" id="assess-btn" disabled>Show My Architecture Path</button>
 
         </div>
 
@@ -150,62 +183,86 @@
           <div class="result-label">Your Architecture Path</div>
           <div class="result-arch" id="result-arch"></div>
           <div class="result-summary" id="result-summary"></div>
+
+          <div class="result-callout" id="nhi-callout" style="display:none;">
+            <strong>Non-human identity scope flagged.</strong> <span id="nhi-callout-text"></span>
+          </div>
+
+          <div class="result-callout" id="driver-callout" style="display:none;">
+            <strong>Given your primary driver:</strong> <span id="driver-callout-text"></span>
+          </div>
+
           <div class="result-links" id="result-links"></div>
-          <button class="retake-btn" id="retake-btn">Retake Assessment</button>
+
+          <div class="export-gate">
+            <div class="export-gate-text">
+              <strong>Export your result.</strong> <span class="gate-desc">Download a one-page summary of your architecture path, the non-human identity note, and the driver-specific guidance, ready to share with your team. Requires a free subscription.</span>
+              <div class="export-gate-form newsletter-form" id="export-gate-form">
+                <input type="email" placeholder="your@email.com" aria-label="Email address">
+                <button type="button">Subscribe &amp; Unlock</button>
+              </div>
+            </div>
+            <button type="button" class="export-cta-btn" id="export-cta-btn">Export Report &rarr;</button>
+          </div>
+
+          <button type="button" class="retake-btn" id="retake-btn">Retake Assessment</button>
         </div>
 
       </article>
     </main>
   </div>
 
-  <footer>
-    <div class="footer-inner">
-      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
-      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><span class="page-label">Just-in-Time Access Software</span><p>An independent publication. Built by <a href="https://machinesandwords.com">Machines &amp; Words</a>.</p></div></footer>
 
   <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
   <script>
   (function() {
     const PATHS = {
       'cloud-native-jit': {
         title: 'Cloud-Native JIT Platform',
-        summary: 'Your environment is cloud-first, without the on-premises coverage requirements that favor vault-centric PAM. A cloud-native JIT platform — Britive for multi-cloud IAM breadth, Apono for contextual access intelligence, StrongDM for database and infrastructure access, Teleport for Kubernetes and certificate-based access — is the right architecture. Focus the evaluation on which cloud providers and SaaS targets need coverage, and whether oncall access automation is a priority. Vault infrastructure is not required; the credential lifecycle is managed in the cloud IAM layer directly.',
+        summary: 'Your environment is cloud-first, without the on-premises coverage requirements that favor vault-centric PAM. A cloud-native JIT platform, built around ephemeral credential provisioning directly in the cloud IAM layer rather than a central vault, is the right architecture. Focus the evaluation on which cloud providers and SaaS targets need coverage, and whether on-call access automation is a priority. Vault infrastructure is not required; the credential lifecycle is managed natively in the cloud control plane.',
         links: [
-          '<a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT comparison</a>',
-          '<a href="/vendors/britive/">Britive vendor profile</a>',
-          '<a href="/vendors/apono/">Apono vendor profile</a>',
-          '<a href="/vendors/teleport/">Teleport vendor profile</a>',
+          '<a href="/guides/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT guide</a>',
+          '<a href="/landscape/vendor-comparison/">Compare cloud-native JIT vendors</a>',
         ]
       },
       'pam-overlay': {
         title: 'JIT Overlay on Existing PAM',
-        summary: 'Your environment has significant on-premises infrastructure and a mature PAM deployment that is expensive to replace. Adding JIT workflow controls on top of the existing PAM — either through the PAM platform\'s native JIT capabilities or an independent workflow layer — provides the access governance improvement without the migration cost of replacing a deeply integrated platform. Evaluate whether the PAM platform\'s native JIT workflows are sufficient, or whether a purpose-built JIT layer adds meaningful capability. The migration cost guide walks through the calculation.',
+        summary: 'Your environment has significant on-premises infrastructure and a mature PAM deployment that would be expensive to replace. Adding JIT workflow controls on top of the existing PAM, either through the platform\'s native JIT capabilities or an independent workflow layer, provides the access governance improvement without the migration cost of replacing a deeply integrated system. Evaluate whether the PAM platform\'s native JIT workflows are sufficient, or whether a purpose-built JIT layer adds meaningful capability on top.',
         links: [
           '<a href="/guides/pam-replacement-vs-jit-overlay/">PAM replacement vs. JIT overlay guide</a>',
-          '<a href="/comparisons/cyberark-vs-beyondtrust/">Palo Alto (CyberArk) vs. BeyondTrust comparison</a>',
-          '<a href="/vendors/cyberark/">Palo Alto (CyberArk) vendor profile</a>',
-          '<a href="/vendors/delinea/">Delinea vendor profile</a>',
+          '<a href="/landscape/vendor-comparison/">Compare PAM platforms</a>',
         ]
       },
       'pam-replacement': {
-        title: 'PAM Replacement with JIT-Native Platform',
-        summary: 'Your PAM deployment is partial or immature, and you are not constrained by the migration cost of replacing a deeply integrated platform. A JIT-native platform can cover both cloud and on-premises access needs at lower operational overhead than a new vault-centric PAM deployment. StrongDM covers on-premises databases and servers via proxy without vault infrastructure. Evaluate the on-premises coverage gap carefully before committing — confirm which legacy targets can be reached by the JIT-native platform\'s gateway architecture.',
+        title: 'PAM Replacement with a JIT-Native Platform',
+        summary: 'Your PAM deployment is partial or immature, and you are not constrained by the migration cost of replacing a deeply integrated platform. A JIT-native platform can cover both cloud and on-premises access needs at lower operational overhead than standing up a new vault-centric PAM deployment, provided a proxy-based or certificate-based architecture can reach your legacy targets. Evaluate the on-premises coverage gap carefully before committing; confirm which legacy systems can actually be reached by the platform\'s architecture.',
         links: [
           '<a href="/guides/pam-replacement-vs-jit-overlay/">PAM replacement vs. JIT overlay guide</a>',
-          '<a href="/vendors/strongdm/">StrongDM vendor profile</a>',
-          '<a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT comparison</a>',
+          '<a href="/guides/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT guide</a>',
         ]
       },
       'idp-native': {
-        title: 'IdP-Native JIT (Entra PIM or Okta Privileged Access)',
-        summary: 'Your JIT scope is contained within your primary IdP\'s coverage — Azure and M365 roles for Microsoft environments, Okta-connected applications for Okta environments. Using the IdP\'s native JIT capability avoids a new vendor relationship and integrates with existing identity lifecycle management. The consolidation argument is strongest when the JIT use case does not extend to multi-cloud, on-premises, or non-human identity. If those requirements emerge, a third-party overlay will be needed alongside.',
+        title: 'IdP-Native JIT',
+        summary: 'Your JIT scope is contained within your primary identity provider\'s coverage, Azure and M365 roles for Microsoft environments, or IdP-connected applications for Okta environments. Using your IdP\'s native JIT capability avoids a new vendor relationship and integrates directly with existing identity lifecycle management. The consolidation argument is strongest exactly because your use case does not extend to multi-cloud, on-premises infrastructure, or non-human identity. If any of those requirements emerge later, a third-party overlay will be needed alongside the IdP-native capability, not instead of it.',
         links: [
-          '<a href="/comparisons/third-party-jit-vs-idp-native/">Third-party JIT vs. IdP-native comparison</a>',
-          '<a href="/landscape/">JIT market landscape overview</a>',
+          '<a href="/guides/third-party-jit-vs-idp-native/">Third-party JIT vs. IdP-native guide</a>',
+          '<a href="/landscape/market-direction/">JIT market direction overview</a>',
         ]
       }
+    };
+
+    const NHI_TEXT = {
+      'nhi-primary': 'NHI credentials are a primary concern in your environment. Most human JIT platforms only partially cover machine identity, and the architecture above should be paired with a dedicated NHI platform for service accounts, pipeline tokens, and AI agent credentials rather than expected to cover that ground itself.',
+      'nhi-secondary': 'NHI is in scope but secondary. Confirm whether the platform you land on for the path above has meaningful workload identity coverage, or whether it will need a lightweight secondary tool for the NHI slice once that scope grows.'
+    };
+
+    const DRIVER_TEXT = {
+      'compliance': 'a compliance or audit requirement is what\'s driving this initiative, so the platform\'s audit trail, review-cadence reporting, and evidence generation matter as much as its access-granting mechanics. Frameworks increasingly expect continuous, automatically expiring access records, not point-in-time snapshots.',
+      'cloud-security': 'cloud security posture is the driver, so weight ephemeral credential coverage and standing-role elimination heavily in the evaluation. The platform\'s native fit with your cloud IAM model matters more here than breadth of unrelated features.',
+      'breach-risk': 'breach risk reduction is the driver, so pay close attention to what actually terminates a session when access expires, a revoked credential and a terminated network connection are not the same control, and the gap between them is where lateral movement risk lives.',
+      'devex': 'developer experience is the driver, so approval latency and automation depth should weigh heavily in the evaluation. A platform that is secure but adds meaningful friction to every request will face adoption resistance regardless of its security properties.'
     };
 
     const form = document.getElementById('assessment-form');
@@ -214,15 +271,15 @@
     const retakeBtn = document.getElementById('retake-btn');
 
     function allAnswered() {
-      return ['q1','q2','q3','q4','q5'].every(q => form.querySelector(`input[name="${q}"]:checked`));
+      return ['q1','q2','q3','q4','q5'].every(function(q) { return form.querySelector('input[name="' + q + '"]:checked'); });
     }
 
-    form.addEventListener('change', () => {
+    form.addEventListener('change', function() {
       btn.disabled = !allAnswered();
     });
 
-    function getResult(answers) {
-      const { q1, q2, q3, q4, q5 } = answers;
+    function getPathKey(answers) {
+      const q1 = answers.q1, q2 = answers.q2, q3 = answers.q3;
 
       if (q1 === 'cloud' && q2 === 'none') return 'cloud-native-jit';
       if (q1 === 'cloud' && q2 === 'partial') return 'cloud-native-jit';
@@ -240,30 +297,59 @@
       return 'cloud-native-jit';
     }
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', function() {
       const answers = {};
-      ['q1','q2','q3','q4','q5'].forEach(q => {
-        const checked = form.querySelector(`input[name="${q}"]:checked`);
+      ['q1','q2','q3','q4','q5'].forEach(function(q) {
+        const checked = form.querySelector('input[name="' + q + '"]:checked');
         if (checked) answers[q] = checked.value;
       });
 
-      const pathKey = getResult(answers);
+      const pathKey = getPathKey(answers);
       const path = PATHS[pathKey];
 
       document.getElementById('result-arch').textContent = path.title;
       document.getElementById('result-summary').textContent = path.summary;
-      document.getElementById('result-links').innerHTML = path.links.map(l => l).join('');
+      document.getElementById('result-links').innerHTML = path.links.join('');
+
+      const nhiCallout = document.getElementById('nhi-callout');
+      if (NHI_TEXT[answers.q4]) {
+        document.getElementById('nhi-callout-text').textContent = NHI_TEXT[answers.q4];
+        nhiCallout.style.display = '';
+      } else {
+        nhiCallout.style.display = 'none';
+      }
+
+      const driverCallout = document.getElementById('driver-callout');
+      if (DRIVER_TEXT[answers.q5]) {
+        document.getElementById('driver-callout-text').textContent = DRIVER_TEXT[answers.q5];
+        driverCallout.style.display = '';
+      } else {
+        driverCallout.style.display = 'none';
+      }
 
       form.style.display = 'none';
       resultBlock.classList.add('visible');
     });
 
-    retakeBtn.addEventListener('click', () => {
-      form.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    retakeBtn.addEventListener('click', function() {
+      form.querySelectorAll('input[type="radio"]').forEach(function(r) { r.checked = false; });
       btn.disabled = true;
       form.style.display = '';
       resultBlock.classList.remove('visible');
+      document.getElementById('export-cta-btn').style.display = '';
+      document.getElementById('export-gate-form').classList.remove('visible');
     });
+
+    document.getElementById('export-cta-btn').addEventListener('click', function() {
+      document.getElementById('export-gate-form').classList.add('visible');
+      this.style.display = 'none';
+    });
+
+    window._onExportGateSuccess = function(gateForm) {
+      if (gateForm && gateForm.closest('.export-gate')) {
+        setTimeout(function() { window.print(); }, 600);
+      }
+    };
   })();
   </script>
 </body>
