@@ -22,16 +22,6 @@
       <a href="/landscape/regulatory-pressures/" class="nav-item depth-1">&#9492; Regulatory pressures</a>
     </div>
 
-    <div class="nav-divider"></div>
-
-    <div class="nav-section">
-      <div class="nav-section-label">Vendors</div>
-      <a href="/landscape/vendor-index/" class="nav-item depth-0">All vendors</a>
-      <a href="/vendors/cyberark/" class="nav-item depth-1">&#9500; Palo Alto (CyberArk)</a>
-      <a href="/vendors/britive/" class="nav-item depth-1">&#9500; Britive</a>
-      <a href="/vendors/teleport/" class="nav-item depth-1">&#9500; Teleport</a>
-      <a href="/landscape/vendor-index/" class="nav-item depth-1">&#9492; more</a>
-    </div>
 
     <div class="nav-divider"></div>
 
