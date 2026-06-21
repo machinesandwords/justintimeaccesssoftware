@@ -21,7 +21,10 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "JIT and NHI Convergence",
+    "description": "Human JIT access and non-human identity management are solving the same problem differently. What the convergence means for platform selection.",
     "url": "https://justintimeaccesssoftware.com/guides/jit-nhi-convergence/",
+    "datePublished": "2026-06-21",
+    "dateModified": "2026-06-21",
     "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
   }
   </script>
@@ -48,97 +51,93 @@
 <body>
 
   <header class="topbar">
-    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-brand">Just-in-Time Access <span>Software</span></div>
     <div class="topbar-divider"></div>
-    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
-    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+    <div class="topbar-tagline">an independent guide to JIT access software</div>
+    <div class="topbar-right"><a href="/subscribe">Subscribe</a></div>
   </header>
 
   <div class="layout">
-    <nav class="sidebar">
-      <div id="sidebar-nav"></div>
-    </nav>
+    <nav class="sidebar" aria-label="Site navigation"><div id="sidebar-nav"></div></nav>
 
     <main class="main">
       <article class="content">
 
-        <nav class="breadcrumb">
+        <div class="breadcrumb">
           <a href="/">Home</a>
           <span class="breadcrumb-sep">/</span>
           <a href="/guides/">Guides</a>
           <span class="breadcrumb-sep">/</span>
           <span>JIT and NHI Convergence</span>
-        </nav>
+        </div>
 
         <span class="page-label">Guide</span>
         <h1>JIT and NHI Convergence</h1>
 
-        <p class="lead">Human JIT access and non-human identity management are, at the architectural level, solving the same problem: eliminating long-lived credentials that sit unused between use events. The difference is that human JIT has approval workflows and session timers; NHI management has platform-identity attestation and token rotation. The two domains are converging. That convergence has platform selection implications that buyers evaluating JIT tooling in 2025 and beyond need to account for.</p>
+        <p class="lead">Human JIT access and non-human identity management are, at the architectural level, solving the same problem: eliminating long-lived credentials that sit unused between use events. The difference is that human JIT has approval workflows and session timers; NHI management has platform-identity attestation and token rotation. The two domains are converging. That convergence has platform selection implications that buyers evaluating JIT tooling need to account for now, not after the gap surfaces in production.</p>
 
         <h2>The same problem, different surface area</h2>
 
         <p>A standing AWS IAM role attached to an engineer's user account is a long-lived credential. So is a static API key embedded in a CI/CD pipeline. So is a Kubernetes service account with cluster-admin bound indefinitely. JIT for humans eliminates the engineer's standing role. JIT for NHI eliminates the pipeline's static key. The control objective is the same: access exists only when it is being used, not before and not after.</p>
 
-        <p>The mechanism differs because the requester differs. A human can click through an approval workflow, respond to an MFA prompt, and confirm a session is complete. A service account cannot. NHI JIT requires machine-to-machine identity verification — the workload proves its identity to the JIT platform using a platform-native attestation mechanism (Kubernetes service account token, SPIFFE SVID, AWS EC2 instance identity document) and receives a short-lived credential in exchange. No human in the loop; the verification is structural.</p>
+        <p>The mechanism differs because the requester differs. A human can click through an approval workflow, respond to an MFA prompt, and confirm a session is complete. A service account cannot. NHI JIT requires machine-to-machine identity verification: the workload proves its identity to the JIT platform using a platform-native attestation mechanism (a Kubernetes service account token, a SPIFFE SVID, a cloud provider's instance identity document) and receives a short-lived credential in exchange. There is no human in the loop; the verification is structural.</p>
 
         <h2>Where human JIT platforms extend to NHI</h2>
 
-        <p>Several human JIT platforms have added NHI coverage in varying degrees:</p>
+        <p>Several categories of human JIT platform have added NHI coverage in varying degrees:</p>
 
-        <p><strong>Teleport</strong> addresses NHI through Machine ID, which provisions short-lived SSH certificates and Kubernetes credentials for CI/CD pipelines and automated workloads using the same certificate-based infrastructure as human sessions. The security model is consistent: all credentials are short-lived, and the issuing authority is the same Teleport certificate authority that manages human sessions.</p>
+        <p><strong>Certificate-based platforms</strong> extend the same short-lived certificate infrastructure they use for human sessions to CI/CD pipelines and automated workloads. The security model stays consistent: every credential, human or machine, is issued short-lived by the same certificate authority, which makes audit and revocation behave identically across both identity types.</p>
 
-        <p><strong>StrongDM</strong> extends its proxy model to service accounts, routing automated access through the same gateway infrastructure as human sessions. Audit coverage is consistent: every access event — human or automated — produces a session record in the same audit stream.</p>
+        <p><strong>Proxy-based platforms</strong> extend the same gateway that brokers human sessions to service accounts, routing automated access through one chokepoint. Audit coverage stays consistent here too: every access event produces a session record in the same audit stream, whether the requester was a person or a process.</p>
 
-        <p><strong>Apono</strong> supports NHI through its policy engine, allowing automated workloads to request and receive ephemeral access to databases and cloud resources based on policy rules rather than human approval. The access bundle concept applies: a deployment pipeline needing access to a staging database, a secrets manager, and a cloud console can request all three as a bundle.</p>
+        <p><strong>Policy-engine-driven platforms</strong> support NHI through the same policy engine that evaluates human requests, allowing automated workloads to request and receive ephemeral access to databases and cloud resources based on policy rules rather than human approval. The bundling concept some of these platforms use for humans applies equally to machines: a deployment pipeline needing access to a staging database, a secrets manager, and a cloud console can request all three as a single correlated grant.</p>
 
-        <p>These extensions are meaningful but partial. None of them provides the platform-identity verification depth of a dedicated NHI platform.</p>
+        <p>These extensions are meaningful but partial. None of them provides the platform-identity verification depth of a platform built for NHI from the ground up.</p>
 
         <h2>Where dedicated NHI platforms remain necessary</h2>
 
-        <p>Dedicated NHI JIT platforms — Aembit is the clearest example — provide capabilities that human JIT platforms with NHI extensions do not:</p>
+        <p>Dedicated NHI JIT platforms provide capabilities that human JIT platforms with NHI extensions generally do not:</p>
 
-        <p><strong>Platform-native identity attestation.</strong> Aembit verifies workload identity using the native attestation mechanisms of the infrastructure the workload is running on: Kubernetes service account tokens, SPIFFE SVIDs, AWS EC2 instance identity documents, GitHub Actions OIDC tokens. The credential is not just short-lived; it is bound to a verified workload identity claim that a static service account cannot forge. Human JIT platforms with NHI support typically accept API requests with service account credentials rather than performing attestation at the platform level.</p>
+        <p><strong>Platform-native identity attestation.</strong> A dedicated NHI platform verifies workload identity using the native attestation mechanisms of the infrastructure the workload is actually running on: Kubernetes service account tokens, SPIFFE SVIDs, cloud provider instance identity documents, CI platform OIDC tokens. The credential isn't just short-lived; it's bound to a verified workload identity claim that a static service account can't forge. Human JIT platforms with NHI support typically accept API requests presenting service account credentials rather than performing attestation at the platform level, a meaningfully weaker guarantee.</p>
 
-        <p><strong>AI agent credential management.</strong> As AI agents become autonomous actors in production environments — LLM-based systems making API calls, triggering workflows, reading sensitive data — their credential requirements are NHI problems, not human JIT problems. An AI agent that calls a third-party API needs a credential scoped to that specific call, not a standing service account with permanent API access. Dedicated NHI platforms are building support for this use case; human JIT platforms are not.</p>
+        <p><strong>AI agent credential management.</strong> As AI agents become autonomous actors in production environments, LLM-based systems making API calls, triggering workflows, reading sensitive data, their credential requirements are NHI problems, not human JIT problems. An AI agent calling a third-party API needs a credential scoped to that specific call, not a standing service account with permanent API access. Dedicated NHI platforms are building toward this use case; human-JIT-platforms-with-NHI-bolted-on generally are not, at least not yet.</p>
 
-        <p><strong>Service-to-service access control.</strong> Microservice architectures with many services calling each other at high volume require NHI credential management that can handle the rate and latency requirements of service-to-service communication. A human JIT platform's approval workflow model is not designed for thousands of credential issuances per minute between microservices.</p>
+        <p><strong>Service-to-service access control at volume.</strong> Microservice architectures with many services calling each other at high frequency require NHI credential management that can handle the rate and latency requirements of service-to-service communication. A human JIT platform's approval-workflow model isn't designed for thousands of credential issuances per minute between services with no human anywhere in that loop.</p>
 
         <h2>Platform selection implications</h2>
 
         <p>For buyers evaluating JIT platforms today, the NHI convergence question is: what is the NHI scope that needs to be covered, and can the human JIT platform being evaluated cover it adequately?</p>
 
-        <p>If the NHI scope is primarily CI/CD pipelines needing short-lived credentials for deployment operations, Teleport's Machine ID or StrongDM's service account extension may be sufficient — especially if the organization wants to consolidate on one platform rather than operate two. If the NHI scope includes platform-native workload attestation, AI agent credential management, or high-volume service-to-service access control, a dedicated NHI platform alongside the human JIT platform is the more defensible architecture.</p>
+        <p>If the NHI scope is primarily CI/CD pipelines needing short-lived credentials for deployment operations, a certificate-based or proxy-based platform's NHI extension may be sufficient, especially if consolidating on one platform matters more than depth. If the NHI scope includes platform-native workload attestation, AI agent credential management, or high-volume service-to-service access control, a dedicated NHI platform alongside the human JIT platform is the more defensible architecture.</p>
 
         <p>The platforms are not competing when used together. Human JIT governs engineer access to production. NHI JIT governs workload access to downstream services. The audit streams from both should feed the same SIEM and inform the same access governance posture. That integration is the operational complexity cost of the two-platform approach; weigh it against the coverage gap in the one-platform approach.</p>
 
         <div class="callout">
-          <strong>Related reading:</strong> The <a href="/vendors/aembit/">Aembit vendor profile</a> covers the dedicated NHI JIT platform in detail. The <a href="https://www.nonhumanidentitysoftware.com" target="_blank" rel="noopener">Non-Human Identity Software</a> site covers the full NHI management market independently.
+          <strong>Comparing specific platforms?</strong> Once you've sized your NHI scope using the framework above, the <a href="/landscape/vendor-comparison/">vendor comparison tool</a> can help narrow the field by access type, deployment model, and architecture. The <a href="https://www.nonhumanidentitysoftware.com" target="_blank" rel="noopener">Non-Human Identity Software</a> site covers the dedicated NHI management market independently and in more depth.
         </div>
 
         <div class="verdict">
-          <div class="verdict-label">Key point</div>
-          <p>The JIT control objective is the same for human and non-human identities: no standing credentials, access only when in use. The mechanisms differ because the requesters differ. Buyers evaluating human JIT platforms in 2025 should map their NHI scope before finalizing a platform decision. If dedicated NHI coverage is required, plan for two platforms and their integration overhead from the outset rather than discovering the gap after deployment.</p>
+          <span class="verdict-label">Key point</span>
+          <p>The JIT control objective is the same for human and non-human identities: no standing credentials, access only when in use. The mechanisms differ because the requesters differ. Buyers evaluating human JIT platforms should map their NHI scope before finalizing a platform decision. If dedicated NHI coverage is required, plan for two platforms and their integration overhead from the outset rather than discovering the gap after deployment.</p>
         </div>
 
+        <p style="font-size:var(--small);">Related: <a href="/guides/jit-native-vs-pam-with-jit/">JIT-Native vs. PAM-with-JIT</a> &nbsp;&middot;&nbsp; <a href="/guides/third-party-jit-vs-idp-native/">Third-Party JIT vs. IdP-Native</a> &nbsp;&middot;&nbsp; <a href="/landscape/vendor-comparison/">Full vendor comparison tool</a></p>
+
         <div class="newsletter-block">
-          <span class="page-label">The Independent Defender</span>
-          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <span class="page-label">Stay current</span>
+          <p>The Independent Defender covers the JIT access market the way vendors hope you won't read it. Twice monthly.</p>
           <div class="newsletter-form">
-            <input type="email" placeholder="your@email.com" aria-label="Email address">
-            <button type="button">Subscribe free</button>
+            <input type="email" id="nl-email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button" id="nl-submit">Subscribe free</button>
           </div>
+          <div id="nl-msg" style="display:none;font-size:11px;margin-top:8px;"></div>
         </div>
 
       </article>
     </main>
   </div>
 
-  <footer>
-    <div class="footer-inner">
-      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
-      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
-    </div>
-  </footer>
+  <footer><div class="footer-inner"><span class="page-label">Just-in-Time Access Software</span><p>An independent publication. Built by <a href="https://machinesandwords.com">Machines &amp; Words</a>.</p></div></footer>
 
   <script src="/nav.js"></script>
   <script src="/newsletter.js"></script>

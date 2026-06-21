@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+  <title>Teleport vs. SSH.COM PrivX | Just-in-Time Access Software</title>
+  <meta name="description" content="Teleport vs. SSH.COM PrivX: open-source/self-hosted certificate access vs. a commercial certificate-based SSH/RDP specialist. When each platform wins.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/comparisons/teleport-vs-ssh-privx/">
+  <meta property="og:title" content="Teleport vs. SSH.COM PrivX | Just-in-Time Access Software">
+  <meta property="og:description" content="Open-source/self-hosted certificate access vs. a commercial certificate-based SSH/RDP specialist.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/comparisons/teleport-vs-ssh-privx/">
+  <meta property="og:type" content="article">
+  <script type="application/ld+json">
+  { "@context":"https://schema.org","@type":"Article","headline":"Teleport vs. SSH.COM PrivX","description":"Open-source/self-hosted certificate access vs. a commercial certificate-based SSH/RDP specialist.","url":"https://justintimeaccesssoftware.com/comparisons/teleport-vs-ssh-privx/","datePublished":"2026-06-21","dateModified":"2026-06-21","publisher":{"@type":"Organization","name":"Just-in-Time Access Software","url":"https://justintimeaccesssoftware.com"} }
+  </script>
+  <script type="application/ld+json">
+  { "@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://justintimeaccesssoftware.com"},
+    {"@type":"ListItem","position":2,"name":"Comparisons","item":"https://justintimeaccesssoftware.com/comparisons/"},
+    {"@type":"ListItem","position":3,"name":"Teleport vs. SSH.COM PrivX","item":"https://justintimeaccesssoftware.com/comparisons/teleport-vs-ssh-privx/"}
+  ] }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+  <style>
+    .compare-table td:first-child { width:200px; font-weight:700; font-size:11px; color:var(--mid); letter-spacing:0.02em; }
+    .compare-table .section-divider td { background:var(--bg); font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--faint); padding:10px 12px 6px; border-bottom:var(--hairline); }
+    .compare-table .win-a td:nth-child(2) { color:var(--accent); font-weight:700; }
+    .compare-table .win-b td:nth-child(3) { color:var(--accent); font-weight:700; }
+    .wins-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:var(--hairline); margin-bottom:32px; }
+    .wins-col { background:var(--surface); padding:20px 24px; }
+    .wins-col-label { font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); margin:0 0 12px; display:block; }
+    .wins-col ul { list-style:none; padding:0; margin:0; }
+    .wins-col li { font-size:var(--small); padding:7px 0; border-bottom:var(--hairline); display:flex; gap:10px; align-items:flex-start; line-height:1.5; color:var(--mid); }
+    .wins-col li:last-child { border-bottom:none; }
+    .wins-col li::before { content:'+'; color:var(--accent); font-weight:700; flex-shrink:0; }
+    @media (max-width:640px) { .wins-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-brand">Just-in-Time Access <span>Software</span></div>
+    <div class="topbar-divider"></div>
+    <div class="topbar-tagline">an independent guide to JIT access software</div>
+    <div class="topbar-right"><a href="/subscribe">Subscribe</a></div>
+  </header>
+  <div class="layout">
+    <nav class="sidebar" aria-label="Site navigation"><div id="sidebar-nav"></div></nav>
+    <main class="main">
+      <article class="content">
+        <div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">/</span><a href="/comparisons/">Comparisons</a><span class="breadcrumb-sep">/</span><span>Teleport vs. SSH.COM PrivX</span></div>
+        <span class="page-label">JIT Access &mdash; Head-to-Head</span>
+        <h1>Teleport vs. SSH.COM PrivX</h1>
+        <p class="lead">Both eliminate persistent SSH keys in favor of short-lived, certificate-based access. The difference is breadth and delivery model. Teleport extends certificate-based access across Kubernetes, databases, servers, and internal web apps, with an open-source core and an optional commercial tier. PrivX stays narrower and deeper on its core problem: SSH and RDP access to large server fleets, with certificates issued per session and expiring on logout.</p>
+
+        <h2>The fault line between them</h2>
+        <p>Teleport's breadth is the draw for organizations that want one access plane across heterogeneous target types, not just servers but Kubernetes clusters, databases, and internal applications, for both humans and workloads. That breadth comes with the operational responsibility of deploying and running a Teleport cluster, real infrastructure to maintain.</p>
+        <p>PrivX is more focused: ephemeral certificate-based SSH and RDP access, aimed specifically at large Linux/Unix server fleets where the operational pain of static key rotation is the primary problem being solved. Its scope is narrower than Teleport's, limited on cloud IAM and SaaS JIT coverage, but that focus translates into a simpler, more specialized deployment for organizations whose access problem is specifically server fleets rather than a broader mix of target types.</p>
+
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead><tr><th style="width:200px;">Criteria</th><th>Teleport</th><th>SSH.COM PrivX</th></tr></thead>
+            <tbody>
+              <tr class="section-divider"><td colspan="3">Scope</td></tr>
+              <tr class="win-a"><td>Target breadth</td><td>Kubernetes, databases, servers, internal applications</td><td>Focused on SSH and RDP server access</td></tr>
+              <tr class="win-b"><td>Key rotation overhead</td><td>Addressed as part of broader certificate-based access</td><td>Purpose-built specifically to eliminate persistent SSH/RDP keys at scale</td></tr>
+              <tr><td>Cloud IAM / SaaS JIT</td><td>Covered as part of broader infrastructure access</td><td>Limited; narrower scope than full PAM platforms</td></tr>
+              <tr class="section-divider"><td colspan="3">Architecture</td></tr>
+              <tr><td>Credential model</td><td>Short-lived X.509 certificates and SSH keys</td><td>Ephemeral certificates issued per session, expiring on logout</td></tr>
+              <tr class="win-a"><td>Deployment model</td><td>Open-source core with commercial enterprise tier available</td><td>Commercial only</td></tr>
+              <tr class="section-divider"><td colspan="3">Operational</td></tr>
+              <tr><td>Operational overhead</td><td>Requires deploying and operating a Teleport cluster</td><td>Hybrid deployment; operational overhead concentrated on server fleet integration</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:12px; color:var(--faint); margin-top:-20px; margin-bottom:40px;">Capability assessments based on publicly available vendor documentation and independent coverage. Validate specific feature depth against your environment before purchase.</p>
+
+        <h2>When each wins</h2>
+        <div class="wins-grid">
+          <div class="wins-col">
+            <span class="wins-col-label">Teleport wins when</span>
+            <ul>
+              <li>The access problem spans Kubernetes, databases, and applications, not just SSH/RDP servers</li>
+              <li>Open-source deployment, with commercial support as an option, fits the organization's procurement model</li>
+              <li>One unified access plane for both human and workload access is the goal</li>
+            </ul>
+          </div>
+          <div class="wins-col">
+            <span class="wins-col-label">SSH.COM PrivX wins when</span>
+            <ul>
+              <li>The primary pain point is key rotation overhead on a large Linux/Unix server fleet specifically</li>
+              <li>SSH and RDP are the entire access surface, with no need for Kubernetes or database JIT</li>
+              <li>A more narrowly scoped, commercially supported platform is preferred over an open-source deployment</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="verdict">
+          <span class="verdict-label">Finding</span>
+          <p>Both solve the same fundamental problem, eliminating standing SSH keys, with different ambitions about scope. Teleport is the broader bet, covering more target types at the cost of operating real infrastructure. PrivX stays narrowly focused on the server-fleet problem and goes deep there. Organizations with a genuinely heterogeneous infrastructure-access problem should lean Teleport; those with a server-fleet-specific key rotation problem and nothing broader should evaluate PrivX on its narrower merits.</p>
+        </div>
+
+        <p style="font-size:var(--small);">Related: <a href="/comparisons/teleport-vs-aembit/">Teleport vs. Aembit</a> &nbsp;&middot;&nbsp; <a href="/comparisons/teleport-vs-strongdm/">Teleport vs. StrongDM</a> &nbsp;&middot;&nbsp; <a href="/landscape/vendor-comparison/">Full vendor comparison tool</a></p>
+
+        <div class="newsletter-block">
+          <span class="page-label">Stay current</span>
+          <p>The Independent Defender covers the JIT access market the way vendors hope you won't read it. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" id="nl-email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button" id="nl-submit">Subscribe free</button>
+          </div>
+          <div id="nl-msg" style="display:none;font-size:11px;margin-top:8px;"></div>
+        </div>
+      </article>
+    </main>
+  </div>
+  <footer><div class="footer-inner"><span class="page-label">Just-in-Time Access Software</span><p>An independent publication. Built by <a href="https://machinesandwords.com">Machines &amp; Words</a>.</p></div></footer>
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

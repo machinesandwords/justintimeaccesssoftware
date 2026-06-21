@@ -7,12 +7,12 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
 
-  <title>Palo Alto (CyberArk) vs. BeyondTrust | Just-in-Time Access Software</title>
-  <meta name="description" content="Head-to-head comparison of Palo Alto Networks (CyberArk) and BeyondTrust for JIT access and PAM. Vault-centric brokering vs. PEDM-first delegation. When each platform wins.">
+  <title>CyberArk vs. BeyondTrust | Just-in-Time Access Software</title>
+  <meta name="description" content="Head-to-head comparison of CyberArk and BeyondTrust for JIT access and PAM. Vault-centric brokering vs. PEDM-first delegation. When each platform wins, and what CyberArk's acquisition by Palo Alto Networks means for buyers.">
   <link rel="canonical" href="https://justintimeaccesssoftware.com/comparisons/cyberark-vs-beyondtrust/">
 
-  <meta property="og:title" content="Palo Alto (CyberArk) vs. BeyondTrust | Just-in-Time Access Software">
-  <meta property="og:description" content="Head-to-head comparison of Palo Alto Networks (CyberArk) and BeyondTrust for JIT access and PAM. Vault-centric brokering vs. PEDM-first delegation.">
+  <meta property="og:title" content="CyberArk vs. BeyondTrust: PAM Platform Comparison | Just-in-Time Access Software">
+  <meta property="og:description" content="Head-to-head comparison of CyberArk and BeyondTrust for JIT access and PAM. Vault-centric brokering vs. PEDM-first delegation.">
   <meta property="og:url" content="https://justintimeaccesssoftware.com/comparisons/cyberark-vs-beyondtrust/">
   <meta property="og:type" content="article">
 
@@ -20,8 +20,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Palo Alto (CyberArk) vs. BeyondTrust",
+    "headline": "CyberArk vs. BeyondTrust",
+    "description": "Vault-centric brokering vs. PEDM-first delegation, two different architectural centers of gravity for legacy PAM.",
     "url": "https://justintimeaccesssoftware.com/comparisons/cyberark-vs-beyondtrust/",
+    "datePublished": "2026-06-21",
+    "dateModified": "2026-06-21",
     "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
   }
   </script>
@@ -32,7 +35,7 @@
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
       { "@type": "ListItem", "position": 2, "name": "Comparisons", "item": "https://justintimeaccesssoftware.com/comparisons/" },
-      { "@type": "ListItem", "position": 3, "name": "Palo Alto (CyberArk) vs. BeyondTrust", "item": "https://justintimeaccesssoftware.com/comparisons/cyberark-vs-beyondtrust/" }
+      { "@type": "ListItem", "position": 3, "name": "CyberArk vs. BeyondTrust", "item": "https://justintimeaccesssoftware.com/comparisons/cyberark-vs-beyondtrust/" }
     ]
   }
   </script>
@@ -46,58 +49,53 @@
   <script src="/config.js" defer></script>
 
   <style>
-    .two-col-contrast {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-      background: var(--border); margin: 1.5rem 0;
-    }
-    .two-col-contrast > div {
-      background: var(--surface); padding: 1.1rem;
-    }
-    .two-col-contrast .col-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
-    }
-    .two-col-contrast ul { margin: 0; padding-left: 1.2rem; }
-    .two-col-contrast li { font-size: 12px; margin-bottom: 0.4rem; line-height: 1.5; }
-    .wins-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-    .wins-box { background: var(--accent-pale); border: 1px solid var(--accent); padding: 1rem; }
-    .wins-box-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
-    .wins-box ul { margin: 0; padding-left: 1.1rem; }
-    .wins-box li { font-size: 12px; margin-bottom: 0.35rem; line-height: 1.5; }
+    .compare-table td:first-child { width:200px; font-weight:700; font-size:11px; color:var(--mid); letter-spacing:0.02em; }
+    .compare-table .section-divider td { background:var(--bg); font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--faint); padding:10px 12px 6px; border-bottom:var(--hairline); }
+    .compare-table .win-a td:nth-child(2) { color:var(--accent); font-weight:700; }
+    .compare-table .win-b td:nth-child(3) { color:var(--accent); font-weight:700; }
+    .wins-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:var(--hairline); margin-bottom:32px; }
+    .wins-col { background:var(--surface); padding:20px 24px; }
+    .wins-col-label { font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); margin:0 0 12px; display:block; }
+    .wins-col ul { list-style:none; padding:0; margin:0; }
+    .wins-col li { font-size:var(--small); padding:7px 0; border-bottom:var(--hairline); display:flex; gap:10px; align-items:flex-start; line-height:1.5; color:var(--mid); }
+    .wins-col li:last-child { border-bottom:none; }
+    .wins-col li::before { content:'+'; color:var(--accent); font-weight:700; flex-shrink:0; }
+    @media (max-width:640px) { .wins-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
 
   <header class="topbar">
-    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-brand">Just-in-Time Access <span>Software</span></div>
     <div class="topbar-divider"></div>
-    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
-    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+    <div class="topbar-tagline">an independent guide to JIT access software</div>
+    <div class="topbar-right"><a href="/subscribe">Subscribe</a></div>
   </header>
 
   <div class="layout">
-    <nav class="sidebar">
+    <nav class="sidebar" aria-label="Site navigation">
       <div id="sidebar-nav"></div>
     </nav>
 
     <main class="main">
       <article class="content">
 
-        <nav class="breadcrumb">
+        <div class="breadcrumb">
           <a href="/">Home</a>
           <span class="breadcrumb-sep">/</span>
           <a href="/comparisons/">Comparisons</a>
           <span class="breadcrumb-sep">/</span>
-          <span>Palo Alto (CyberArk) vs. BeyondTrust</span>
-        </nav>
+          <span>CyberArk vs. BeyondTrust</span>
+        </div>
 
-        <span class="page-label">Comparison</span>
-        <h1>Palo Alto Networks (CyberArk) vs. BeyondTrust</h1>
+        <span class="page-label">JIT Access &mdash; Head-to-Head</span>
+        <h1>CyberArk vs. BeyondTrust</h1>
 
         <p class="lead">Two legacy PAM giants with different architectural centers of gravity. CyberArk's architecture is vault-first: store credentials centrally, broker sessions through a gateway. BeyondTrust's architecture is delegation-first: grant users the minimum privilege they need at the endpoint, without necessarily vaulting anything. Both call it JIT. They mean different things by it.</p>
 
         <div class="callout">
-          <strong>Acquisition context:</strong> CyberArk was acquired by Palo Alto Networks in 2025. This analysis covers the CyberArk PAM product line as it currently exists. Roadmap direction under Palo Alto ownership is evolving; verify current product strategy and support commitments before a new multi-year commitment on either platform.
+          <span class="callout-label">Ownership &amp; Status</span>
+          <p>Palo Alto Networks completed its $25 billion acquisition of CyberArk on February 11, 2026. CyberArk now operates as a wholly owned subsidiary under Palo Alto Networks' Identity Security pillar, with a planned secondary listing on the Tel Aviv Stock Exchange under the CyberArk ticker. The product line covered below is the CyberArk PAM platform as it exists today. Integration into Palo Alto's broader platform is ongoing; verify current roadmap and support commitments directly with the vendor before a new multi-year contract.</p>
         </div>
 
         <h2>The architectural difference that matters</h2>
@@ -108,93 +106,45 @@
 
         <p>Both approaches reduce standing privileged access. They reduce it at different layers. CyberArk's approach is most effective where the privileged access problem is centralized administrative accounts that need to be vaulted, rotated, and session-managed. BeyondTrust's PEDM approach is most effective where the problem is granular command-level privilege on endpoints where storing credentials in a central vault does not address the actual attack surface.</p>
 
-        <h2>Detailed comparison</h2>
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th style="width:200px;">Criteria</th>
+                <th>CyberArk</th>
+                <th>BeyondTrust</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="section-divider"><td colspan="3">Architecture</td></tr>
+              <tr><td>JIT model</td><td>Vault checkout + session proxy</td><td>PEDM delegation at endpoint + Password Safe vault</td></tr>
+              <tr class="win-a"><td>Central vault</td><td>Core component; all privileged accounts vaulted</td><td>Password Safe vaults shared accounts; PEDM runs without vault</td></tr>
+              <tr class="win-a"><td>Session proxy</td><td>Privileged Session Manager proxies and records all sessions</td><td>Session recording available; proxy model optional</td></tr>
+              <tr class="win-b"><td>Endpoint privilege</td><td>Endpoint Privilege Manager available as add-on</td><td>PEDM is the core architecture; deepest endpoint privilege capability in the market</td></tr>
 
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Dimension</th>
-              <th>Palo Alto (CyberArk)</th>
-              <th>BeyondTrust</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="section-divider"><td colspan="3">Architecture</td></tr>
-            <tr>
-              <td>JIT model</td>
-              <td>Vault checkout + session proxy</td>
-              <td>PEDM delegation at endpoint + Password Safe vault</td>
-            </tr>
-            <tr>
-              <td>Central vault</td>
-              <td class="win-a">Core component; all privileged accounts vaulted</td>
-              <td>Password Safe vaults shared accounts; PEDM runs without vault</td>
-            </tr>
-            <tr>
-              <td>Session proxy</td>
-              <td class="win-a">Privileged Session Manager proxies and records all sessions</td>
-              <td>Session recording available; proxy model optional</td>
-            </tr>
-            <tr>
-              <td>Endpoint privilege</td>
-              <td>Endpoint Privilege Manager available as add-on</td>
-              <td class="win-b">PEDM is the core architecture; deepest endpoint privilege capability in the market</td>
-            </tr>
-            <tr class="section-divider"><td colspan="3">Coverage</td></tr>
-            <tr>
-              <td>Active Directory environments</td>
-              <td class="win-a">Deep AD integration; strongest PAM option for AD-centric enterprises</td>
-              <td>AD integration present; not the primary differentiator</td>
-            </tr>
-            <tr>
-              <td>UNIX/Linux servers</td>
-              <td>Coverage via PSM and vaulted accounts</td>
-              <td class="win-b">PMUL (Privilege Management for Unix/Linux) is the market-leading option for command-level delegation on Linux/Unix</td>
-            </tr>
-            <tr>
-              <td>Windows endpoints</td>
-              <td>Endpoint Privilege Manager covers Windows</td>
-              <td class="win-b">PMPC (Privilege Management for Windows/Mac) is core to the BeyondTrust portfolio</td>
-            </tr>
-            <tr>
-              <td>Cloud JIT</td>
-              <td>Privilege Cloud extends to cloud workloads</td>
-              <td>Limited cloud-native JIT depth; primarily on-premises and hybrid</td>
-            </tr>
-            <tr>
-              <td>Vendor remote access</td>
-              <td>Third-party vendor access via PSM</td>
-              <td class="win-b">Privileged Remote Access is a dedicated product with stronger vendor management capabilities</td>
-            </tr>
-            <tr class="section-divider"><td colspan="3">Operational</td></tr>
-            <tr>
-              <td>Deployment complexity</td>
-              <td>High; extensive professional services engagement typically required</td>
-              <td class="win-b">Moderate; PEDM can deploy without full vault infrastructure</td>
-            </tr>
-            <tr>
-              <td>Partner ecosystem</td>
-              <td class="win-a">Largest partner and integration ecosystem in enterprise PAM</td>
-              <td>Solid ecosystem; narrower than CyberArk</td>
-            </tr>
-            <tr>
-              <td>Acquisition risk</td>
-              <td>Palo Alto Networks acquisition introduces roadmap uncertainty</td>
-              <td class="win-b">Standalone company; no current acquisition risk</td>
-            </tr>
-            <tr>
-              <td>Pricing</td>
-              <td>Enterprise pricing; typically higher TCO than BeyondTrust</td>
-              <td class="win-b">Enterprise pricing; generally lower TCO for comparable scope</td>
-            </tr>
-          </tbody>
-        </table>
+              <tr class="section-divider"><td colspan="3">Coverage</td></tr>
+              <tr class="win-a"><td>Active Directory environments</td><td>Deep AD integration; strongest PAM option for AD-centric enterprises</td><td>AD integration present; not the primary differentiator</td></tr>
+              <tr class="win-b"><td>UNIX/Linux servers</td><td>Coverage via PSM and vaulted accounts</td><td>PMUL (Privilege Management for Unix/Linux) is the market-leading option for command-level delegation on Linux/Unix</td></tr>
+              <tr class="win-b"><td>Windows endpoints</td><td>Endpoint Privilege Manager covers Windows</td><td>PMPC (Privilege Management for Windows/Mac) is core to the BeyondTrust portfolio</td></tr>
+              <tr><td>Cloud JIT</td><td>Privilege Cloud extends to cloud workloads</td><td>Limited cloud-native JIT depth; primarily on-premises and hybrid</td></tr>
+              <tr class="win-b"><td>Vendor remote access</td><td>Third-party vendor access via PSM</td><td>Privileged Remote Access is a dedicated product with stronger vendor management capabilities</td></tr>
+
+              <tr class="section-divider"><td colspan="3">Operational</td></tr>
+              <tr class="win-b"><td>Deployment complexity</td><td>High; extensive professional services engagement typically required</td><td>Moderate; PEDM can deploy without full vault infrastructure</td></tr>
+              <tr class="win-a"><td>Partner ecosystem</td><td>Largest partner and integration ecosystem in enterprise PAM</td><td>Solid ecosystem; narrower than CyberArk</td></tr>
+              <tr><td>Integration risk</td><td>Now part of Palo Alto Networks' Identity Security pillar; roadmap and support continuity under new ownership still settling</td><td>Standalone company; no ownership transition to track</td></tr>
+              <tr class="win-b"><td>Pricing</td><td>Enterprise pricing; typically higher TCO than BeyondTrust</td><td>Enterprise pricing; generally lower TCO for comparable scope</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p style="font-size:12px; color:var(--faint); margin-top:-20px; margin-bottom:40px;">Capability assessments based on publicly available vendor documentation and independent coverage. Validate specific feature depth against your environment before purchase.</p>
 
         <h2>When each wins</h2>
 
         <div class="wins-grid">
-          <div class="wins-box">
-            <div class="wins-box-label">Palo Alto (CyberArk) wins when</div>
+          <div class="wins-col">
+            <span class="wins-col-label">CyberArk wins when</span>
             <ul>
               <li>The environment is AD-centric with extensive Windows Server infrastructure</li>
               <li>Compliance requirements demand centralized vault-based session management and recording for all privileged accounts</li>
@@ -203,14 +153,14 @@
               <li>The primary JIT use case is centralized credential management, not endpoint delegation</li>
             </ul>
           </div>
-          <div class="wins-box">
-            <div class="wins-box-label">BeyondTrust wins when</div>
+          <div class="wins-col">
+            <span class="wins-col-label">BeyondTrust wins when</span>
             <ul>
               <li>Large UNIX/Linux server fleet where command-level privilege delegation is the primary JIT requirement</li>
               <li>Vendor and contractor remote access management is a priority use case</li>
               <li>Endpoint privilege management for Windows workstations is in scope</li>
               <li>Deployment simplicity matters and the vault-first model creates unnecessary overhead for the use case</li>
-              <li>Acquisition risk on CyberArk is a blocker for a new multi-year commitment</li>
+              <li>Ownership-transition uncertainty on CyberArk is a blocker for a new multi-year commitment</li>
             </ul>
           </div>
         </div>
@@ -220,17 +170,20 @@
         <p>If the primary JIT requirement is cloud IAM role provisioning — engineers requesting temporary access to AWS, Azure, or GCP console and services — neither CyberArk nor BeyondTrust is the right starting point. Both are primarily built for the on-premises and hybrid infrastructure access problem. Cloud-native JIT platforms (Britive, Apono, StrongDM) cover the cloud IAM use case with less overhead. The <a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT comparison</a> covers this boundary directly.</p>
 
         <div class="verdict">
-          <div class="verdict-label">Finding</div>
+          <span class="verdict-label">Finding</span>
           <p>These platforms are not competing for the same buyer in the same environment. CyberArk wins in AD-heavy enterprises that need centralized vault management and have an existing CyberArk footprint. BeyondTrust wins where the problem is UNIX/Linux endpoint privilege, vendor remote access, or Windows workstation delegation. Buyers who have shortlisted both should clarify which of those use cases is primary before evaluating features — the architecture question answers the vendor question.</p>
         </div>
 
+        <p style="font-size:var(--small);">Related: <a href="/comparisons/cyberark-vs-britive/">CyberArk vs. Britive</a> &nbsp;&middot;&nbsp; <a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT</a> &nbsp;&middot;&nbsp; <a href="/landscape/vendor-comparison/">Full vendor comparison tool</a></p>
+
         <div class="newsletter-block">
-          <span class="page-label">The Independent Defender</span>
-          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <span class="page-label">Stay current</span>
+          <p>The Independent Defender covers the JIT access market the way vendors hope you won't read it. Twice monthly.</p>
           <div class="newsletter-form">
-            <input type="email" placeholder="your@email.com" aria-label="Email address">
-            <button type="button">Subscribe free</button>
+            <input type="email" id="nl-email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button" id="nl-submit">Subscribe free</button>
           </div>
+          <div id="nl-msg" style="display:none;font-size:11px;margin-top:8px;"></div>
         </div>
 
       </article>
@@ -239,12 +192,13 @@
 
   <footer>
     <div class="footer-inner">
-      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
-      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+      <span class="page-label">Just-in-Time Access Software</span>
+      <p>An independent publication. Built by <a href="https://machinesandwords.com">Machines &amp; Words</a>.</p>
     </div>
   </footer>
 
   <script src="/nav.js"></script>
   <script src="/newsletter.js"></script>
+
 </body>
 </html>

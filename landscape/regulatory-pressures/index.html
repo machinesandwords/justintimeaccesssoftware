@@ -23,6 +23,8 @@
     "headline": "Regulatory and Compliance Pressure: Where ZSP Stopped Being Optional",
     "description": "How NIST SP 800-53, PCI DSS 4.0.1, DORA, and NIS2 turned least privilege and just-in-time access from best practice into named, enforceable requirements.",
     "url": "https://justintimeaccesssoftware.com/landscape/regulatory-pressure/",
+    "datePublished": "2026-06-21",
+    "dateModified": "2026-06-21",
     "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
   }
   </script>
@@ -49,54 +51,81 @@
 <body>
 
   <header class="topbar">
-    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-brand">Just-in-Time Access <span>Software</span></div>
     <div class="topbar-divider"></div>
-    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
-    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+    <div class="topbar-tagline">an independent guide to JIT access software</div>
+    <div class="topbar-right"><a href="/subscribe">Subscribe</a></div>
   </header>
 
-<div class="layout">
+  <div class="layout">
+    <nav class="sidebar" aria-label="Site navigation">
+      <div id="sidebar-nav"></div>
+    </nav>
 
-  <nav id="sidebar-nav" class="sidebar"></nav>
+    <main class="main">
+      <article class="content">
 
-  <main class="content">
+        <div class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/landscape/">Landscape</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Regulatory Pressure</span>
+        </div>
 
-    <article>
-
-      <header class="page-header">
-        <p class="eyebrow">Landscape</p>
+        <span class="page-label">Landscape</span>
         <h1>Regulatory and Compliance Pressure: Where ZSP Stopped Being Optional</h1>
-      </header>
 
-      <p>For most of the last decade, eliminating standing privileged access was a security best practice that auditors politely recommended and budget cycles politely deferred. That's changed. Across the frameworks that actually carry enforcement weight, least privilege and just-in-time access have moved from recommended controls to named requirements with named consequences for ignoring them.</p>
+        <p class="lead">For most of the last decade, eliminating standing privileged access was a security best practice that auditors politely recommended and budget cycles politely deferred. That's changed. Across the frameworks that actually carry enforcement weight, least privilege and just-in-time access have moved from recommended controls to named requirements with named consequences for ignoring them.</p>
 
-      <h2>NIST SP 800-53: the access control backbone</h2>
+        <h2>NIST SP 800-53: the access control backbone</h2>
 
-      <p>NIST SP 800-53 Revision 5 is the control catalog most U.S. federal systems and their contractors are evaluated against, and its Access Control family is where JIT shows up directly. AC-6 (Least Privilege) and its enhancements require organizations to authorize, restrict, and periodically review privileged accounts; AC-6(7) specifically calls for review of user privileges to confirm continued need. AC-2 (Account Management) goes further: its enhancements address automated temporary and emergency account management and dynamic privilege management, which is essentially a control-catalog description of what a JIT platform does. A standing administrative credential that never gets reviewed isn't a minor finding under this framework. It's a direct AC-6/AC-2 gap.</p>
+        <p>NIST SP 800-53 Revision 5 is the control catalog most U.S. federal systems and their contractors are evaluated against, and its Access Control family is where JIT shows up directly. AC-6 (Least Privilege) and its enhancements require organizations to authorize, restrict, and periodically review privileged accounts; AC-6(7) specifically calls for review of user privileges to confirm continued need. AC-2 (Account Management) goes further: its enhancements address automated temporary and emergency account management and dynamic privilege management, which is essentially a control-catalog description of what a JIT platform does. A standing administrative credential that never gets reviewed isn't a minor finding under this framework. It's a direct AC-6/AC-2 gap.</p>
 
-      <h2>PCI DSS 4.0.1: least privilege with a deadline that already passed</h2>
+        <h2>PCI DSS 4.0.1: least privilege with a deadline that already passed</h2>
 
-      <p>The grace period on PCI DSS 4.0's future-dated requirements closed March 31, 2025, which means every 2026 assessment is being scored against the full standard, not a transition allowance. Requirement 7.2.4 mandates that human account privileges be reviewed at least every six months, and system or application accounts on a frequency set by a documented targeted risk analysis. Requirement 7.2.5 restricts application and system accounts to least privilege, and accounts with interactive login capability now require documented business justification and credential management, commonly through a vault or equivalent control. The standard doesn't name JIT directly, but the access pattern it's describing, time-bound, justified, reviewed, logged, is the JIT pattern.</p>
+        <p>The grace period on PCI DSS 4.0's future-dated requirements closed March 31, 2025, which means every 2026 assessment is being scored against the full standard, not a transition allowance. Requirement 7.2.4 mandates that human account privileges be reviewed at least every six months, and system or application accounts on a frequency set by a documented targeted risk analysis. Requirement 7.2.5 restricts application and system accounts to least privilege, and accounts with interactive login capability now require documented business justification and credential management, commonly through a vault or equivalent control. The standard doesn't name JIT directly, but the access pattern it's describing, time-bound, justified, reviewed, logged, is the JIT pattern.</p>
 
-      <h2>DORA and NIS2: continuous, not quarterly</h2>
+        <h2>DORA and NIS2: continuous, not quarterly</h2>
 
-      <p>In the EU, the Digital Operational Resilience Act applies to financial entities and the third-party ICT providers that serve them. Its regulatory technical standards on ICT risk management, under Article 21, require that access rights be assigned based on need-to-know and least privilege, including for remote and emergency access, with prompt revocation of unnecessary rights and automated privileged access management deployed where feasible. NIS2, which applies to essential and important entities across 18 sectors EU-wide, carries a parallel access control requirement under Article 21 of its own risk management measures.</p>
+        <p>In the EU, the Digital Operational Resilience Act applies to financial entities and the third-party ICT providers that serve them. Its regulatory technical standards on ICT risk management, under Article 21, require that access rights be assigned based on need-to-know and least privilege, including for remote and emergency access, with prompt revocation of unnecessary rights and automated privileged access management deployed where feasible. NIS2, which applies to essential and important entities across 18 sectors EU-wide, carries a parallel access control requirement under Article 21 of its own risk management measures.</p>
 
-      <p>What distinguishes both frameworks from older compliance language is the word continuous. DORA's emphasis on ongoing ICT risk monitoring, rather than point-in-time audit snapshots, is difficult to satisfy with a permanent administrative account that sits outside any time-bound review cycle. A standing credential doesn't generate the kind of continuous, attributable access record these frameworks are built around. A JIT-issued, automatically expiring one does.</p>
+        <p>What distinguishes both frameworks from older compliance language is the word continuous. DORA's emphasis on ongoing ICT risk monitoring, rather than point-in-time audit snapshots, is difficult to satisfy with a permanent administrative account that sits outside any time-bound review cycle. A standing credential doesn't generate the kind of continuous, attributable access record these frameworks are built around. A JIT-issued, automatically expiring one does.</p>
 
-      <h2>What this means for the buying decision</h2>
+        <h2>What this means for the buying decision</h2>
 
-      <p>None of these frameworks say "buy a JIT platform." None of them have to. They describe an access pattern, time-bound, justified, automatically revoked, reviewed on a defined cadence, that a standing-privilege model cannot produce evidence for without manual reconstruction after the fact. That gap is what's pulling JIT out of the "nice to have" column and into the part of the budget that gets approved without much debate.</p>
+        <p>None of these frameworks say "buy a JIT platform." None of them have to. They describe an access pattern, time-bound, justified, automatically revoked, reviewed on a defined cadence, that a standing-privilege model cannot produce evidence for without manual reconstruction after the fact. That gap is what's pulling JIT out of the "nice to have" column and into the part of the budget that gets approved without much debate.</p>
 
-      <p>The practical implication for evaluation: a platform's audit trail and review-cadence reporting matter as much as its access-granting mechanics. A tool that grants time-bound access cleanly but produces a flat activity log is solving half the compliance problem. The frameworks above are asking for evidence, not just enforcement, and the platforms that generate audit-ready reporting natively are doing more of the compliance work for you than the ones that require a SIEM integration to back it out after the fact.</p>
+        <div class="verdict">
+          <span class="verdict-label">Finding</span>
+          <p>A platform's audit trail and review-cadence reporting matter as much as its access-granting mechanics. A tool that grants time-bound access cleanly but produces a flat activity log is solving half the compliance problem. The frameworks above are asking for evidence, not just enforcement, and the platforms that generate audit-ready reporting natively are doing more of the compliance work for you than the ones that require a SIEM integration to back it out after the fact.</p>
+        </div>
 
-    </article>
+        <p style="font-size:var(--small);">Related: <a href="/landscape/market-direction/">Market direction</a> &nbsp;&middot;&nbsp; <a href="/landscape/vendor-comparison/">Full vendor comparison tool</a></p>
 
-  </main>
+        <div class="newsletter-block">
+          <span class="page-label">Stay current</span>
+          <p>The Independent Defender covers the JIT access market the way vendors hope you won't read it. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" id="nl-email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button" id="nl-submit">Subscribe free</button>
+          </div>
+          <div id="nl-msg" style="display:none;font-size:11px;margin-top:8px;"></div>
+        </div>
 
-</div>
+      </article>
+    </main>
+  </div>
 
-<script src="/nav.js" defer></script>
-<script src="/newsletter.js" defer></script>
+  <footer>
+    <div class="footer-inner">
+      <span class="page-label">Just-in-Time Access Software</span>
+      <p>An independent publication. Built by <a href="https://machinesandwords.com">Machines &amp; Words</a>.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+
 </body>
 </html>

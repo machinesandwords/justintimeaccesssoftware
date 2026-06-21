@@ -16,7 +16,10 @@
     <div class="nav-section">
       <div class="nav-section-label">Landscape</div>
       <a href="/landscape/" class="nav-item depth-0">Market overview</a>
-      <a href="/landscape/vendor-index/" class="nav-item depth-1">&#9492; Vendor index</a>
+      <a href="/landscape/market-direction/" class="nav-item depth-1">&#9500; Market direction</a>
+      <a href="/landscape/vendor-index/" class="nav-item depth-1">&#9500; Vendor index</a>
+      <a href="/landscape/vendor-comparison/" class="nav-item depth-1">&#9500; Vendor comparison</a>
+      <a href="/landscape/regulatory-pressures/" class="nav-item depth-1">&#9492; Regulatory pressures</a>
     </div>
 
     <div class="nav-divider"></div>

@@ -23,6 +23,8 @@
     "headline": "The Vault Solves the Wrong Problem",
     "description": "Why legacy PAM vendor content frames the JIT question in terms of their existing architecture, what zero standing privilege means in practice, and how to use this site.",
     "url": "https://justintimeaccesssoftware.com/why/",
+    "datePublished": "2026-06-21",
+    "dateModified": "2026-06-21",
     "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
   }
   </script>
@@ -48,86 +50,102 @@
 <body>
 
   <header class="topbar">
-    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-brand">Just-in-Time Access <span>Software</span></div>
     <div class="topbar-divider"></div>
-    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
-    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+    <div class="topbar-tagline">an independent guide to JIT access software</div>
+    <div class="topbar-right"><a href="/subscribe">Subscribe</a></div>
   </header>
 
-<div class="layout">
+  <div class="layout">
+    <nav class="sidebar" aria-label="Site navigation">
+      <div id="sidebar-nav"></div>
+    </nav>
 
-  <nav id="sidebar-nav" class="sidebar"></nav>
+    <main class="main">
+      <article class="content">
 
-  <main class="content">
+        <div class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Why</span>
+        </div>
 
-    <article>
-
-      <header class="page-header">
-        <p class="eyebrow">About this site</p>
+        <span class="page-label">About this site</span>
         <h1>The Vault Solves the Wrong Problem</h1>
-      </header>
 
-      <p>Most JIT access content is written by the vendors selling it: legacy PAM platforms defending the vault architecture their engineering teams are built around, and cloud-native challengers selling ephemeral tokens as a category they happen to own. The security leader trying to figure out whether they need a JIT overlay, a PAM replacement, or something else entirely has no neutral ground to stand on. This site is an attempt to fix that.</p>
+        <p class="lead">Most JIT access content is written by the vendors selling it: legacy PAM platforms defending the vault architecture their engineering teams are built around, and cloud-native challengers selling ephemeral tokens as a category they happen to own. The security leader trying to figure out whether they need a JIT overlay, a PAM replacement, or something else entirely has no neutral ground to stand on. This site is an attempt to fix that.</p>
 
-      <h2>Written for the buyer caught between two incumbents</h2>
+        <h2>Written for the buyer caught between two incumbents</h2>
 
-      <p>Legacy PAM vendors are not wrong that JIT can be delivered as a vault capability. Time-limited session brokering through an audited gateway eliminates standing access while preserving the architecture their customers already run. What that framing leaves out is that the vault itself is still present, still reachable, and its credentials still exist between sessions.</p>
+        <p>Legacy PAM vendors are not wrong that JIT can be delivered as a vault capability. Time-limited session brokering through an audited gateway eliminates standing access while preserving the architecture their customers already run. What that framing leaves out is that the vault itself is still present, still reachable, and its credentials still exist between sessions.</p>
 
-      <p>Cloud-native JIT challengers are not wrong that ephemeral tokens are architecturally cleaner. A credential that does not exist cannot be stolen. What that framing leaves out is the hybrid estate: legacy on-premises databases, industrial infrastructure, Active Directory workloads that cannot absorb cloud IAM semantics. Zero standing privilege in the cloud-native slice of the environment is a narrower win than the pitch implies when the rest of the estate still runs on vault-brokered access.</p>
+        <p>Cloud-native JIT challengers are not wrong that ephemeral tokens are architecturally cleaner. A credential that does not exist cannot be stolen. What that framing leaves out is the hybrid estate: legacy on-premises databases, industrial infrastructure, Active Directory workloads that cannot absorb cloud IAM semantics. Zero standing privilege in the cloud-native slice of the environment is a narrower win than the pitch implies when the rest of the estate still runs on vault-brokered access.</p>
 
-      <p>Both sides are selling the architecture they already have. Neither has an incentive to describe the full tradeoff, because doing so narrows the accounts they can close. The result is a market where most buyer-facing content is accurate within its frame and incomplete outside it.</p>
+        <p>Both sides are selling the architecture they already have. Neither has an incentive to describe the full tradeoff, because doing so narrows the accounts they can close. The result is a market where most buyer-facing content is accurate within its frame and incomplete outside it.</p>
 
-      <h2>The picture, by the numbers</h2>
+        <h2>The picture, by the numbers</h2>
 
-      <div class="stats-grid">
-
-        <div class="stat-card">
-          <p class="stat-label">Initial access vector</p>
-          <p class="stat-number">22%</p>
-          <p class="stat-detail">Share of confirmed breaches where credential abuse was the entry point, the single largest initial-access category in Verizon's 2025 Data Breach Investigations Report.</p>
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-label">Initial access vector</div>
+            <div class="card-value">22%</div>
+            <div class="card-sub">Share of breaches where credential abuse was the entry point (Verizon 2025 DBIR)</div>
+          </div>
+          <div class="card">
+            <div class="card-label">Cost of a credential breach</div>
+            <div class="card-value">$4.50M</div>
+            <div class="card-sub">Average cost of a breach involving stolen credentials (IBM 2025)</div>
+          </div>
+          <div class="card">
+            <div class="card-label">Time to contain</div>
+            <div class="card-value">292 days</div>
+            <div class="card-sub">Average time to identify and contain a credential-based breach (IBM 2025)</div>
+          </div>
         </div>
 
-        <div class="stat-card">
-          <p class="stat-label">Cost of a credential breach</p>
-          <p class="stat-number">$4.50M</p>
-          <p class="stat-detail">Average cost of a breach involving stolen or compromised credentials, the costliest attack vector tracked in IBM's 2025 Cost of a Data Breach Report.</p>
+        <p>Standing privilege is what makes the third number possible. A credential that exists continuously gives an attacker, or a compromised script, months of cover before anyone notices the access was never supposed to be there.</p>
+
+        <h2>What zero standing privilege actually requires</h2>
+
+        <p>ZSP is the right target. The question is not whether it's correct, but whether a given platform gets you there across your full estate or only the part it was built for. For cloud-native workloads, ephemeral token generation through an IAM-native platform is a practical path. For hybrid environments, the realistic outcome is usually a combination: ephemeral tokens where the infrastructure supports them, vault-brokered JIT with short windows where it doesn't. That combination is not a failure state. It is a more accurate description of where most enterprise environments actually sit.</p>
+
+        <p>The operational problems that don't make it into vendor decks, zombie sessions that outlive token expiration, policy sprawl across heterogeneous cloud accounts, approval latency that breaks on-call response, are the problems this site is built to address.</p>
+
+        <h2>The machine identity complication</h2>
+
+        <p>The fastest-growing JIT use case isn't a human engineer requesting prod access. It's a service account, a CI/CD pipeline, or an agent that needs a millisecond-latency credential to touch one resource. Human approval workflows don't scale to that velocity. This splits the market in two: platforms built for human access aren't the right architecture for workload JIT, and platforms built for workload JIT don't cover the human use case. Both call themselves JIT access platforms. A buyer evaluating both on the same shortlist may not realize they're solving different problems until well into a proof of concept.</p>
+
+        <p>JIT access and non-human identity governance are converging on the same underlying problem from two different category names. This site covers both, with explicit content on where they overlap and where they don't. The sibling site <a href="https://nonhumanidentitysoftware.com/">nonhumanidentitysoftware.com</a> covers the NHI side in more depth.</p>
+
+        <h2>What independent means on this site</h2>
+
+        <p>This site does not favor vault-brokered architecture over ephemeral tokens, or cloud-native platforms over hybrid-capable ones. Every approach is evaluated against the environment it actually targets. Analysis is based on public documentation, practitioner input, and direct evaluation where possible. Where the evidence for a claim is thin, this site says so.</p>
+
+        <p>The people making JIT decisions are trying to close the gap between a security principle everyone agrees on and an environment too heterogeneous for any single vendor's architecture to fully cover. They need better information than the market currently gives them. That is the only reason this site exists.</p>
+
+        <div class="newsletter-block">
+          <span class="page-label">Stay current</span>
+          <p>The Independent Defender covers the JIT access market the way vendors hope you won't read it. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" id="nl-email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button" id="nl-submit">Subscribe free</button>
+          </div>
+          <div id="nl-msg" style="display:none;font-size:11px;margin-top:8px;"></div>
         </div>
 
-        <div class="stat-card">
-          <p class="stat-label">Time to contain</p>
-          <p class="stat-number">292 days</p>
-          <p class="stat-detail">Average time to identify and contain a breach involving stolen credentials, well above the all-vector average, because valid-credential activity is hard to distinguish from legitimate use (IBM 2025).</p>
-        </div>
+      </article>
+    </main>
+  </div>
 
-      </div>
+  <footer>
+    <div class="footer-inner">
+      <span class="page-label">Just-in-Time Access Software</span>
+      <p>An independent publication. Built by <a href="https://machinesandwords.com">Machines &amp; Words</a>.</p>
+    </div>
+  </footer>
 
-      <p>Standing privilege is what makes the third number possible. A credential that exists continuously gives an attacker, or a compromised script, months of cover before anyone notices the access was never supposed to be there.</p>
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
 
-      <h2>What zero standing privilege actually requires</h2>
-
-      <p>ZSP is the right target. The question is not whether it's correct, but whether a given platform gets you there across your full estate or only the part it was built for. For cloud-native workloads, ephemeral token generation through an IAM-native platform is a practical path. For hybrid environments, the realistic outcome is usually a combination: ephemeral tokens where the infrastructure supports them, vault-brokered JIT with short windows where it doesn't. That combination is not a failure state. It is a more accurate description of where most enterprise environments actually sit.</p>
-
-      <p>The operational problems that don't make it into vendor decks, zombie sessions that outlive token expiration, policy sprawl across heterogeneous cloud accounts, approval latency that breaks on-call response, are the problems this site is built to address.</p>
-
-      <h2>The machine identity complication</h2>
-
-      <p>The fastest-growing JIT use case isn't a human engineer requesting prod access. It's a service account, a CI/CD pipeline, or an agent that needs a millisecond-latency credential to touch one resource. Human approval workflows don't scale to that velocity. This splits the market in two: platforms built for human access aren't the right architecture for workload JIT, and platforms built for workload JIT don't cover the human use case. Both call themselves JIT access platforms. A buyer evaluating both on the same shortlist may not realize they're solving different problems until well into a proof of concept.</p>
-
-      <p>JIT access and non-human identity governance are converging on the same underlying problem from two different category names. This site covers both, with explicit content on where they overlap and where they don't. The sibling site <a href="https://nonhumanidentitysoftware.com/">nonhumanidentitysoftware.com</a> covers the NHI side in more depth.</p>
-
-      <h2>What independent means on this site</h2>
-
-      <p>This site does not favor vault-brokered architecture over ephemeral tokens, or cloud-native platforms over hybrid-capable ones. Every approach is evaluated against the environment it actually targets. Analysis is based on public documentation, practitioner input, and direct evaluation where possible. Where the evidence for a claim is thin, this site says so.</p>
-
-      <p>The people making JIT decisions are trying to close the gap between a security principle everyone agrees on and an environment too heterogeneous for any single vendor's architecture to fully cover. They need better information than the market currently gives them. That is the only reason this site exists.</p>
-
-    </article>
-
-  </main>
-
-</div>
-
-<script src="/nav.js" defer></script>
-<script src="/newsletter.js" defer></script>
 </body>
 </html>
