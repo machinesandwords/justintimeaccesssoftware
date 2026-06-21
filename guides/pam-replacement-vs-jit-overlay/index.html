@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>PAM Replacement vs. JIT Overlay | Just-in-Time Access Software</title>
+  <meta name="description" content="How to frame the replace-PAM-with-JIT-native vs. overlay-JIT-on-existing-PAM decision before entering a sales cycle. The migration cost calculus, coverage gaps, and when each strategy fits.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/guides/pam-replacement-vs-jit-overlay/">
+
+  <meta property="og:title" content="PAM Replacement vs. JIT Overlay | Just-in-Time Access Software">
+  <meta property="og:description" content="How to frame the PAM replacement vs. JIT overlay decision before entering a sales cycle. Migration cost calculus and coverage gaps.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/guides/pam-replacement-vs-jit-overlay/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "PAM Replacement vs. JIT Overlay",
+    "url": "https://justintimeaccesssoftware.com/guides/pam-replacement-vs-jit-overlay/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://justintimeaccesssoftware.com/guides/" },
+      { "@type": "ListItem", "position": 3, "name": "PAM Replacement vs. JIT Overlay", "item": "https://justintimeaccesssoftware.com/guides/pam-replacement-vs-jit-overlay/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/guides/">Guides</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>PAM Replacement vs. JIT Overlay</span>
+        </nav>
+
+        <span class="page-label">Guide</span>
+        <h1>PAM Replacement vs. JIT Overlay</h1>
+
+        <p class="lead">Organizations with an existing PAM deployment face a decision that vendor sales cycles will not frame clearly: replace the PAM platform with a JIT-native platform, or keep the PAM platform and add JIT workflows on top. Both paths are viable in specific circumstances. Neither is universally right. The decision should happen before a sales cycle starts, not during one.</p>
+
+        <h2>What "replacement" actually involves</h2>
+
+        <p>A PAM platform is not just software installed on a few servers. In a mature deployment, it is the credential store for all privileged accounts across the environment. It is the session proxy through which all privileged sessions flow. It is integrated with ticketing systems, SIEM platforms, and compliance reporting workflows. It is the platform on which months or years of access policy have been built. Replacing it means migrating credentials, rebuilding integrations, retraining users and administrators, and cutting over session recording to a new platform — while maintaining PAM coverage throughout.</p>
+
+        <p>That is a significant program of work. For a 5,000-seat enterprise with a mature CyberArk deployment covering 500 vaulted accounts, a full PAM replacement is a 12-to-18-month project with substantial professional services cost. That cost is rarely accounted for in a vendor comparison that focuses on license cost alone.</p>
+
+        <h2>What "overlay" actually involves</h2>
+
+        <p>A JIT overlay uses the existing PAM platform as the underlying credential store and session proxy, while adding a JIT workflow layer on top. Engineers request access through the overlay; the overlay translates the approved request into a vault checkout in the existing PAM system; the session runs through the existing PSM proxy. The PAM platform continues to do what it does; the JIT layer adds approval workflows, session timers, and automated cleanup.</p>
+
+        <p>This approach has a different cost profile: the overlay can be deployed incrementally, on a per-team or per-environment basis, without migrating the underlying PAM deployment. The tradeoff is that the overlay inherits the limitations of the underlying PAM platform: no ephemeral credential provisioning, the vault still exists and must be secured, and the session proxy is still a single point that all privileged sessions transit.</p>
+
+        <p>Some PAM vendors — CyberArk in particular — have added native JIT workflow capabilities to reduce the need for a separate overlay. The evaluation question for those buyers is whether the native JIT capability in the PAM platform is sufficient for the use case, or whether an independent JIT layer provides meaningfully better workflow controls.</p>
+
+        <h2>The environmental conditions that determine the right path</h2>
+
+        <p><strong>Replacement makes sense when:</strong> the existing PAM deployment is immature or partially implemented (not worth maintaining); the primary JIT use case is cloud IAM provisioning for which the existing PAM has no meaningful coverage; the organization has reached a natural renewal decision point and can absorb the migration cost as part of a larger modernization program; or the on-premises infrastructure in PAM scope is being decommissioned as part of a cloud migration.</p>
+
+        <p><strong>Overlay makes sense when:</strong> the existing PAM deployment is mature and deeply integrated; on-premises and legacy infrastructure coverage is required and no JIT-native platform provides comparable coverage; the migration cost is prohibitive relative to the security improvement achieved; or the compliance posture requires centralized session recording that the existing PAM provides and a replacement cannot replicate without significant configuration work.</p>
+
+        <p><strong>Neither is fully right when:</strong> the environment is genuinely hybrid — significant cloud workloads that would benefit from ephemeral JIT, and significant on-premises infrastructure that the existing PAM covers. Many enterprises land here. The pragmatic path is often a phased approach: JIT overlay on existing PAM for the on-premises scope; JIT-native cloud platform for cloud IAM scope; with the goal of reducing PAM scope over time as infrastructure migrates to cloud.</p>
+
+        <h2>The migration cost calculus</h2>
+
+        <p>Migration cost has three components that are easy to underestimate:</p>
+
+        <p><strong>Credential migration.</strong> Vaulted accounts need to be migrated to the new platform or decommissioned. For large vaults this is not a one-day operation; it requires careful coordination to avoid access gaps on production systems.</p>
+
+        <p><strong>Integration rebuilding.</strong> The existing PAM is likely integrated with ticketing systems (ServiceNow, Jira), SIEM platforms (Splunk, Sentinel), and compliance reporting workflows. Those integrations need to be rebuilt against the new platform's API. Rebuild time depends on the depth and customization of existing integrations.</p>
+
+        <p><strong>Policy migration.</strong> Access policies built in the PAM platform — who can access what, under what conditions, with what approval requirements — need to be reconstructed in the new platform's policy language. This is not a lift-and-shift; the policy models often differ enough that policies need to be redesigned rather than translated.</p>
+
+        <p>Total migration cost for a mature PAM deployment is typically 1.5x to 2x the first-year license cost of the replacement platform. That ratio should inform the financial case for replacement vs. overlay.</p>
+
+        <div class="callout">
+          <strong>Before entering a sales cycle:</strong> map the on-premises infrastructure in current PAM scope, identify which of that infrastructure can support ephemeral token provisioning (and which cannot), and calculate what migration of the credential store and integrations would require. That inventory is the input to the replacement vs. overlay decision — not the feature comparison between the existing PAM and a replacement candidate.
+        </div>
+
+        <div class="verdict">
+          <div class="verdict-label">Key point</div>
+          <p>The replacement vs. overlay decision is determined by environment scope and migration cost, not by feature comparison. A JIT-native platform with superior cloud IAM coverage does not win the replacement decision if the environment has 400 vaulted on-premises accounts that the replacement cannot cover. Map the environment first. The strategy decision follows from the map, not from the vendor demos.</p>
+        </div>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

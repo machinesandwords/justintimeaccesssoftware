@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>The Vault Solves the Wrong Problem | Just-in-Time Access Software</title>
+  <meta name="description" content="Why legacy PAM vendor content frames the JIT question in terms of their existing architecture, what zero standing privilege means in practice, and how to use this site.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/why/">
+
+  <meta property="og:title" content="The Vault Solves the Wrong Problem | Just-in-Time Access Software">
+  <meta property="og:description" content="Why legacy PAM vendor content frames the JIT question in terms of their existing architecture, what zero standing privilege means in practice, and how to use this site.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/why/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Vault Solves the Wrong Problem",
+    "description": "Why legacy PAM vendor content frames the JIT question in terms of their existing architecture, what zero standing privilege means in practice, and how to use this site.",
+    "url": "https://justintimeaccesssoftware.com/why/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Why", "item": "https://justintimeaccesssoftware.com/why/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Why</span>
+        </nav>
+
+        <span class="page-label">Why this site exists</span>
+        <h1>The Vault Solves the Wrong Problem</h1>
+
+        <p class="lead">Password vaulting was the right answer to the credential exposure problem. Store secrets centrally, rotate them on schedule, proxy sessions through an audited gateway. For the threat model of the 2010s, that was sound architecture. The threat model has changed. The vault has not.</p>
+
+        <h2>What vendors are selling, and what they are not saying</h2>
+
+        <p>Legacy PAM vendors are not wrong when they position JIT access as a vault capability. Time-limited session brokering through a vault proxy eliminates some standing access while preserving the gateway model their engineering teams and customer support organizations are built around. The problem is what that framing omits: the vault itself is still present, still reachable, and its credentials — however well-rotated — still exist.</p>
+
+        <p>Cloud-native JIT challengers are not wrong when they position ephemeral tokens as architecturally superior for cloud environments. If a credential does not exist, it cannot be stolen. But that framing omits the environments where ephemeral token generation is not viable: legacy on-premises databases, industrial infrastructure, Active Directory workloads that cannot absorb cloud IAM semantics. Claiming zero standing privilege in a cloud-only environment while the hybrid estate runs on vault-brokered access is a narrower win than the positioning implies.</p>
+
+        <p>Both sides are selling their existing architecture. Neither has an incentive to describe the full trade-off clearly, because doing so would limit the accounts they can close. The result is a market where most buyer-facing content is accurate within its frame and systematically incomplete outside it.</p>
+
+        <h2>What zero standing privilege means in practice</h2>
+
+        <p>ZSP is the correct architectural goal. A credential that does not exist when access is not needed cannot be harvested, replayed, or left open as a lateral movement path. The question is not whether ZSP is the right target — it is — but whether any given JIT platform gets you there across your full estate, or only in the parts of your environment it was built for.</p>
+
+        <p>For cloud-native workloads, ephemeral token generation through an IAM-native JIT platform is a practical path to ZSP. For hybrid environments with legacy infrastructure, the realistic outcome is often a combination: ephemeral tokens where the infrastructure supports them, vault-brokered JIT with short session windows where it does not. That combination is not a failure state. It is a more complete description of where most enterprise environments actually land.</p>
+
+        <p>The operational problems that do not appear in vendor collateral — zombie sessions that persist after token expiration, policy sprawl across heterogeneous cloud environments, on-call workflows that break when JIT approval latency exceeds incident response time — are the problems this site is built to address.</p>
+
+        <h2>The NHI complication</h2>
+
+        <p>The fastest-growing JIT use case is not a human engineer requesting temporary prod access. It is a service account, a CI/CD pipeline, or an AI agent that needs a millisecond-latency ephemeral credential to touch one resource. The human approval workflow model does not scale to machine-to-machine requests at the velocity and latency that automated systems require.</p>
+
+        <p>This creates a genuine split inside the JIT market: platforms built for human access workflows are not the right architecture for workload JIT, and platforms built for workload JIT do not cover the human access use case. Both call themselves JIT access platforms. The buyer looking at both on the same vendor shortlist may not realize they are solving different problems until they are well into a proof of concept.</p>
+
+        <p>JIT access and non-human identity governance are converging on the same underlying problem from two different category names. This site covers both, with explicit content on where they overlap and where they do not. The sibling site <a href="https://nonhumanidentitysoftware.com">nonhumanidentitysoftware.com</a> covers the NHI side in more depth.</p>
+
+        <h2>How to use this site</h2>
+
+        <p>If you are at the beginning of a JIT evaluation: start with the <a href="/landscape/">landscape</a> and the <a href="/guides/pam-replacement-vs-jit-overlay/">PAM replacement vs. JIT overlay guide</a>. The landscape maps the market. The guide walks through the environmental factors that determine whether you need a replacement or an overlay before you look at a single vendor.</p>
+
+        <p>If you are comparing specific platforms: use the <a href="/comparisons/">comparisons</a>. Each one identifies the specific environmental conditions under which one platform wins over the other. If neither condition matches your environment, that is in the comparison too.</p>
+
+        <p>If you are in a proof of concept or mid-evaluation: the <a href="/guides/">guides</a> cover the operational problems — zombie sessions, on-call friction, policy sprawl, telemetry exposure — that surface after the demo and before the contract.</p>
+
+        <p>If you want a structured way to work through the architecture decision: the <a href="/tools/architecture-fit/">architecture fit selector</a> and the <a href="/tools/approval-friction-calculator/">approval friction calculator</a> produce outputs based on your environment, not the vendor's.</p>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

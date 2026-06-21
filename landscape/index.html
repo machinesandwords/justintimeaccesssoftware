@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>JIT Access Market Overview | Just-in-Time Access Software</title>
+  <meta name="description" content="How the just-in-time access and PAM market is structured in 2026: four architectural fault lines, vendor categories, consolidation dynamics, and what the PAM-to-JIT transition means for buyers.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/landscape/">
+
+  <meta property="og:title" content="JIT Access Market Overview | Just-in-Time Access Software">
+  <meta property="og:description" content="How the just-in-time access and PAM market is structured in 2026: four architectural fault lines, vendor categories, and consolidation dynamics.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/landscape/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "JIT Access Market Overview",
+    "description": "How the just-in-time access and PAM market is structured in 2026: four architectural fault lines, vendor categories, consolidation dynamics, and what the PAM-to-JIT transition means for buyers.",
+    "url": "https://justintimeaccesssoftware.com/landscape/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Landscape", "item": "https://justintimeaccesssoftware.com/landscape/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Landscape</span>
+        </nav>
+
+        <span class="page-label">Landscape</span>
+        <h1>JIT Access Market Overview</h1>
+
+        <p class="lead">The just-in-time access market in 2026 is not a single category with a clear market leader. It is three overlapping product architectures competing for the same buyer conversation: legacy PAM vendors extending vault-centric platforms with JIT workflow layers, cloud-native challengers built around ephemeral token issuance from day one, and identity platform incumbents integrating JIT as a capability within SSO and directory infrastructure they already own. Understanding which architecture you are evaluating — and whether it covers your actual environment — precedes every vendor shortlist decision.</p>
+
+        <h2>The two buyer entry points</h2>
+
+        <p>The JIT access buying decision starts in one of two places, and the right architecture differs depending on which one you are in.</p>
+
+        <p><strong>Security or IAM leads with an existing PAM deployment.</strong> You already have a vault. You may have CyberArk, BeyondTrust, or Delinea in production. The question is whether your existing platform can deliver the zero-standing-privilege outcome you need, whether JIT capabilities your vendor added in the last two years are mature enough to rely on, and whether the architectural limitations of vault-centric JIT create coverage gaps in your cloud estate that require a second tool. The build-on-existing vs. add-a-JIT-overlay vs. replace-entirely decision is live.</p>
+
+        <p><strong>Security or IAM leads without legacy PAM, or in a cloud-first environment.</strong> The vault-centric model was never deployed or has been largely bypassed by cloud IAM. The question is whether a cloud-native JIT platform covers the full environment, how the non-human identity use case fits alongside human access management, and whether IdP-native JIT (Okta, Entra PIM) is sufficient or a third-party overlay is needed for multi-cloud or multi-IdP coverage. This buyer is not evaluating a replacement — they are making a first buy in a category that their environment makes tractable in ways that were not possible five years ago.</p>
+
+        <h2>Fault line 1: Cloud-native ephemeral JIT vs. vault-centric PAM with JIT layered on</h2>
+
+        <p>Cloud-native JIT platforms — Britive, Apono, StrongDM, Opal, P0 Security — generate ephemeral IAM roles, permission grants, and database credentials directly inside the cloud control plane. When the session timer expires, the IAM entity is deleted. There is no persistent credential to rotate, no vault entry to synchronize. The security property is architectural: standing access does not exist to be exploited.</p>
+
+        <p>Vault-centric PAM platforms broker access through a centralized gateway. JIT workflow layers on top determine which sessions are provisioned and for how long, but the vault itself remains reachable, and the credentials inside it — however well-rotated — are persistent. For legacy on-premises databases, Active Directory workloads, and industrial infrastructure that cannot accept ephemeral IAM semantics, the vault-centric model is often the only viable architecture. For cloud workloads, it introduces the proxy overhead that cloud-native platforms were built to eliminate.</p>
+
+        <p>Most enterprise environments contain both infrastructure types. The honest answer for many buyers is a combination: cloud-native JIT for cloud workloads, vault-brokered JIT for legacy targets. The operational overhead of running two platforms — and the coverage gaps at the seam between them — is the unspoken trade-off in that answer.</p>
+
+        <h2>Fault line 2: Identity-platform-native JIT vs. third-party overlay</h2>
+
+        <p>Okta Privileged Access and Microsoft Entra Privileged Identity Management provide time-bound role activation within the identity fabric the organization already operates. For Microsoft-centric environments evaluating JIT primarily for Azure and M365 workloads, Entra PIM provides the capability at a lower incremental cost and operational complexity than deploying a third-party platform. The same logic applies to deep Okta customers where consolidation of identity tooling is a priority.</p>
+
+        <p>The limitation is coverage. IdP-native JIT is strongest within its own ecosystem. Heterogeneous environments — multiple IdPs, legacy infrastructure, multi-cloud workloads — require an abstraction layer that IdP-native tools do not provide. Third-party overlays like Britive and StrongDM are designed precisely for that abstraction: they span multiple identity providers and cloud environments at the cost of an additional platform to deploy and maintain.</p>
+
+        <p>The consolidation argument and the coverage argument pull in opposite directions. Buyers choosing between them are making a bet on how much of their environment their chosen IdP will cover in two years — a bet that the vendors will not make for them.</p>
+
+        <h2>Fault line 3: Human access workflows vs. non-human workload JIT</h2>
+
+        <p>The JIT category started with humans: engineers requesting temporary prod access, approvers clicking Approve in Slack, sessions expiring after two hours. The platforms built for this workflow are optimized for low request volume, human-in-the-loop approval chains, and audit trail depth measured in sessions per day.</p>
+
+        <p>The fastest-growing JIT use case operates at a different order of magnitude. Service accounts, CI/CD pipelines, and AI agents require ephemeral credentials in milliseconds, without human approvers in the path, at volumes that human-workflow platforms were not designed to handle. An AWS Lambda function or a Kubernetes pod requesting a short-lived database credential cannot wait for a Slack approval — it either gets a credential immediately or it fails.</p>
+
+        <p>Aembit, Teleport, and SSH.COM PrivX are primarily built for this workload use case. Opal and Indent are primarily built for the human use case. Most of the legacy PAM platforms and several of the cloud-native platforms cover both, but with different depth in each. Buying a human-workflow JIT platform for a service account problem — or a workload JIT platform for an engineer access program — creates friction that surfaces after the POC and before the contract renewal.</p>
+
+        <h2>Fault line 4: Approval-workflow-first vs. policy-engine-first</h2>
+
+        <p>Two distinct operating models both travel under the JIT label. Approval-workflow-first platforms route access requests through a human chain: engineer submits, manager or peer approves, access is provisioned for a defined window. Policy-engine-first platforms evaluate every request against a risk model and grant or deny automatically for low-risk cases, routing only high-risk requests for human review.</p>
+
+        <p>The operational differences are significant. Approval-workflow-first platforms create friction at each request; that friction is the point in high-risk environments where every elevated access event should be reviewed. Policy-engine-first platforms reduce on-call overhead for routine access requests; they require substantial upfront investment in policy definition and tuning, and misconfigured policies either block legitimate access or approve what they should deny.</p>
+
+        <p>The choice is not about which is better — it is about which matches the operational model the security team and engineering team can sustain. A policy-engine-first platform deployed by a team without the policy maintenance capacity will drift toward overly permissive rules. An approval-workflow-first platform deployed in a high-velocity on-call environment will create enough friction that engineers route around it.</p>
+
+        <h2>Vendor categories</h2>
+
+        <p><strong>Cloud-native JIT platforms</strong> (Britive, Apono, StrongDM, Opal, Indent, P0 Security, Entitle/Zscaler): Built for ephemeral IAM provisioning in modern cloud environments. Vary in whether they emphasize human workflows, automated policy engines, or ChatOps-first request routing. Limited coverage of on-premises and legacy infrastructure.</p>
+
+        <p><strong>Legacy PAM giants</strong> (Palo Alto Networks/CyberArk, BeyondTrust, Delinea, One Identity): Vault-centric platforms with JIT workflow layers added over the past several years. Strong on-premises and hybrid coverage. JIT depth varies by vendor; the acquisition of CyberArk by Palo Alto Networks introduces roadmap uncertainty that is a material procurement consideration.</p>
+
+        <p><strong>IdP-native JIT</strong> (Okta Privileged Access, Microsoft Entra PIM): JIT capabilities within the identity platform the organization already operates. Coverage limited to each vendor's native ecosystem; strong consolidation argument for single-IdP shops.</p>
+
+        <p><strong>Workload and NHI JIT</strong> (Teleport, Aembit, SSH.COM PrivX, Banyan/SonicWall): Built primarily for non-human identities and infrastructure access. Teleport's open-source certificate-based model; Aembit's NHI-first credential provisioning. The JIT/NHI market boundary runs through this category.</p>
+
+        <p><strong>Regional and mid-market platforms</strong> (Heimdal, WALLIX, ARCON, ManageEngine, Serval): Positioned for specific geographies, compliance regimes, or cost points. WALLIX is the strongest EMEA/OT option; ManageEngine is the budget-tier PAM option for mid-market IT departments.</p>
+
+        <h2>Consolidation direction</h2>
+
+        <p>The most significant market event in the immediate term is the Palo Alto Networks acquisition of CyberArk. Whether CyberArk's PAM capabilities are integrated into the Palo Alto platform, maintained as a standalone product, or wound down in favor of CNAPP-native access controls is not yet clear. Buyers in the CyberArk installed base have a real evaluation decision ahead of them regardless of which direction the roadmap moves.</p>
+
+        <p>The broader consolidation pattern — CNAPP vendors absorbing JIT capabilities — follows the same dynamic visible in the DSPM market. Wiz, Orca, and Palo Alto Prisma Cloud each have identity and access posture capabilities that approach JIT from the cloud security direction rather than the identity direction. Whether those capabilities displace standalone JIT purchases or complement them depends on how deeply the buyer's JIT use case extends into governance workflows, audit requirements, and non-cloud infrastructure.</p>
+
+        <p>Standalone JIT vendors that cover only human cloud access are under the most pressure from this consolidation. Platforms with strong on-premises coverage, non-human identity depth, or compliance reporting workflows have a more defensible position against platform absorption.</p>
+
+        <h2>Where to go next</h2>
+
+        <div class="card-grid">
+          <a href="/landscape/vendor-index/" style="text-decoration:none;" class="card">
+            <div class="card-label">Vendors</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Full vendor index</div>
+            <div class="card-sub">All 22 vendors organized by category with one-line descriptions and profile links.</div>
+          </a>
+          <a href="/guides/pam-replacement-vs-jit-overlay/" style="text-decoration:none;" class="card">
+            <div class="card-label">Guide</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">PAM replacement vs. overlay</div>
+            <div class="card-sub">The environmental factors that determine whether to replace, overlay, or extend before the sales cycle starts.</div>
+          </a>
+          <a href="/tools/architecture-fit/" style="text-decoration:none;" class="card">
+            <div class="card-label">Tool</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Architecture fit selector</div>
+            <div class="card-sub">Answer five questions about your environment to get a recommended architecture path.</div>
+          </a>
+        </div>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

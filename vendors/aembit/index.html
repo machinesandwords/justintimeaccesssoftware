@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>Aembit — JIT Access Profile | Just-in-Time Access Software</title>
+  <meta name="description" content="Independent analysis of Aembit workload identity and NHI JIT platform. Dynamic credentials for service accounts, APIs, microservices, and AI agents. Architecture, strengths, and target environments.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/vendors/aembit/">
+
+  <meta property="og:title" content="Aembit — JIT Access Profile | Just-in-Time Access Software">
+  <meta property="og:description" content="Independent analysis of Aembit workload identity and NHI JIT platform. Dynamic credentials for service accounts, APIs, microservices, and AI agents.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/vendors/aembit/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Aembit — JIT Access Profile",
+    "url": "https://justintimeaccesssoftware.com/vendors/aembit/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Vendors", "item": "https://justintimeaccesssoftware.com/landscape/vendor-index/" },
+      { "@type": "ListItem", "position": 3, "name": "Aembit", "item": "https://justintimeaccesssoftware.com/vendors/aembit/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/landscape/vendor-index/">Vendors</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Aembit</span>
+        </nav>
+
+        <div class="tool-header">
+          <div class="tool-header-main">
+            <span class="page-label">Vendor Profile</span>
+            <h1>Aembit</h1>
+            <p class="tool-header-desc">Non-human identity first. Where most JIT platforms were built for engineers requesting temporary access and extended to cover workloads later, Aembit was built for the machine-to-machine credential problem and does not cover the human access use case at all. That focus is the point.</p>
+          </div>
+        </div>
+
+        <div class="tool-specs">
+          <div class="spec-item"><div class="spec-label">Category</div><div class="spec-value">Workload / NHI JIT</div></div>
+          <div class="spec-item"><div class="spec-label">Deployment</div><div class="spec-value">SaaS</div></div>
+          <div class="spec-item"><div class="spec-label">JIT approach</div><div class="spec-value">Dynamic workload credential provisioning</div></div>
+          <div class="spec-item"><div class="spec-label">Access scope</div><div class="spec-value">NHI / workload only</div></div>
+          <div class="spec-item"><div class="spec-label">On-prem support</div><div class="spec-value">Limited</div></div>
+          <div class="spec-item"><div class="spec-label">Pricing</div><div class="spec-value">$$$ — Enterprise</div></div>
+        </div>
+
+        <h2>Overview</h2>
+
+        <p>The non-human identity problem that Aembit addresses is structural: service accounts, APIs, microservices, and AI agents accumulate credentials over time — API keys, service account tokens, database passwords — that are often stored in environment variables, configuration files, or CI/CD secrets, rotated infrequently, and scoped more broadly than the workload actually needs. When a microservice needs to call another service, read from a database, or invoke a cloud API, it typically uses a long-lived credential. That credential, if compromised, grants standing access.</p>
+
+        <p>Aembit replaces that model with dynamic credential provisioning: a workload identifies itself to Aembit using its platform identity (Kubernetes service account, SPIFFE/SVID, AWS EC2 instance identity), Aembit verifies the workload's identity and policy entitlements, and issues a short-lived credential valid for the specific operation. The workload does not store a long-lived credential — it requests one at runtime, uses it, and the credential expires.</p>
+
+        <h2>Architecture and key capabilities</h2>
+
+        <p>Aembit operates as a policy enforcement point between workloads and the services or credentials they need to access. The Aembit Agent runs alongside workloads (as a sidecar, DaemonSet, or library integration) and intercepts outbound credential requests. The Aembit Cloud evaluates the request against access policies and either proxies the credential or issues a dynamic one.</p>
+
+        <p>The model covers service-to-service authentication, database credential provisioning, cloud API access, and external SaaS API keys. An AI agent or ML pipeline that needs temporary access to a database for an inference job, a CI/CD pipeline that needs a Snowflake credential to run a migration, a Kubernetes microservice that needs an AWS S3 access key for a batch operation — these are the primary Aembit use cases.</p>
+
+        <p>The connection to the NHI governance space is direct. Aembit addresses the same standing-access problem in the workload credential layer that JIT access platforms address in the human access layer. The convergence between these two categories — and the question of whether a single platform will eventually handle both — is the subject of the <a href="/guides/jit-nhi-convergence/">JIT and NHI convergence guide</a>.</p>
+
+        <div class="callout">
+          <strong>Scope boundary:</strong> Aembit does not manage human access requests, approval workflows, or engineer JIT sessions. If the evaluation includes both human and workload JIT, Aembit covers the workload side and requires a complementary platform for human access. Stacking a human JIT platform (Britive, Apono, or a PAM product) with Aembit for NHI is a coherent architecture for organizations where both use cases are in scope.
+        </div>
+
+        <h2>Strengths</h2>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pros-cons-label">Strengths</div>
+            <ul>
+              <li>Built specifically for the workload credential problem — not a human JIT platform extended to workloads</li>
+              <li>Platform-native identity verification (Kubernetes SA, SPIFFE, EC2 instance identity) — no secrets required for initial authentication</li>
+              <li>Dynamic credential provisioning eliminates stored long-lived credentials in workload environments</li>
+              <li>Covers AI agent credential provisioning, a use case that most JIT platforms address at best partially</li>
+              <li>Access policy scoped to the specific operation, not the workload's general access tier</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="pros-cons-label">Limitations</div>
+            <ul>
+              <li>Human access management is completely out of scope; a complementary human JIT platform is required</li>
+              <li>Agent deployment required on workloads — a rollout consideration for large microservices footprints</li>
+              <li>On-premises coverage is limited; primarily cloud-native workloads</li>
+              <li>Enterprise pricing</li>
+              <li>Narrower integration surface than platforms serving both human and NHI use cases</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Target environment</h2>
+
+        <p>Aembit is the right evaluation for organizations where the primary JIT priority is service account proliferation, pipeline credential hygiene, or AI agent access governance. Engineering teams dealing with sprawling microservices architectures where each service holds long-lived credentials to databases and other services, or security teams trying to eliminate static secrets from CI/CD pipelines, are the natural Aembit buyer.</p>
+
+        <p>Organizations evaluating JIT primarily for human engineer access should evaluate human-access platforms first. Aembit is a complement to human JIT, not a replacement for it. The stacking decision — what to use for humans, what to use for workloads, and whether the integration overhead of two platforms is justified — is the evaluation question to answer before selecting Aembit.</p>
+
+        <div class="verdict">
+          <div class="verdict-label">Verdict</div>
+          <p>The most focused NHI JIT platform in the market. For organizations where service account credential proliferation or pipeline secrets management is the active problem, Aembit provides a native architecture for that problem that generic JIT platforms cover only partially. The human access gap is real and must be addressed with a complementary tool. Evaluate alongside the <a href="/guides/jit-nhi-convergence/">JIT and NHI convergence guide</a> to understand where the category boundary currently sits and where it is moving.</p>
+        </div>
+
+        <h2>Related content</h2>
+        <ul>
+          <li><a href="/guides/jit-nhi-convergence/">JIT and NHI convergence</a> — Where JIT access and NHI governance overlap</li>
+          <li><a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT</a> — The broader architectural context</li>
+        </ul>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

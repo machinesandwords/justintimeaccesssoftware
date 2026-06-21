@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>Britive — JIT Access Profile | Just-in-Time Access Software</title>
+  <meta name="description" content="Independent analysis of Britive cloud-native JIT. Ephemeral IAM role provisioning, multi-cloud session timers, strengths, limitations, and where Britive fits versus vault-centric PAM.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/vendors/britive/">
+
+  <meta property="og:title" content="Britive — JIT Access Profile | Just-in-Time Access Software">
+  <meta property="og:description" content="Independent analysis of Britive cloud-native JIT. Ephemeral IAM role provisioning, multi-cloud coverage, and where it fits versus vault-centric PAM alternatives.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/vendors/britive/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Britive — JIT Access Profile",
+    "url": "https://justintimeaccesssoftware.com/vendors/britive/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Vendors", "item": "https://justintimeaccesssoftware.com/landscape/vendor-index/" },
+      { "@type": "ListItem", "position": 3, "name": "Britive", "item": "https://justintimeaccesssoftware.com/vendors/britive/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/landscape/vendor-index/">Vendors</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Britive</span>
+        </nav>
+
+        <div class="tool-header">
+          <div class="tool-header-main">
+            <span class="page-label">Vendor Profile</span>
+            <h1>Britive</h1>
+            <p class="tool-header-desc">Cloud-native JIT pioneer. Ephemeral IAM profile provisioning across AWS, Azure, GCP, and SaaS — session timer expires, IAM entity is deleted. The architecture is the security property: standing access does not exist to be exploited.</p>
+          </div>
+        </div>
+
+        <div class="tool-specs">
+          <div class="spec-item"><div class="spec-label">Category</div><div class="spec-value">Cloud-Native JIT</div></div>
+          <div class="spec-item"><div class="spec-label">Deployment</div><div class="spec-value">SaaS</div></div>
+          <div class="spec-item"><div class="spec-label">JIT approach</div><div class="spec-value">Ephemeral IAM token provisioning</div></div>
+          <div class="spec-item"><div class="spec-label">Access scope</div><div class="spec-value">Human + NHI</div></div>
+          <div class="spec-item"><div class="spec-label">On-prem support</div><div class="spec-value">No (cloud and SaaS only)</div></div>
+          <div class="spec-item"><div class="spec-label">Pricing</div><div class="spec-value">$$$ — Enterprise</div></div>
+        </div>
+
+        <h2>Overview</h2>
+
+        <p>Britive was built from inception for ephemeral cloud IAM provisioning. The core mechanism: a user or workload requests access, Britive provisions a short-lived IAM role or permission grant directly in the cloud control plane, a countdown timer runs, and on expiration Britive deletes the IAM entity. No vault stores the credential. No rotation schedule maintains it. The credential does not exist outside the active session window.</p>
+
+        <p>This is a different security property from vault-centric JIT, where the credential exists in the vault and is brokered through a session proxy for a defined window. Vault-centric JIT reduces the window of exposure; ephemeral token JIT eliminates the standing existence of the credential outside that window. For cloud workloads that can accept cloud IAM semantics, the ephemeral model is architecturally superior for the zero-standing-privilege goal.</p>
+
+        <h2>Architecture and key capabilities</h2>
+
+        <p>Britive connects to cloud environments (AWS, Azure, GCP) and SaaS targets via APIs and native service integrations. When a user requests access, Britive's policy engine evaluates the request against configured rules, routes approval if required, and then provisions the ephemeral profile directly in the target environment. The profile exists for the configured session duration — commonly 15 minutes to four hours — and is automatically deleted on expiration regardless of whether the session is still active.</p>
+
+        <p>The multi-cloud coverage is a genuine differentiator. A single Britive deployment can span AWS IAM roles, Azure role assignments, GCP project IAM bindings, and SaaS application entitlements under a unified access request interface. Managing comparable coverage through each cloud's native IAM console separately requires substantially more operational overhead.</p>
+
+        <p>For the NHI use case, Britive supports service account access provisioning — a service account can be granted an ephemeral cloud permission for the duration of a job, then have it removed. This is less complete than Aembit's dedicated workload identity model but sufficient for many pipeline-access use cases.</p>
+
+        <div class="callout">
+          <strong>The zombie session caveat:</strong> Britive's session cleanup removes the IAM entity at expiration. It does not terminate active network connections established during the session window. An SSH tunnel opened during an active Britive session, or an assumed cross-account role, may persist after the Britive console shows access as revoked. This is an architectural constraint of all IAM-layer JIT platforms, not specific to Britive. The <a href="/guides/zombie-session-revocation/">zombie session revocation guide</a> covers mitigations.
+        </div>
+
+        <h2>Strengths</h2>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pros-cons-label">Strengths</div>
+            <ul>
+              <li>True ephemeral architecture: credentials do not exist outside the active session window</li>
+              <li>Broadest multi-cloud coverage among JIT pure-plays (AWS, Azure, GCP, SaaS)</li>
+              <li>SaaS deployment model; no on-premises infrastructure to manage</li>
+              <li>Faster time-to-value than vault-centric PAM for cloud-native environments</li>
+              <li>Handles both human access workflows and basic service account provisioning</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="pros-cons-label">Limitations</div>
+            <ul>
+              <li>No on-premises coverage; cloud and SaaS only</li>
+              <li>IAM-layer cleanup does not terminate active network connections (zombie session risk)</li>
+              <li>Not a match for environments where the primary JIT problem is on-premises database or server access</li>
+              <li>Enterprise pricing; not positioned for mid-market</li>
+              <li>NHI coverage is lighter than dedicated workload JIT platforms</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Target environment</h2>
+
+        <p>Britive is the right evaluation for cloud-native enterprises or hybrid organizations where the primary JIT use case is cloud IAM provisioning across AWS, Azure, GCP, and SaaS. If the estate is predominantly cloud and the goal is zero standing privilege for human engineers and basic service account access, Britive delivers the security property efficiently.</p>
+
+        <p>Britive is the wrong evaluation if on-premises database access, legacy server access, or Active Directory workloads are primary JIT requirements. For those environments, the vault-centric PAM platforms cover the ground that Britive cannot reach.</p>
+
+        <div class="verdict">
+          <div class="verdict-label">Verdict</div>
+          <p>The strongest ephemeral IAM architecture in the cloud-native JIT market. For cloud-first environments, the security property is categorically better than vault-centric JIT. The on-premises coverage gap is real and disqualifying for hybrid environments that cannot separate cloud and on-premises JIT into two platforms. Buyers should evaluate Britive alongside a clear-eyed assessment of whether their legacy infrastructure requirements can be handled separately — or whether they need a single platform that spans both.</p>
+        </div>
+
+        <h2>Related comparisons</h2>
+        <ul>
+          <li><a href="/comparisons/britive-vs-apono/">Britive vs. Apono</a> — Two cloud-native pure-plays with different provisioning philosophies</li>
+          <li><a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT</a> — The defining fault line: ephemeral-first vs. vault-first</li>
+        </ul>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

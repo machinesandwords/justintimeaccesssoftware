@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>BeyondTrust — JIT Access Profile | Just-in-Time Access Software</title>
+  <meta name="description" content="Independent analysis of BeyondTrust PAM. PEDM-first architecture, endpoint privilege management, vendor remote access, and where BeyondTrust fits versus cloud-native JIT alternatives.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/vendors/beyondtrust/">
+
+  <meta property="og:title" content="BeyondTrust — JIT Access Profile | Just-in-Time Access Software">
+  <meta property="og:description" content="Independent analysis of BeyondTrust PAM. PEDM-first architecture, endpoint privilege management, vendor remote access, and where it fits versus cloud-native JIT alternatives.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/vendors/beyondtrust/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "BeyondTrust — JIT Access Profile",
+    "url": "https://justintimeaccesssoftware.com/vendors/beyondtrust/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Vendors", "item": "https://justintimeaccesssoftware.com/landscape/vendor-index/" },
+      { "@type": "ListItem", "position": 3, "name": "BeyondTrust", "item": "https://justintimeaccesssoftware.com/vendors/beyondtrust/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/landscape/vendor-index/">Vendors</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>BeyondTrust</span>
+        </nav>
+
+        <div class="tool-header">
+          <div class="tool-header-main">
+            <span class="page-label">Vendor Profile</span>
+            <h1>BeyondTrust</h1>
+            <p class="tool-header-desc">PEDM-first PAM platform with strong endpoint privilege management and vendor remote access capabilities. Architecturally distinct from vault-centric competitors — BeyondTrust's center of gravity is delegation and least-privilege enforcement at the endpoint, not central credential storage.</p>
+          </div>
+        </div>
+
+        <div class="tool-specs">
+          <div class="spec-item"><div class="spec-label">Category</div><div class="spec-value">Legacy PAM</div></div>
+          <div class="spec-item"><div class="spec-label">Deployment</div><div class="spec-value">Hybrid (on-prem + cloud)</div></div>
+          <div class="spec-item"><div class="spec-label">JIT approach</div><div class="spec-value">Vault-centric + PEDM elevation</div></div>
+          <div class="spec-item"><div class="spec-label">Access scope</div><div class="spec-value">Human + NHI</div></div>
+          <div class="spec-item"><div class="spec-label">On-prem support</div><div class="spec-value">Yes — core strength</div></div>
+          <div class="spec-item"><div class="spec-label">Pricing</div><div class="spec-value">$$$ — Enterprise</div></div>
+        </div>
+
+        <h2>Overview</h2>
+
+        <p>BeyondTrust is the second-largest dedicated PAM vendor by installed enterprise base. Where CyberArk's architecture is vault-first — store credentials centrally, broker access through the vault — BeyondTrust's architecture is delegation-first. Privilege Elevation and Delegation Management (PEDM) defines the approach: grant users the least privilege they need for a specific task, at the endpoint level, without giving them standing administrative accounts.</p>
+
+        <p>This distinction matters in practice. A BeyondTrust deployment in a UNIX/Linux-heavy environment is optimized for a different outcome than a CyberArk deployment in the same environment. BeyondTrust Privilege Management for Unix and Linux can run a least-privilege session without vaulting anything — it delegates the specific commands a user needs to run, prevents everything else, and records the session. That is a different JIT model than a session proxy. It is also a more granular one for the right environment.</p>
+
+        <h2>Architecture and key capabilities</h2>
+
+        <p>BeyondTrust's product portfolio divides into two primary lines. Privilege Management (PMUL for Unix/Linux, PMPC for Windows/Mac) handles endpoint privilege management and least-privilege enforcement on the systems where engineers work. Password Safe handles credential vaulting, discovery, and session management for the administrative access use case that maps more directly to PAM-style JIT.</p>
+
+        <p>Remote Support and Privileged Remote Access handle the vendor and contractor access use case: an external party needs to access internal infrastructure for a defined window. This is a JIT use case that dedicated cloud-native JIT platforms often address less directly, since they are primarily built around internal developer access.</p>
+
+        <p>On the cloud side, BeyondTrust has extended Password Safe to cover cloud service accounts, API keys, and secrets management for AWS, Azure, and GCP. The depth of this coverage is less than dedicated cloud-native JIT platforms; the argument for using it is consolidation within an existing BeyondTrust deployment rather than capability leadership in the cloud-native JIT space.</p>
+
+        <h2>Strengths</h2>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pros-cons-label">Strengths</div>
+            <ul>
+              <li>PEDM model provides granular least-privilege enforcement that vault-proxy models do not reach</li>
+              <li>Strongest vendor in the market for UNIX/Linux endpoint privilege management</li>
+              <li>Privileged Remote Access handles the vendor/contractor JIT use case directly</li>
+              <li>No single point of failure from a central vault in the PEDM deployment model</li>
+              <li>Strong session recording and audit capabilities across both product lines</li>
+              <li>Competitive in enterprises that lead with endpoint security rather than identity governance</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="pros-cons-label">Limitations</div>
+            <ul>
+              <li>Cloud-native JIT coverage is less deep than Britive, Apono, or StrongDM</li>
+              <li>Product portfolio complexity requires careful mapping of which product covers which use case</li>
+              <li>PEDM model is operationally different enough from vault-centric PAM that organizations with established CyberArk deployments face real migration friction</li>
+              <li>Enterprise pricing; limited mid-market positioning</li>
+              <li>Less relevant for cloud-first environments where endpoint privilege management is not the primary concern</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Target environment</h2>
+
+        <p>BeyondTrust is the right evaluation for enterprises where the primary JIT and privileged access problem is at the endpoint level — UNIX/Linux servers, Windows workstations used by administrators, and third-party vendor access to internal systems. Environments with large Linux server fleets, active DevOps infrastructure where sysadmin access needs granular command-level delegation, or a vendor and contractor management problem are natural fits.</p>
+
+        <p>For cloud-first environments where the privileged access problem is cloud IAM role provisioning and SaaS access management, BeyondTrust is a less natural fit than cloud-native JIT alternatives. The consolidation argument — using BeyondTrust for both endpoint and cloud JIT — works better when the endpoint use case is already driving the evaluation.</p>
+
+        <div class="verdict">
+          <div class="verdict-label">Verdict</div>
+          <p>The strongest PAM option for UNIX/Linux endpoint privilege management and vendor remote access. Architecturally distinct from CyberArk in ways that matter for specific environments. Not the leading choice for cloud-native JIT provisioning. Buyers who have shortlisted both BeyondTrust and CyberArk should clarify whether the primary use case is endpoint delegation, vault-brokered session management, or cloud IAM provisioning — the answer determines which architecture fits.</p>
+        </div>
+
+        <h2>Related comparisons</h2>
+        <ul>
+          <li><a href="/comparisons/cyberark-vs-beyondtrust/">Palo Alto (CyberArk) vs. BeyondTrust</a> — Two legacy PAM giants with different architectural centers of gravity</li>
+          <li><a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT</a> — The defining fault line: ephemeral-first vs. vault-first</li>
+        </ul>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

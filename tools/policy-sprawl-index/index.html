@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>Policy Sprawl Index | Just-in-Time Access Software</title>
+  <meta name="description" content="Distribute your JIT access policy surface across cloud environments and on-premises using sliders summing to 100%. The tool outputs an Operational Overhead Index based on policy fragmentation.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/tools/policy-sprawl-index/">
+
+  <meta property="og:title" content="Policy Sprawl Index | Just-in-Time Access Software">
+  <meta property="og:description" content="Distribute your JIT access policy surface across cloud environments using sliders summing to 100%. Outputs an Operational Overhead Index based on fragmentation.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/tools/policy-sprawl-index/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+
+  <style>
+    .sprawl-form { max-width: 560px; }
+    .total-display {
+      font-size: 13px; font-weight: 700; margin-bottom: 1.2rem;
+      padding: 10px 14px; background: var(--surface); border: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .total-display .total-val { font-size: 16px; font-weight: 700; }
+    .total-display.valid .total-val { color: var(--accent); }
+    .total-display.invalid .total-val { color: #c0392b; }
+    .total-hint { font-size: 10px; color: var(--muted); }
+
+    .slider-group { margin-bottom: 1.2rem; }
+    .slider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+    .slider-label { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .slider-value { font-size: 13px; font-weight: 700; color: var(--accent); min-width: 36px; text-align: right; }
+    input[type="range"] {
+      -webkit-appearance: none; width: 100%; height: 4px;
+      background: var(--border); outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 16px; height: 16px;
+      background: var(--accent); border-radius: 50%; cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 16px; height: 16px; background: var(--accent); border-radius: 50%; cursor: pointer; border: none;
+    }
+
+    .calc-btn {
+      background: var(--accent); color: #fff; font-family: inherit;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+      border: none; padding: 10px 24px; cursor: pointer; margin-top: 0.5rem;
+    }
+    .calc-btn:hover { background: var(--accent-dim); }
+    .calc-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .results-block { display: none; margin-top: 2rem; max-width: 560px; }
+    .results-block.visible { display: block; }
+
+    .oi-score-block { text-align: center; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); margin-bottom: 1.2rem; }
+    .oi-score-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .oi-score-value { font-size: 48px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .oi-score-max { font-size: 13px; color: var(--muted); }
+    .oi-score-band { font-size: 13px; font-weight: 700; margin-top: 0.5rem; }
+
+    .breakdown-bars { margin-bottom: 1.2rem; }
+    .bar-row { margin-bottom: 0.6rem; }
+    .bar-row-header { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 0.2rem; }
+    .bar-track { height: 8px; background: var(--border); }
+    .bar-fill { height: 100%; background: var(--accent); transition: width 0.3s; }
+
+    .result-interpretation { font-size: 12px; line-height: 1.7; }
+
+    .export-gate { margin-top: 1.5rem; border: 1px solid var(--border); padding: 1.2rem; }
+    .export-gate-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .export-buttons { display: flex; gap: 0.75rem; margin-top: 0.75rem; }
+    .export-btn {
+      font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+      padding: 8px 16px; cursor: pointer; border: 1px solid var(--accent);
+      background: transparent; color: var(--accent);
+    }
+    .export-btn:hover { background: var(--accent-pale); }
+    .export-gate-form { display: none; margin-top: 0.75rem; }
+    .export-gate-form.visible { display: block; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Policy Sprawl Index</span>
+        </nav>
+
+        <span class="page-label">Tool</span>
+        <h1>Policy Sprawl Index</h1>
+        <p>Distribute your JIT access policy surface across environments using the sliders below. Sliders must sum to exactly 100%. The Operational Overhead Index (OOI) measures how fragmented your policy surface is — higher fragmentation across more platforms means more coordination overhead, more inconsistency risk, and higher operational cost.</p>
+
+        <div class="sprawl-form" id="sprawl-form">
+
+          <div class="total-display invalid" id="total-display">
+            <span>Total: <span class="total-val" id="total-val">0%</span></span>
+            <span class="total-hint" id="total-hint">Must equal 100% to calculate</span>
+          </div>
+
+          <div id="sliders">
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">AWS</span>
+                <span class="slider-value" id="lbl-aws">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="sl-aws" data-env="aws">
+            </div>
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Azure</span>
+                <span class="slider-value" id="lbl-azure">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="sl-azure" data-env="azure">
+            </div>
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">GCP</span>
+                <span class="slider-value" id="lbl-gcp">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="sl-gcp" data-env="gcp">
+            </div>
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">SaaS Applications</span>
+                <span class="slider-value" id="lbl-saas">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="sl-saas" data-env="saas">
+            </div>
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">On-Premises Servers / Databases</span>
+                <span class="slider-value" id="lbl-onprem">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="sl-onprem" data-env="onprem">
+            </div>
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Other / Legacy</span>
+                <span class="slider-value" id="lbl-other">0%</span>
+              </div>
+              <input type="range" min="0" max="100" value="0" id="sl-other" data-env="other">
+            </div>
+          </div>
+
+          <button class="calc-btn" id="calc-btn" disabled>Calculate Policy Sprawl Index</button>
+        </div>
+
+        <div class="results-block" id="results-block">
+
+          <div class="oi-score-block">
+            <div class="oi-score-label">Operational Overhead Index</div>
+            <div class="oi-score-value" id="ooi-score"></div>
+            <div class="oi-score-max">out of 100</div>
+            <div class="oi-score-band" id="ooi-band"></div>
+          </div>
+
+          <div class="breakdown-bars" id="breakdown-bars"></div>
+
+          <div class="result-interpretation" id="r-interpretation"></div>
+
+          <div class="export-gate">
+            <div class="export-gate-label">Export results</div>
+            <p style="font-size:11px; color:var(--muted); margin:0 0 0.5rem;">Subscribe to The Independent Defender to export these results as PDF or JSON.</p>
+            <div class="export-buttons">
+              <button class="export-btn" id="export-pdf-btn">Export PDF</button>
+              <button class="export-btn" id="export-json-btn">Export JSON</button>
+            </div>
+            <div class="export-gate-form" id="export-gate-form">
+              <p style="font-size:11px; color:var(--muted); margin:0 0 0.4rem;">Enter your email to subscribe and unlock export:</p>
+              <div class="newsletter-form">
+                <input type="email" placeholder="your@email.com" aria-label="Email address">
+                <button type="button">Subscribe &amp; Export</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="calc-btn" id="recalc-btn" style="margin-top:1rem; background:transparent; color:var(--accent); border:1px solid var(--accent);">Recalculate</button>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+  <script>
+  (function() {
+    const ENVS = ['aws','azure','gcp','saas','onprem','other'];
+    const ENV_LABELS = { aws: 'AWS', azure: 'Azure', gcp: 'GCP', saas: 'SaaS', onprem: 'On-Premises', other: 'Other/Legacy' };
+    const COMPLEXITY = { aws: 1.0, azure: 1.1, gcp: 1.0, saas: 0.8, onprem: 1.5, other: 1.8 };
+
+    let pendingExport = null;
+    let lastResults = {};
+
+    function getValues() {
+      const vals = {};
+      ENVS.forEach(e => { vals[e] = parseInt(document.getElementById('sl-' + e).value, 10) || 0; });
+      return vals;
+    }
+
+    function getTotal(vals) {
+      return Object.values(vals).reduce((a, b) => a + b, 0);
+    }
+
+    function updateDisplay() {
+      const vals = getValues();
+      const total = getTotal(vals);
+      ENVS.forEach(e => {
+        document.getElementById('lbl-' + e).textContent = vals[e] + '%';
+      });
+      const totalVal = document.getElementById('total-val');
+      const totalDisplay = document.getElementById('total-display');
+      const hint = document.getElementById('total-hint');
+      totalVal.textContent = total + '%';
+      if (total === 100) {
+        totalDisplay.className = 'total-display valid';
+        hint.textContent = 'Ready to calculate';
+        document.getElementById('calc-btn').disabled = false;
+      } else {
+        totalDisplay.className = 'total-display invalid';
+        hint.textContent = total < 100 ? (100 - total) + '% remaining' : 'Over by ' + (total - 100) + '%';
+        document.getElementById('calc-btn').disabled = true;
+      }
+    }
+
+    document.querySelectorAll('#sliders input[type="range"]').forEach(sl => {
+      sl.addEventListener('input', updateDisplay);
+    });
+
+    document.getElementById('calc-btn').addEventListener('click', calculate);
+
+    function calcOOI(vals) {
+      const total = getTotal(vals);
+      if (total !== 100) return 0;
+      const activeEnvs = ENVS.filter(e => vals[e] > 0);
+      const numEnvs = activeEnvs.length;
+      if (numEnvs === 0) return 0;
+
+      const weightedComplexity = activeEnvs.reduce((acc, e) => acc + (vals[e] / 100) * COMPLEXITY[e], 0);
+      const diversityPenalty = (numEnvs - 1) * 8;
+      const onpremPenalty = vals['onprem'] > 20 ? (vals['onprem'] - 20) * 0.3 : 0;
+      const otherPenalty = vals['other'] > 10 ? (vals['other'] - 10) * 0.5 : 0;
+
+      const raw = (weightedComplexity * 40) + diversityPenalty + onpremPenalty + otherPenalty;
+      return Math.min(100, Math.round(raw));
+    }
+
+    function bandFromScore(s) {
+      if (s < 25) return { band: 'Low Overhead', color: '#2E7D4F' };
+      if (s < 50) return { band: 'Moderate Overhead', color: '#d68910' };
+      if (s < 75) return { band: 'High Overhead', color: '#e67e22' };
+      return { band: 'Critical Overhead', color: '#c0392b' };
+    }
+
+    function calculate() {
+      const vals = getValues();
+      const ooi = calcOOI(vals);
+      const { band, color } = bandFromScore(ooi);
+      const activeEnvs = ENVS.filter(e => vals[e] > 0);
+
+      lastResults = { vals, ooi, band, activeEnvs: activeEnvs.length };
+
+      document.getElementById('ooi-score').textContent = ooi;
+      const bandEl = document.getElementById('ooi-band');
+      bandEl.textContent = band;
+      bandEl.style.color = color;
+
+      const barsEl = document.getElementById('breakdown-bars');
+      barsEl.innerHTML = ENVS.filter(e => vals[e] > 0).map(e => `
+        <div class="bar-row">
+          <div class="bar-row-header">
+            <span>${ENV_LABELS[e]}</span>
+            <span>${vals[e]}%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:${vals[e]}%"></div></div>
+        </div>
+      `).join('');
+
+      let interp = '';
+      if (activeEnvs.length === 1) {
+        const only = activeEnvs[0];
+        interp = `Your policy surface is concentrated in a single environment (${ENV_LABELS[only]}). Single-environment deployments have the lowest coordination overhead and allow use of that platform's native JIT capabilities without multi-cloud abstraction layers. `;
+        if (only === 'onprem') interp += 'On-premises-only deployments are best served by vault-centric PAM; evaluate the JIT overlay approach before committing to a cloud-native platform.';
+      } else if (activeEnvs.length <= 3 && vals['onprem'] === 0 && vals['other'] === 0) {
+        interp = `A ${activeEnvs.length}-environment cloud-only spread is manageable with a multi-cloud JIT platform like Britive or Apono. Policy consistency across environments is the primary operational concern; evaluate whether a single platform covers all three natively or whether integration layers are required.`;
+      } else if (vals['onprem'] > 0 || vals['other'] > 0) {
+        const legacyPct = (vals['onprem'] || 0) + (vals['other'] || 0);
+        interp = `With ${legacyPct}% of policy surface in on-premises or legacy environments, a pure cloud-native JIT platform will leave significant coverage gaps. A hybrid architecture — cloud-native JIT for the cloud estate, vault-centric PAM or proxy-based JIT (StrongDM) for on-premises — is the realistic approach. That two-platform architecture is the primary driver of the overhead score.`;
+      } else {
+        interp = `A ${activeEnvs.length}-environment spread creates meaningful policy coordination overhead. Evaluate whether a single JIT platform provides native integrations for all environments, or whether policy translation layers between platforms will compound operational complexity over time.`;
+      }
+      document.getElementById('r-interpretation').textContent = interp;
+
+      document.getElementById('sprawl-form').style.display = 'none';
+      document.getElementById('results-block').classList.add('visible');
+    }
+
+    document.getElementById('recalc-btn').addEventListener('click', () => {
+      document.getElementById('sprawl-form').style.display = '';
+      document.getElementById('results-block').classList.remove('visible');
+      document.getElementById('export-gate-form').classList.remove('visible');
+    });
+
+    function showExportGate(type) {
+      pendingExport = type;
+      document.getElementById('export-gate-form').classList.add('visible');
+    }
+
+    document.getElementById('export-pdf-btn').addEventListener('click', () => showExportGate('pdf'));
+    document.getElementById('export-json-btn').addEventListener('click', () => showExportGate('json'));
+
+    window._onExportGateSuccess = function() {
+      if (pendingExport === 'pdf') {
+        window.print();
+      } else if (pendingExport === 'json') {
+        const blob = new Blob([JSON.stringify({ tool: 'policy-sprawl-index', inputs: lastResults.vals, results: { operationalOverheadIndex: lastResults.ooi, band: lastResults.band, activeEnvironments: lastResults.activeEnvs } }, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'jit-policy-sprawl.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+      pendingExport = null;
+    };
+  })();
+  </script>
+</body>
+</html>

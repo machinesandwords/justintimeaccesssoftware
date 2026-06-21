@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>JIT Vendor Comparison Tool | Just-in-Time Access Software</title>
+  <meta name="description" content="Filter and compare 22 JIT access platforms by deployment model, access type, JIT approach, vendor cluster, and company size. Checkbox filter panel with matched-tag card grid.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/tools/vendor-comparison/">
+
+  <meta property="og:title" content="JIT Vendor Comparison Tool | Just-in-Time Access Software">
+  <meta property="og:description" content="Filter and compare 22 JIT access platforms by deployment model, access type, JIT approach, vendor cluster, and company size.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/tools/vendor-comparison/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+
+  <style>
+    .tool-layout { display: grid; grid-template-columns: 220px 1fr; gap: 1.5rem; margin-top: 1rem; }
+    @media (max-width: 720px) { .tool-layout { grid-template-columns: 1fr; } }
+
+    .filter-panel { position: sticky; top: 1rem; align-self: start; }
+    .filter-section { margin-bottom: 1.2rem; }
+    .filter-section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+    }
+    .filter-option { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.3rem; cursor: pointer; }
+    .filter-option input[type="checkbox"] { accent-color: var(--accent); cursor: pointer; }
+    .filter-option label { font-size: 11px; cursor: pointer; }
+
+    .active-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; min-height: 1.6rem; }
+    .active-tag {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      background: var(--accent); color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
+      padding: 2px 8px 2px 8px; border-radius: 2px; cursor: pointer;
+    }
+    .active-tag:hover { background: var(--accent-dim); }
+    .active-tag .remove { font-size: 11px; line-height: 1; }
+
+    .vendor-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .vcard {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .vcard-name { font-weight: 700; font-size: 13px; }
+    .vcard-name a { color: var(--charcoal); text-decoration: none; }
+    .vcard-name a:hover { color: var(--accent); }
+    .vcard-meta { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .vtag {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 2px 6px; border-radius: 2px;
+      background: var(--border); color: var(--muted);
+    }
+    .vtag-matched { background: var(--accent-pale); color: var(--accent); border: 1px solid var(--accent); }
+    .vcard-desc { font-size: 11px; line-height: 1.6; color: var(--muted); }
+    .vcard-fit { font-size: 11px; }
+    .vcard-fit strong { color: var(--accent); font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .vcard-watch { font-size: 10px; color: var(--muted); font-style: italic; border-top: 1px solid var(--border); padding-top: 0.4rem; margin-top: 0.2rem; }
+    .vcard-pricing { font-size: 10px; font-weight: 700; color: var(--charcoal); }
+    .vcard-tier {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent);
+    }
+
+    .result-count { font-size: 11px; color: var(--muted); margin-bottom: 0.6rem; }
+    .clear-all { font-size: 11px; color: var(--accent); cursor: pointer; text-decoration: underline; background: none; border: none; padding: 0; }
+    .no-results { font-size: 12px; color: var(--muted); padding: 2rem; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Vendor Comparison</span>
+        </nav>
+
+        <span class="page-label">Tool</span>
+        <h1>JIT Vendor Comparison Tool</h1>
+        <p>Filter 22 JIT access platforms by the dimensions that matter for your environment. Matched filters are highlighted on each card. Click any active filter tag to remove it.</p>
+
+        <div class="tool-layout">
+
+          <aside class="filter-panel">
+
+            <div class="filter-section">
+              <div class="filter-section-label">Vendor Cluster</div>
+              <label class="filter-option"><input type="checkbox" data-field="cluster" value="cloud-native-jit"><label>Cloud-Native JIT</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="cluster" value="legacy-pam"><label>Legacy PAM</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="cluster" value="idp-native"><label>IdP-Native</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="cluster" value="workload-nhi"><label>Workload / NHI</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="cluster" value="regional"><label>Regional</label></label>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-section-label">Deployment</div>
+              <label class="filter-option"><input type="checkbox" data-field="deployment" value="saas"><label>SaaS</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="deployment" value="hybrid"><label>Hybrid</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="deployment" value="on-premises"><label>On-Premises</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="deployment" value="open-source"><label>Open Source</label></label>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-section-label">Access Type</div>
+              <label class="filter-option"><input type="checkbox" data-field="access_type" value="human"><label>Human</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="access_type" value="nhi"><label>NHI / Workload</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="access_type" value="both"><label>Both</label></label>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-section-label">JIT Approach</div>
+              <label class="filter-option"><input type="checkbox" data-field="jit_approach" value="ephemeral-tokens"><label>Ephemeral Tokens</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="jit_approach" value="vault-centric"><label>Vault-Centric</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="jit_approach" value="platform-native"><label>Platform-Native</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="jit_approach" value="certificate-based"><label>Certificate-Based</label></label>
+            </div>
+
+            <div class="filter-section">
+              <div class="filter-section-label">Company Size</div>
+              <label class="filter-option"><input type="checkbox" data-field="company_size" value="mid-market"><label>Mid-Market</label></label>
+              <label class="filter-option"><input type="checkbox" data-field="company_size" value="enterprise"><label>Enterprise</label></label>
+            </div>
+
+          </aside>
+
+          <div class="filter-results">
+            <div class="active-filters" id="active-filters"></div>
+            <div class="result-count" id="result-count"></div>
+            <div class="vendor-cards" id="vendor-cards">
+              <div class="no-results">Loading vendors...</div>
+            </div>
+          </div>
+
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script>
+  (function() {
+    const LABEL_MAP = {
+      cluster: { 'cloud-native-jit': 'Cloud-Native JIT', 'legacy-pam': 'Legacy PAM', 'idp-native': 'IdP-Native', 'workload-nhi': 'Workload/NHI', 'regional': 'Regional' },
+      deployment: { 'saas': 'SaaS', 'hybrid': 'Hybrid', 'on-premises': 'On-Prem', 'open-source': 'Open Source' },
+      access_type: { 'human': 'Human', 'nhi': 'NHI', 'both': 'Human + NHI' },
+      jit_approach: { 'ephemeral-tokens': 'Ephemeral Tokens', 'vault-centric': 'Vault-Centric', 'platform-native': 'Platform-Native', 'certificate-based': 'Certificate-Based' },
+      company_size: { 'mid-market': 'Mid-Market', 'enterprise': 'Enterprise' }
+    };
+
+    const FIELD_LABEL = { cluster: 'Cluster', deployment: 'Deploy', access_type: 'Access', jit_approach: 'JIT', company_size: 'Size' };
+
+    let vendors = [];
+    let activeFilters = {};
+
+    function getActiveSet() {
+      const set = {};
+      Object.keys(activeFilters).forEach(field => {
+        if (activeFilters[field] && activeFilters[field].size > 0) set[field] = activeFilters[field];
+      });
+      return set;
+    }
+
+    function vendorMatchesFilters(v, filterSet) {
+      return Object.keys(filterSet).every(field => {
+        const vals = filterSet[field];
+        if (!vals || vals.size === 0) return true;
+        const vVal = v[field];
+        if (Array.isArray(vVal)) return [...vals].some(fv => vVal.includes(fv));
+        return vals.has(vVal);
+      });
+    }
+
+    function getMatchedTags(v, filterSet) {
+      const matched = new Set();
+      Object.keys(filterSet).forEach(field => {
+        const vals = filterSet[field];
+        if (!vals || vals.size === 0) return;
+        const vVal = v[field];
+        if (Array.isArray(vVal)) {
+          [...vals].forEach(fv => { if (vVal.includes(fv)) matched.add(field + ':' + fv); });
+        } else if (vals.has(vVal)) {
+          matched.add(field + ':' + vVal);
+        }
+      });
+      return matched;
+    }
+
+    function tagLabel(field, val) {
+      return (LABEL_MAP[field] && LABEL_MAP[field][val]) ? LABEL_MAP[field][val] : val;
+    }
+
+    function renderActiveTags() {
+      const container = document.getElementById('active-filters');
+      const filterSet = getActiveSet();
+      const tags = [];
+      Object.keys(filterSet).forEach(field => {
+        filterSet[field].forEach(val => {
+          tags.push({ field, val, label: FIELD_LABEL[field] + ': ' + tagLabel(field, val) });
+        });
+      });
+      if (tags.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = tags.map(t =>
+        `<span class="active-tag" data-field="${t.field}" data-val="${t.val}">${t.label} <span class="remove">&times;</span></span>`
+      ).join('') + `<button class="clear-all" id="clear-all-btn">Clear all</button>`;
+
+      container.querySelectorAll('.active-tag').forEach(el => {
+        el.addEventListener('click', () => removeFilter(el.dataset.field, el.dataset.val));
+      });
+      const clearBtn = document.getElementById('clear-all-btn');
+      if (clearBtn) clearBtn.addEventListener('click', clearAllFilters);
+    }
+
+    function renderCards() {
+      const filterSet = getActiveSet();
+      const filtered = vendors.filter(v => vendorMatchesFilters(v, filterSet));
+      const container = document.getElementById('vendor-cards');
+      const countEl = document.getElementById('result-count');
+      countEl.textContent = `${filtered.length} of ${vendors.length} vendors`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="no-results">No vendors match the selected filters. Try removing some filters.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(v => {
+        const matched = getMatchedTags(v, filterSet);
+        const nameLink = v.profile && v.profile_url
+          ? `<a href="${v.profile_url}">${v.name}</a>`
+          : v.url
+            ? `<a href="${v.url}" target="_blank" rel="noopener">${v.name}</a>`
+            : v.name;
+
+        const allTags = [
+          { field: 'cluster', val: v.cluster },
+          { field: 'deployment', val: v.deployment },
+          { field: 'access_type', val: v.access_type },
+          { field: 'jit_approach', val: v.jit_approach },
+        ];
+        const sizeTags = Array.isArray(v.company_size)
+          ? v.company_size.map(s => ({ field: 'company_size', val: s }))
+          : [{ field: 'company_size', val: v.company_size }];
+
+        const tagHtml = [...allTags, ...sizeTags].map(t => {
+          const isMatch = matched.has(t.field + ':' + t.val);
+          return `<span class="vtag${isMatch ? ' vtag-matched' : ''}">${tagLabel(t.field, t.val)}</span>`;
+        }).join('');
+
+        return `
+          <div class="vcard">
+            <div class="vcard-tier">${v.tier}</div>
+            <div class="vcard-name">${nameLink}</div>
+            <div class="vcard-pricing">${v.pricing}</div>
+            <div class="vcard-meta">${tagHtml}</div>
+            <div class="vcard-desc">${v.description}</div>
+            <div class="vcard-fit"><strong>Best for</strong> ${v.best_fit}</div>
+            ${v.watch ? `<div class="vcard-watch">Watch: ${v.watch}</div>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function removeFilter(field, val) {
+      if (activeFilters[field]) activeFilters[field].delete(val);
+      const cb = document.querySelector(`input[data-field="${field}"][value="${val}"]`);
+      if (cb) cb.checked = false;
+      renderActiveTags();
+      renderCards();
+    }
+
+    function clearAllFilters() {
+      activeFilters = {};
+      document.querySelectorAll('.filter-panel input[type="checkbox"]').forEach(cb => cb.checked = false);
+      renderActiveTags();
+      renderCards();
+    }
+
+    function bindCheckboxes() {
+      document.querySelectorAll('.filter-panel input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const field = cb.dataset.field;
+          const val = cb.value;
+          if (!activeFilters[field]) activeFilters[field] = new Set();
+          if (cb.checked) activeFilters[field].add(val);
+          else activeFilters[field].delete(val);
+          renderActiveTags();
+          renderCards();
+        });
+      });
+    }
+
+    function init() {
+      fetch('/vendors.json')
+        .then(r => r.json())
+        .then(data => {
+          vendors = data;
+          bindCheckboxes();
+          renderActiveTags();
+          renderCards();
+        })
+        .catch(() => {
+          document.getElementById('vendor-cards').innerHTML = '<div class="no-results">Could not load vendor data. Please refresh the page.</div>';
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  })();
+  </script>
+</body>
+</html>

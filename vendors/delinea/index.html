@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>Delinea — JIT Access Profile | Just-in-Time Access Software</title>
+  <meta name="description" content="Independent analysis of Delinea PAM. Thycotic and Centrify merger product, hybrid-focused vault-centric JIT, Linux/Unix credential elevation, and where Delinea fits in the PAM market.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/vendors/delinea/">
+
+  <meta property="og:title" content="Delinea — JIT Access Profile | Just-in-Time Access Software">
+  <meta property="og:description" content="Independent analysis of Delinea PAM. Hybrid-focused vault-centric JIT, Linux/Unix credential elevation, and where it fits relative to CyberArk, BeyondTrust, and cloud-native alternatives.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/vendors/delinea/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Delinea — JIT Access Profile",
+    "url": "https://justintimeaccesssoftware.com/vendors/delinea/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Vendors", "item": "https://justintimeaccesssoftware.com/landscape/vendor-index/" },
+      { "@type": "ListItem", "position": 3, "name": "Delinea", "item": "https://justintimeaccesssoftware.com/vendors/delinea/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/landscape/vendor-index/">Vendors</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Delinea</span>
+        </nav>
+
+        <div class="tool-header">
+          <div class="tool-header-main">
+            <span class="page-label">Vendor Profile</span>
+            <h1>Delinea</h1>
+            <p class="tool-header-desc">Formed from the merger of Thycotic and Centrify, Delinea positions as the PAM vendor that prioritizes deployment simplicity and user experience over the engineering depth of CyberArk. That is a deliberate differentiation strategy and a real one — the operational overhead of a Delinea deployment is typically lower.</p>
+          </div>
+        </div>
+
+        <div class="tool-specs">
+          <div class="spec-item"><div class="spec-label">Category</div><div class="spec-value">Legacy PAM</div></div>
+          <div class="spec-item"><div class="spec-label">Deployment</div><div class="spec-value">Hybrid (on-prem + SaaS)</div></div>
+          <div class="spec-item"><div class="spec-label">JIT approach</div><div class="spec-value">Vault-centric with JIT session workflows</div></div>
+          <div class="spec-item"><div class="spec-label">Access scope</div><div class="spec-value">Human + NHI</div></div>
+          <div class="spec-item"><div class="spec-label">On-prem support</div><div class="spec-value">Yes</div></div>
+          <div class="spec-item"><div class="spec-label">Pricing</div><div class="spec-value">$$$ — Enterprise</div></div>
+          <div class="spec-item"><div class="spec-label">Products</div><div class="spec-value">Secret Server, Privilege Manager, DevOps Secrets Vault</div></div>
+        </div>
+
+        <h2>Overview</h2>
+
+        <p>Delinea was formed through the merger of Thycotic (Secret Server) and Centrify (Privilege Services) in 2021. The combined company retained both product lines and has been working to integrate them into a unified platform while maintaining the distinct customer bases each product served. Secret Server is a vault-centric PAM product with a strong Windows enterprise following. Centrify's Privilege Services, now Delinea Server Suite, is a Linux/Unix-focused platform with certificate-based and AD-bridging capabilities.</p>
+
+        <p>The user-experience differentiation is real but specific. Delinea deploys faster than CyberArk in environments where the CyberArk deployment complexity has historically been a point of friction. The trade-off is that the depth of enterprise features, integration breadth, and established partner ecosystem in CyberArk reflects years of build-out that Delinea has not yet matched across the merged product. Neither claim is false; both are frame-dependent.</p>
+
+        <h2>Architecture and key capabilities</h2>
+
+        <p>Secret Server provides privileged credential vaulting, automated password rotation, and session recording. Time-limited session checkout and JIT provisioning workflows are layered on top as workflow configurations rather than native ephemeral architecture. The platform supports both on-premises and cloud deployments; Delinea Cloud hosts Secret Server as a SaaS option.</p>
+
+        <p>Delinea Server Suite (formerly Centrify) handles identity consolidation for Linux and Unix environments: bridging heterogeneous systems into Active Directory, providing zone-based access control, and enforcing least-privilege through role-based access policies. For enterprises with large Linux server fleets that are AD-joined or need to be, this is a distinct and capable approach.</p>
+
+        <p>DevOps Secrets Vault handles the machine credential use case: secrets management and dynamic credential provisioning for CI/CD pipelines, containerized workloads, and cloud automation. This is vault-centric rather than ephemeral-token-native, which positions it differently from Aembit or Teleport for the workload JIT use case.</p>
+
+        <div class="callout">
+          <strong>Merger integration note:</strong> The Thycotic and Centrify product lines serve different use cases and buyer profiles. When evaluating Delinea, clarify which product line matches the environment before entering a detailed evaluation. Secret Server and Delinea Server Suite are not interchangeable — they are different platforms from different architectural lineages that happen to share a parent company.
+        </div>
+
+        <h2>Strengths</h2>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pros-cons-label">Strengths</div>
+            <ul>
+              <li>Lower deployment complexity than CyberArk for comparable vault-centric JIT use cases</li>
+              <li>Delinea Server Suite (Centrify lineage) is a strong Linux/Unix AD-bridging option for hybrid enterprises</li>
+              <li>SaaS-hosted Secret Server reduces on-premises infrastructure requirement</li>
+              <li>Competitive pricing relative to CyberArk for the same functional tier</li>
+              <li>DevOps Secrets Vault covers the pipeline secrets use case without requiring a full PAM deployment</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="pros-cons-label">Limitations</div>
+            <ul>
+              <li>Integration of the Thycotic and Centrify product lines is ongoing; feature parity between the two is not complete</li>
+              <li>Partner ecosystem and integration breadth is narrower than CyberArk's</li>
+              <li>Cloud-native JIT depth is limited compared to Britive, Apono, or StrongDM</li>
+              <li>JIT workflows are configuration-level additions to vault architecture, not native ephemeral provisioning</li>
+              <li>Less compelling for cloud-first environments where on-premises coverage is not a requirement</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Target environment</h2>
+
+        <p>Delinea is the strongest consideration for mid-to-large enterprises seeking vault-centric PAM with lower deployment overhead than CyberArk, particularly in Windows-heavy environments where Secret Server's architecture is a natural fit. Enterprises with large Linux server fleets that need AD-bridging and zone-based access control should evaluate the Delinea Server Suite (Centrify) product line specifically.</p>
+
+        <p>Buyers replacing a first-generation PAM deployment or making a first PAM purchase at mid-market scale will often find Delinea's operational model easier to stand up than CyberArk's. Buyers at the large enterprise end who need the full depth of integrations and partner support that CyberArk's installed base has driven should evaluate whether Delinea's current partner ecosystem covers their specific integration requirements.</p>
+
+        <div class="verdict">
+          <div class="verdict-label">Verdict</div>
+          <p>A credible alternative to CyberArk for hybrid environments where deployment simplicity is a real constraint. The merger integration status is a material evaluation item — verify which product line covers the use case and confirm the integration roadmap before committing. Cloud-native JIT is not a Delinea strength; buyers with predominantly cloud estates should evaluate the cloud-native alternatives in parallel.</p>
+        </div>
+
+        <h2>Related comparisons</h2>
+        <ul>
+          <li><a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT</a> — The defining fault line: ephemeral-first vs. vault-first</li>
+          <li><a href="/comparisons/cyberark-vs-beyondtrust/">Palo Alto (CyberArk) vs. BeyondTrust</a> — How Delinea fits between the two dominant legacy PAM platforms</li>
+        </ul>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>Teleport — JIT Access Profile | Just-in-Time Access Software</title>
+  <meta name="description" content="Independent analysis of Teleport open-source infrastructure access. Certificate-based JIT for Kubernetes, SSH, databases, and internal apps. Strengths, limitations, and target environments.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/vendors/teleport/">
+
+  <meta property="og:title" content="Teleport — JIT Access Profile | Just-in-Time Access Software">
+  <meta property="og:description" content="Independent analysis of Teleport open-source infrastructure access. Certificate-based JIT for Kubernetes, SSH, databases, and internal apps.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/vendors/teleport/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Teleport — JIT Access Profile",
+    "url": "https://justintimeaccesssoftware.com/vendors/teleport/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Vendors", "item": "https://justintimeaccesssoftware.com/landscape/vendor-index/" },
+      { "@type": "ListItem", "position": 3, "name": "Teleport", "item": "https://justintimeaccesssoftware.com/vendors/teleport/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/landscape/vendor-index/">Vendors</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Teleport</span>
+        </nav>
+
+        <div class="tool-header">
+          <div class="tool-header-main">
+            <span class="page-label">Vendor Profile</span>
+            <h1>Teleport</h1>
+            <p class="tool-header-desc">Open-source infrastructure access proxy built around certificate-based authentication. Engineers receive short-lived X.509 certificates and SSH keys — no persistent credentials stored on target machines, no password rotation schedules, no vault to maintain. The certificate is the session.</p>
+          </div>
+        </div>
+
+        <div class="tool-specs">
+          <div class="spec-item"><div class="spec-label">Category</div><div class="spec-value">Workload / NHI JIT</div></div>
+          <div class="spec-item"><div class="spec-label">Deployment</div><div class="spec-value">Open source (self-hosted) + Enterprise cloud</div></div>
+          <div class="spec-item"><div class="spec-label">JIT approach</div><div class="spec-value">Certificate-based short-lived credentials</div></div>
+          <div class="spec-item"><div class="spec-label">Access scope</div><div class="spec-value">Human + NHI</div></div>
+          <div class="spec-item"><div class="spec-label">On-prem support</div><div class="spec-value">Yes</div></div>
+          <div class="spec-item"><div class="spec-label">Pricing</div><div class="spec-value">Open source free / $$ Enterprise</div></div>
+          <div class="spec-item"><div class="spec-label">License</div><div class="spec-value">Apache 2.0 (community) / Commercial (enterprise)</div></div>
+        </div>
+
+        <h2>Overview</h2>
+
+        <p>Teleport's architecture rests on a certificate authority it operates internally. When an engineer authenticates, Teleport's CA issues a short-lived X.509 certificate or SSH certificate valid for a configured duration — typically hours, not days. When the certificate expires, the engineer must re-authenticate. No persistent credentials are stored on target servers. No SSH authorized_keys files to audit. No passwords to rotate. The certificate lifespan is the access window.</p>
+
+        <p>This is a different ephemeral model from IAM-layer JIT platforms. Britive and Apono provision and delete cloud IAM entities. Teleport provisions and expires cryptographic certificates that grant direct access to infrastructure. The model eliminates a different attack surface: credential theft from target machines, long-lived SSH keys distributed across server fleets, and authorized_keys files that accumulate entries without lifecycle management.</p>
+
+        <h2>Architecture and key capabilities</h2>
+
+        <p>The Teleport cluster is the central component: it runs the certificate authority, proxies connections, and stores the audit log. Engineers install the Teleport client (tsh) and authenticate via SSO, MFA, or hardware keys; the cluster issues a short-lived certificate valid for the configured session duration. Target resources — servers, databases, Kubernetes clusters, web applications — run the Teleport agent, which accepts certificates from the cluster CA and rejects anything else.</p>
+
+        <p>Kubernetes access is a strength. Teleport integrates with the Kubernetes API server audit log and issues short-lived kubeconfig credentials that expire independently of any persistent kubeconfig file. For Kubernetes-heavy environments where developer access to cluster APIs is a security concern, this provides strong controls without the operational overhead of managing long-lived service account tokens.</p>
+
+        <p>For the NHI use case, Teleport supports machine ID: a mechanism for issuing short-lived certificates to bots, pipelines, and automated processes without storing persistent credentials in CI/CD configuration or secrets managers. A GitHub Actions workflow can receive a fresh Teleport certificate per run, valid for the duration of the job.</p>
+
+        <div class="callout">
+          <strong>Open-source considerations:</strong> Teleport Community Edition is production-capable and widely deployed. The enterprise features — Access Requests with approval workflows, enhanced audit log integrations, hardware key support — require a commercial license. Teams starting on open source can run a real JIT deployment; teams requiring the full enterprise feature set should scope the commercial license before assuming open source covers the requirement.
+        </div>
+
+        <h2>Strengths</h2>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pros-cons-label">Strengths</div>
+            <ul>
+              <li>Certificate-based architecture eliminates persistent SSH keys and authorization files on target machines</li>
+              <li>Open-source community edition is production-capable — buyers can evaluate with real workloads before a commercial commitment</li>
+              <li>Strong Kubernetes access controls; kubeconfig credentials expire with the session</li>
+              <li>Machine ID covers NHI/pipeline JIT without secrets manager dependency</li>
+              <li>On-premises and cloud coverage via a single access plane</li>
+              <li>Strong developer community with broad documentation and integrations</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="pros-cons-label">Limitations</div>
+            <ul>
+              <li>Self-hosted deployment requires running and maintaining the Teleport cluster</li>
+              <li>Teleport Cloud reduces operational overhead but introduces a commercial dependency</li>
+              <li>Access request approval workflows are more limited in community edition</li>
+              <li>Certificate-based model requires Teleport agent deployment on all target machines — a non-trivial rollout for large server fleets</li>
+              <li>Less competitive for cloud IAM role provisioning (AWS/Azure/GCP console access) compared to IAM-native platforms</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Target environment</h2>
+
+        <p>Teleport is the right evaluation for engineering-led organizations with strong Kubernetes usage, SSH-heavy server access, and database access requirements where certificate-based JIT is the preferred security model. The open-source availability makes it compelling for organizations that want to evaluate on real infrastructure before a commercial commitment, and for teams that prefer to run their own access plane.</p>
+
+        <p>Organizations that need cloud IAM role provisioning as the primary JIT use case will find Teleport less competitive than Britive or Apono. Teleport's strength is in the infrastructure layer below the cloud control plane: servers, databases, Kubernetes, and internal web applications accessed by both humans and automated workloads.</p>
+
+        <div class="verdict">
+          <div class="verdict-label">Verdict</div>
+          <p>The best certificate-based JIT option in the market, with open-source community edition as a genuine production alternative to commercial platforms. The deployment requirement — running the Teleport cluster and deploying agents to targets — is real operational overhead that scales with the environment size. For Kubernetes-heavy engineering organizations, the Kubernetes access model alone justifies the evaluation. For environments where cloud IAM role provisioning is primary, evaluate IAM-native platforms first.</p>
+        </div>
+
+        <h2>Related comparisons</h2>
+        <ul>
+          <li><a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT</a> — Where certificate-based JIT sits on the fault line</li>
+          <li><a href="/guides/jit-nhi-convergence/">JIT and NHI convergence</a> — Teleport Machine ID in the NHI context</li>
+        </ul>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

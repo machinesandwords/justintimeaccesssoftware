@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>JIT-Native vs. PAM-with-JIT | Just-in-Time Access Software</title>
+  <meta name="description" content="The defining architectural comparison in JIT access: ephemeral-first platforms vs. vault-centric PAM with JIT layered on. What each requires from your environment and when each is right.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/comparisons/jit-native-vs-pam-with-jit/">
+
+  <meta property="og:title" content="JIT-Native vs. PAM-with-JIT | Just-in-Time Access Software">
+  <meta property="og:description" content="The defining architectural comparison: ephemeral-first JIT platforms vs. vault-centric PAM with JIT layered on. What each requires and when each is right.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/comparisons/jit-native-vs-pam-with-jit/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "JIT-Native vs. PAM-with-JIT",
+    "url": "https://justintimeaccesssoftware.com/comparisons/jit-native-vs-pam-with-jit/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Comparisons", "item": "https://justintimeaccesssoftware.com/comparisons/" },
+      { "@type": "ListItem", "position": 3, "name": "JIT-Native vs. PAM-with-JIT", "item": "https://justintimeaccesssoftware.com/comparisons/jit-native-vs-pam-with-jit/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+
+  <style>
+    .wins-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    .wins-box { background: var(--accent-pale); border: 1px solid var(--accent); padding: 1rem; }
+    .wins-box-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .wins-box ul { margin: 0; padding-left: 1.1rem; }
+    .wins-box li { font-size: 12px; margin-bottom: 0.35rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/comparisons/">Comparisons</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>JIT-Native vs. PAM-with-JIT</span>
+        </nav>
+
+        <span class="page-label">Comparison</span>
+        <h1>JIT-Native vs. PAM-with-JIT</h1>
+
+        <p class="lead">Before you evaluate vendors, you need to answer the architecture question. JIT-native platforms — Britive, Apono, StrongDM, Teleport — were built to eliminate standing credentials through ephemeral provisioning. PAM-with-JIT platforms — CyberArk, BeyondTrust, Delinea — were built for credential management and session brokering, then added JIT workflow layers on top. Both claim zero standing privilege. They achieve it differently, and the right choice depends on what your environment can support.</p>
+
+        <h2>What each architecture requires</h2>
+
+        <p><strong>JIT-native ephemeral provisioning</strong> requires an infrastructure that can absorb ephemeral IAM semantics. AWS IAM, Azure RBAC, GCP IAM, and Kubernetes RBAC can all accept time-limited role grants or certificate-based credentials that expire. A cloud-native JIT platform provisions an IAM entity directly in the cloud control plane, then deletes it on expiration. The security property is categorical: the credential does not exist outside the session window.</p>
+
+        <p>This model works where the infrastructure participates in modern IAM. It does not work for a 15-year-old Oracle database running on-premises that authenticates with a static password file, an Active Directory workload that does not support ephemeral role grants, or industrial infrastructure that has no concept of time-limited API tokens. For those targets, the vault-centric model is the only viable architecture that provides any JIT capability at all.</p>
+
+        <p><strong>Vault-centric PAM with JIT</strong> requires a vault that can reach all the targets in scope, a proxy that can broker sessions through that vault, and administrative overhead to manage the vault as a persistent system. The JIT property comes from time-limiting session checkouts and automating credential rotation, not from eliminating the credential's existence. A vaulted password still exists; it is just not checked out continuously. If the vault is compromised, or the vault proxy is available but the session timer is mismanaged, the standing credential remains reachable.</p>
+
+        <p>The vault-centric model covers the targets that JIT-native cannot: legacy on-premises databases, AD-authenticated servers, industrial systems, and any target that does not participate in cloud IAM. That coverage argument is the vault's strongest case.</p>
+
+        <h2>Detailed comparison</h2>
+
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>JIT-Native (Britive / Apono / StrongDM)</th>
+              <th>PAM-with-JIT (CyberArk / BeyondTrust / Delinea)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-divider"><td colspan="3">Security Properties</td></tr>
+            <tr>
+              <td>Credential existence</td>
+              <td class="win-a">Credential does not exist outside the session window</td>
+              <td>Credential exists in vault; session checkout is time-limited</td>
+            </tr>
+            <tr>
+              <td>Zero standing privilege (cloud)</td>
+              <td class="win-a">Structural — IAM entity is created and deleted per session</td>
+              <td>Workflow-enforced — vault checkout window limits exposure duration</td>
+            </tr>
+            <tr>
+              <td>Vault compromise risk</td>
+              <td class="win-a">No central vault to compromise for cloud targets</td>
+              <td>Central vault is an attack target; vault security is a primary operational concern</td>
+            </tr>
+            <tr class="section-divider"><td colspan="3">Coverage</td></tr>
+            <tr>
+              <td>Cloud IAM (AWS/Azure/GCP)</td>
+              <td class="win-a">Native; ephemeral provisioning directly in cloud control plane</td>
+              <td>Available via API integrations; not the native model</td>
+            </tr>
+            <tr>
+              <td>On-premises databases and servers</td>
+              <td>Limited or absent (StrongDM via proxy is the exception)</td>
+              <td class="win-b">Core coverage; vault-proxy model designed for on-premises targets</td>
+            </tr>
+            <tr>
+              <td>Active Directory workloads</td>
+              <td>Limited; requires AD integration layer</td>
+              <td class="win-b">Deep AD integration; strongest for AD-centric enterprises</td>
+            </tr>
+            <tr>
+              <td>Legacy infrastructure</td>
+              <td>Generally incompatible with ephemeral token model</td>
+              <td class="win-b">Vault proxy can reach targets that do not support modern IAM</td>
+            </tr>
+            <tr class="section-divider"><td colspan="3">Deployment and Operations</td></tr>
+            <tr>
+              <td>Time-to-value</td>
+              <td class="win-a">Faster for cloud-native environments; no vault infrastructure to stand up</td>
+              <td>Significant deployment effort; professional services typically required</td>
+            </tr>
+            <tr>
+              <td>Ongoing operational overhead</td>
+              <td class="win-a">Lower; no vault to maintain, rotate, and manage</td>
+              <td>Higher; vault management is an ongoing operational function</td>
+            </tr>
+            <tr>
+              <td>Session recording and audit</td>
+              <td>Varies by platform; StrongDM proxy provides full recording</td>
+              <td class="win-b">Session recording is typically native and comprehensive in mature PAM deployments</td>
+            </tr>
+            <tr>
+              <td>Hybrid estate coverage</td>
+              <td>Partial; cloud covered, on-premises requires a second tool or workaround</td>
+              <td class="win-b">Designed for hybrid; one platform for both cloud and on-premises</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>When each wins</h2>
+
+        <div class="wins-grid">
+          <div class="wins-box">
+            <div class="wins-box-label">JIT-native wins when</div>
+            <ul>
+              <li>Primary infrastructure is cloud-native (AWS, Azure, GCP) and participates in modern IAM</li>
+              <li>Zero standing privilege for cloud workloads is the primary security goal</li>
+              <li>No legacy on-premises infrastructure that requires vault-proxy coverage</li>
+              <li>Deployment simplicity and faster time-to-value are requirements</li>
+              <li>The operational overhead of running a persistent vault is unwanted</li>
+              <li>Developer experience and low-friction JIT workflows are priorities</li>
+            </ul>
+          </div>
+          <div class="wins-box">
+            <div class="wins-box-label">PAM-with-JIT wins when</div>
+            <ul>
+              <li>Hybrid estate with on-premises databases, servers, and AD workloads that cannot support ephemeral tokens</li>
+              <li>Compliance requirements mandate centralized session recording for all privileged access</li>
+              <li>Existing PAM investment creates migration cost that outweighs architectural preference</li>
+              <li>Legacy infrastructure is a primary target and cannot be excluded from JIT scope</li>
+              <li>Vendor remote access management is a priority use case</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>The hybrid estate reality</h2>
+
+        <p>Most large enterprises land in the middle: significant cloud workloads that can support ephemeral JIT, and significant on-premises and legacy infrastructure that cannot. The honest answer for many buyers is a combination — cloud-native JIT for the cloud estate, vault-centric JIT for legacy targets — with the operational overhead of running two platforms and the coverage gaps at their seam.</p>
+
+        <p>That two-platform architecture is not a failure state. It reflects the actual environment. The evaluation question becomes: which on-premises coverage is truly in scope for JIT now, what can be excluded or addressed separately, and whether the seam complexity is worth the security properties achieved on the cloud side. The <a href="/guides/pam-replacement-vs-jit-overlay/">PAM replacement vs. JIT overlay guide</a> walks through how to frame that decision before a sales cycle starts.</p>
+
+        <div class="verdict">
+          <div class="verdict-label">Finding</div>
+          <p>The architecture question precedes the vendor question. Buyers who have not answered "what infrastructure do we actually need JIT for, and can that infrastructure support ephemeral token provisioning" before evaluating vendor features are evaluating the wrong thing. Map the environment first. The architecture decision follows from the environment. The vendor decision follows from the architecture.</p>
+        </div>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

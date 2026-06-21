@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>Palo Alto Networks (CyberArk) — JIT Access Profile | Just-in-Time Access Software</title>
+  <meta name="description" content="Independent analysis of the CyberArk PAM platform, now part of Palo Alto Networks. Architecture, JIT capabilities, strengths, limitations, and target environment guidance.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/vendors/cyberark/">
+
+  <meta property="og:title" content="Palo Alto Networks (CyberArk) — JIT Access Profile | Just-in-Time Access Software">
+  <meta property="og:description" content="Independent analysis of the CyberArk PAM platform, now part of Palo Alto Networks. Architecture, JIT capabilities, strengths, limitations, and target environment guidance.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/vendors/cyberark/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Palo Alto Networks (CyberArk) — JIT Access Profile",
+    "url": "https://justintimeaccesssoftware.com/vendors/cyberark/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Vendors", "item": "https://justintimeaccesssoftware.com/landscape/vendor-index/" },
+      { "@type": "ListItem", "position": 3, "name": "Palo Alto Networks (CyberArk)", "item": "https://justintimeaccesssoftware.com/vendors/cyberark/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/landscape/vendor-index/">Vendors</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Palo Alto Networks (CyberArk)</span>
+        </nav>
+
+        <div class="tool-header">
+          <div class="tool-header-main">
+            <span class="page-label">Vendor Profile</span>
+            <h1>Palo Alto Networks (CyberArk)</h1>
+            <p class="tool-header-desc">Vault-centric PAM platform acquired by Palo Alto Networks. Market-leading installed base in hybrid and Active Directory-heavy enterprises; JIT workflows layered on an architecture built for a different era of privileged access.</p>
+          </div>
+        </div>
+
+        <div class="tool-specs">
+          <div class="spec-item"><div class="spec-label">Category</div><div class="spec-value">Legacy PAM</div></div>
+          <div class="spec-item"><div class="spec-label">Deployment</div><div class="spec-value">Hybrid (on-prem + cloud)</div></div>
+          <div class="spec-item"><div class="spec-label">JIT approach</div><div class="spec-value">Vault-centric with JIT session brokering</div></div>
+          <div class="spec-item"><div class="spec-label">Access scope</div><div class="spec-value">Human + NHI</div></div>
+          <div class="spec-item"><div class="spec-label">On-prem support</div><div class="spec-value">Yes — core strength</div></div>
+          <div class="spec-item"><div class="spec-label">Pricing</div><div class="spec-value">$$$ — Enterprise</div></div>
+          <div class="spec-item"><div class="spec-label">Parent company</div><div class="spec-value">Palo Alto Networks (acquired 2025)</div></div>
+        </div>
+
+        <h2>Overview</h2>
+
+        <p>CyberArk built the dominant position in enterprise PAM by solving the credential storage and rotation problem at scale. The Privileged Access Manager product, now branded under Palo Alto Networks, provides a centralized vault for storing privileged credentials, a session proxy for brokering and recording administrative access, and an API layer for JIT session provisioning. The installed base spans most Fortune 500 companies and a significant portion of mid-to-large enterprises with complex on-premises and hybrid infrastructures.</p>
+
+        <p>The acquisition by Palo Alto Networks in 2025 changed the procurement context without yet changing the product. CyberArk's PAM capabilities are being positioned as part of the broader Palo Alto identity security portfolio alongside Prisma Cloud's CIEM capabilities and the Cortex platform's identity threat detection. What this means for the standalone PAM roadmap, support contracts, and long-term product investment is not yet clear from public information. Buyers in the CyberArk installed base who are mid-contract have a different decision than buyers evaluating it fresh.</p>
+
+        <div class="callout">
+          <strong>Acquisition context:</strong> The Palo Alto Networks acquisition of CyberArk introduces genuine roadmap uncertainty. Legacy PAM buyers should treat this evaluation as a two-part question: does CyberArk PAM solve the current problem, and does the Palo Alto platform strategy create a viable long-term path. Those are separate questions with separate answers.
+        </div>
+
+        <h2>Architecture and key capabilities</h2>
+
+        <p>The CyberArk architecture is gateway-centric. The Digital Vault stores privileged credentials. The Privileged Session Manager proxies administrative sessions through a central broker, recording keystrokes and screen activity. The Central Policy Manager enforces access policies across vaulted accounts. JIT workflows are delivered through the Privilege Cloud SaaS offering, which adds time-limited session provisioning and automated credential rotation on top of the vault model.</p>
+
+        <p>For hybrid environments — enterprises where active directory domains, on-premises databases, legacy servers, and cloud workloads coexist — the vault-centric model provides coverage that cloud-native JIT platforms cannot reach. A cloud-native JIT platform generating ephemeral IAM roles has no mechanism for a 20-year-old Oracle database running on-premises that does not participate in cloud IAM. The vault proxy does.</p>
+
+        <p>CyberArk's Conjur product handles the NHI use case: dynamic secrets, automatic rotation, and vault-based credential provisioning for DevOps pipelines, Kubernetes workloads, and service accounts. This is vault-centric rather than ephemeral-token-native, which creates a different security property: the secret exists in Conjur and is dynamically retrieved rather than not existing until needed.</p>
+
+        <h2>Strengths</h2>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <div class="pros-cons-label">Strengths</div>
+            <ul>
+              <li>Broadest enterprise PAM installed base; mature support organization and partner ecosystem</li>
+              <li>On-premises and hybrid coverage that cloud-native JIT platforms cannot replicate</li>
+              <li>Conjur provides vault-based secret management for DevOps and Kubernetes workloads</li>
+              <li>Deep Active Directory integration for enterprises with large AD footprints</li>
+              <li>Session recording and audit trail depth that meets stringent compliance requirements</li>
+              <li>Privilege Cloud SaaS removes on-premises vault infrastructure requirement for new deployments</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="pros-cons-label">Limitations</div>
+            <ul>
+              <li>Vault-centric architecture creates standing infrastructure that cloud-native ephemeral models eliminate</li>
+              <li>JIT capabilities are a workflow layer on top of a vault, not a native ephemeral architecture</li>
+              <li>Palo Alto acquisition introduces roadmap uncertainty that extends evaluation risk for multi-year contracts</li>
+              <li>Deployment and operational complexity is high relative to cloud-native alternatives</li>
+              <li>Enterprise pricing puts it out of consideration for mid-market buyers</li>
+              <li>Cloud-native workload JIT depth lags dedicated platforms like Britive or Apono</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Target environment</h2>
+
+        <p>Palo Alto Networks (CyberArk) is appropriate for enterprises where the primary JIT problem includes significant on-premises infrastructure — legacy databases, Active Directory, industrial systems — that cloud-native ephemeral token architectures cannot reach. If the estate is 80%+ cloud-native, the vault-centric model introduces overhead that cloud-native alternatives avoid. If the estate is heavily hybrid or predominantly on-premises, the coverage argument for CyberArk remains strong regardless of the acquisition context.</p>
+
+        <p>Buyers already running CyberArk face a different question than new evaluators. The installed base has existing integrations, trained administrators, and established policies. The cost of switching to a cloud-native alternative includes migration of that institutional investment, not just platform licensing. That cost is real and should be part of the evaluation alongside the architectural arguments.</p>
+
+        <div class="verdict">
+          <div class="verdict-label">Verdict</div>
+          <p>The strongest coverage argument in the market for hybrid and on-premises-heavy environments. The acquisition by Palo Alto Networks makes a new multi-year CyberArk commitment a bet on both the current product and the future platform strategy. Existing CyberArk customers should evaluate whether the gap between what they have and what cloud-native JIT offers is worth a migration project. New buyers with predominantly cloud estates should evaluate cloud-native alternatives before defaulting to the market incumbent.</p>
+        </div>
+
+        <h2>Related comparisons</h2>
+        <ul>
+          <li><a href="/comparisons/cyberark-vs-beyondtrust/">Palo Alto (CyberArk) vs. BeyondTrust</a> — Two legacy PAM giants with different architectural centers of gravity</li>
+          <li><a href="/comparisons/jit-native-vs-pam-with-jit/">JIT-native vs. PAM-with-JIT</a> — The defining fault line: ephemeral-first vs. vault-first</li>
+        </ul>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+</body>
+</html>

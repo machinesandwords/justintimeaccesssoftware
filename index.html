@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+
+  <title>Just-in-Time Access Software — Independent Buyer's Guide</title>
+  <meta name="description" content="Vendor-neutral analysis of JIT access platforms, PAM replacement decisions, and zero standing privilege architectures for enterprise security and identity buyers.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/">
+
+  <meta property="og:title" content="Just-in-Time Access Software — Independent Buyer's Guide">
+  <meta property="og:description" content="Vendor-neutral analysis of JIT access platforms, PAM replacement decisions, and zero standing privilege architectures for enterprise security and identity buyers.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/">
+  <meta property="og:type" content="website">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Just-in-Time Access Software",
+    "url": "https://justintimeaccesssoftware.com",
+    "description": "Independent guidance for JIT access buyers. Vendor-neutral analysis of zero standing privilege architectures, PAM replacement decisions, and the cloud-native JIT market."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Just-in-Time Access Software",
+    "url": "https://justintimeaccesssoftware.com",
+    "description": "Vendor-neutral analysis of just-in-time access platforms for enterprise security and identity buyers."
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="nav.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <div class="content">
+
+        <span class="page-label">Home</span>
+        <h1>Just-in-Time Access Software: An Independent Guide</h1>
+
+        <p class="lead">The JIT access buying decision is being framed by two vendor groups, each talking past each other. Legacy PAM vendors position JIT as a capability layer on top of the vault you already have. Cloud-native JIT specialists position the vault as the problem. Neither side has an incentive to say when the other answer is right. This site does.</p>
+
+        <h2>The standing privilege problem</h2>
+
+        <p>Standing privileged access — credentials that exist permanently, used occasionally, and forgotten in between — is the attack surface that most identity programs have not closed. The vault solves the storage problem. JIT access solves the existence problem. That distinction is the entire argument about what the market is actually for.</p>
+
+        <p>The architectural split runs deeper than marketing language. Cloud-native JIT platforms generate ephemeral tokens directly inside cloud IAM, then clean up on expiration. Legacy PAM platforms broker access through a vault proxy and have added JIT workflows as a layer on top. The deployment complexity, operational overhead, and coverage gaps are different for each. So is the buyer profile they actually serve.</p>
+
+        <h2>What this site covers</h2>
+
+        <p>The market is organized around four fault lines that determine which architecture fits which environment:</p>
+
+        <p><strong>Cloud-native ephemeral JIT vs. vault-centric PAM with JIT layered on.</strong> The architectural question that precedes every vendor evaluation. Ephemeral tokens require cloud infrastructure that can absorb them; vault-centric JIT requires proxy architecture that can reach legacy targets. Neither scales across the other's native environment without engineering overhead.</p>
+
+        <p><strong>Identity-platform-native JIT vs. third-party overlay.</strong> Okta Privileged Access and Microsoft Entra PIM handle JIT within the identity fabric you already own. Third-party overlays span multiple identity providers, cloud environments, and on-premises targets. Consolidation is simpler; coverage is narrower. The trade-off is not abstract.</p>
+
+        <p><strong>Human access requests vs. non-human workload JIT.</strong> The category started with engineers requesting temporary prod access. The fastest-growing use case is service accounts, CI/CD pipelines, and AI agents that need millisecond-latency ephemeral credentials without human approval workflows in the path. The platforms built for each are architecturally different enough that buying one for the other problem creates real friction.</p>
+
+        <p><strong>Approval-workflow-first vs. policy-engine-first.</strong> Slack-based approval routing and automated risk-scored grant/deny are both called JIT. They serve different operational models. The choice has downstream consequences for on-call workflows, audit trail structure, and the engineering overhead of maintaining policy bundles at scale.</p>
+
+        <h2>Start here</h2>
+
+        <div class="card-grid">
+
+          <a href="/landscape/" style="text-decoration:none;" class="card">
+            <div class="card-label">Landscape</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Market overview</div>
+            <div class="card-sub">How the JIT access market is structured, the four architectural fault lines, and what the PAM-to-JIT transition means for buyers at different stages of the identity program.</div>
+          </a>
+
+          <a href="/landscape/vendor-index/" style="text-decoration:none;" class="card">
+            <div class="card-label">Vendors</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Vendor index</div>
+            <div class="card-sub">All 22 vendors in the JIT access market, organized by architectural approach: cloud-native, legacy PAM, IdP-native, workload/NHI, and regional.</div>
+          </a>
+
+          <a href="/comparisons/" style="text-decoration:none;" class="card">
+            <div class="card-label">Comparisons</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Head-to-head</div>
+            <div class="card-sub">Palo Alto (CyberArk) vs. BeyondTrust, Britive vs. Apono, JIT-native vs. PAM-with-JIT, and third-party overlay vs. IdP-native.</div>
+          </a>
+
+          <a href="/guides/" style="text-decoration:none;" class="card">
+            <div class="card-label">Guides</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Practitioner guides</div>
+            <div class="card-sub">PAM replacement vs. JIT overlay, zombie session revocation, JIT and NHI convergence, rollout without breaking on-call, and JIT telemetry overexposure.</div>
+          </a>
+
+          <a href="/tools/" style="text-decoration:none;" class="card">
+            <div class="card-label">Tools</div>
+            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Evaluation tools</div>
+            <div class="card-sub">Vendor comparison, architecture fit selector, approval friction calculator, policy sprawl index, and JIT velocity calculator.</div>
+          </a>
+
+        </div>
+
+        <h2>Why independent</h2>
+
+        <p>Most JIT access content is produced by PAM vendors defending their vault architecture, cloud-native challengers selling against it, or analyst firms whose methodology for ranking platforms is not disclosed. This site has no vendor relationships, no sponsored content, and no affiliate arrangements.</p>
+
+        <p>The vendor index covers every significant platform in the market, including the ones whose JIT capabilities are bolted-on additions to a different core product and the ones where a recent acquisition has introduced real uncertainty about roadmap direction. The comparisons name which platform wins in which environment and why. The guides address the operational problems that vendor documentation does not acknowledge exist.</p>
+
+        <p>When this site has an opinion, it says so. When the evidence is thin or the market is moving too fast for confident claims, it says that too.</p>
+
+        <div class="newsletter-block">
+          <span class="page-label">The Independent Defender</span>
+          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button">Subscribe free</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="newsletter.js"></script>
+</body>
+</html>

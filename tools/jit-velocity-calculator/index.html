@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>JIT Velocity Calculator | Just-in-Time Access Software</title>
+  <meta name="description" content="Enter human access volume, NHI token volume, and latency tolerance to receive a JIT deployment blueprint: which architecture handles your scale, and at what operational cost.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/tools/jit-velocity-calculator/">
+
+  <meta property="og:title" content="JIT Velocity Calculator | Just-in-Time Access Software">
+  <meta property="og:description" content="Human access volume, NHI token volume, and latency tolerance produce a JIT deployment blueprint. Which architecture handles your scale.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/tools/jit-velocity-calculator/">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+
+  <style>
+    .calc-form { max-width: 540px; }
+    .field-group { margin-bottom: 1.2rem; }
+    .field-label { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.3rem; }
+    .field-desc { font-size: 11px; color: var(--muted); margin-bottom: 0.4rem; }
+    .field-input {
+      width: 100%; max-width: 200px; font-family: inherit; font-size: 13px;
+      background: var(--surface); border: 1px solid var(--border); color: var(--charcoal);
+      padding: 8px 10px; outline: none; box-sizing: border-box;
+    }
+    .field-input:focus { border-color: var(--accent); }
+    .field-select {
+      width: 100%; max-width: 280px; font-family: inherit; font-size: 12px;
+      background: var(--surface); border: 1px solid var(--border); color: var(--charcoal);
+      padding: 8px 10px; outline: none; box-sizing: border-box; cursor: pointer;
+    }
+    .field-select:focus { border-color: var(--accent); }
+
+    .calc-btn {
+      background: var(--accent); color: #fff; font-family: inherit;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+      border: none; padding: 10px 24px; cursor: pointer; margin-top: 0.5rem;
+    }
+    .calc-btn:hover { background: var(--accent-dim); }
+
+    .results-block { display: none; margin-top: 2rem; max-width: 540px; }
+    .results-block.visible { display: block; }
+
+    .blueprint-header {
+      background: var(--accent-pale); border: 1px solid var(--accent);
+      padding: 1.2rem; margin-bottom: 1.2rem;
+    }
+    .blueprint-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+    .blueprint-title { font-size: 16px; font-weight: 700; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .blueprint-summary { font-size: 12px; line-height: 1.7; }
+
+    .blueprint-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-bottom: 1.2rem; }
+    .spec-cell { background: var(--surface); padding: 0.8rem; }
+    .spec-label { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+    .spec-value { font-size: 12px; font-weight: 700; color: var(--charcoal); }
+
+    .platform-recs { margin-bottom: 1.2rem; }
+    .platform-rec { border: 1px solid var(--border); padding: 0.8rem; margin-bottom: 0.6rem; }
+    .platform-rec-name { font-weight: 700; font-size: 12px; margin-bottom: 0.3rem; }
+    .platform-rec-reason { font-size: 11px; color: var(--muted); }
+
+    .export-gate { margin-top: 1.5rem; border: 1px solid var(--border); padding: 1.2rem; }
+    .export-gate-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .export-buttons { display: flex; gap: 0.75rem; margin-top: 0.75rem; }
+    .export-btn {
+      font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+      padding: 8px 16px; cursor: pointer; border: 1px solid var(--accent);
+      background: transparent; color: var(--accent);
+    }
+    .export-btn:hover { background: var(--accent-pale); }
+    .export-gate-form { display: none; margin-top: 0.75rem; }
+    .export-gate-form.visible { display: block; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/tools/">Tools</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>JIT Velocity Calculator</span>
+        </nav>
+
+        <span class="page-label">Tool</span>
+        <h1>JIT Velocity Calculator</h1>
+        <p>Human access volume and NHI credential issuance have very different throughput requirements. A JIT platform sized for 200 engineers may not handle 50,000 NHI token issuances per day without architectural changes. Enter your access volumes and latency tolerance to receive a deployment blueprint with platform recommendations.</p>
+
+        <div class="calc-form" id="calc-form">
+
+          <div class="field-group">
+            <div class="field-label">Engineers using JIT access</div>
+            <div class="field-desc">Total number of engineers who will request JIT access (human sessions)</div>
+            <input type="number" class="field-input" id="engineers" min="1" max="100000" placeholder="e.g. 150">
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">Human JIT requests per day</div>
+            <div class="field-desc">Estimated total access requests from all engineers per day</div>
+            <input type="number" class="field-input" id="human-requests" min="1" max="1000000" placeholder="e.g. 300">
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">NHI / workload credential issuances per day</div>
+            <div class="field-desc">Automated credential requests from service accounts, pipelines, and workloads per day. Enter 0 if NHI is not in scope.</div>
+            <input type="number" class="field-input" id="nhi-requests" min="0" max="10000000" placeholder="e.g. 5000">
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">Human access latency tolerance</div>
+            <div class="field-desc">Maximum acceptable time from request to access grant for human sessions</div>
+            <select class="field-select" id="human-latency">
+              <option value="realtime">Near real-time (&lt; 30 seconds)</option>
+              <option value="minutes" selected>Minutes (1–5 minutes acceptable)</option>
+              <option value="async">Async (5–30 minutes acceptable)</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">NHI credential latency tolerance</div>
+            <div class="field-desc">Maximum acceptable latency for workload credential issuance</div>
+            <select class="field-select" id="nhi-latency">
+              <option value="sub100ms">Sub-100ms (service-to-service, real-time APIs)</option>
+              <option value="sub1s" selected>Sub-1 second (CI/CD pipelines, batch jobs)</option>
+              <option value="seconds">Seconds (acceptable for infrequent workloads)</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <div class="field-label">Infrastructure environment</div>
+            <div class="field-desc">Primary environment type for the access being managed</div>
+            <select class="field-select" id="env-type">
+              <option value="cloud-only">Cloud only (AWS/Azure/GCP)</option>
+              <option value="hybrid">Hybrid (cloud + on-premises)</option>
+              <option value="onprem-heavy">Primarily on-premises</option>
+            </select>
+          </div>
+
+          <button class="calc-btn" id="calc-btn">Generate Deployment Blueprint</button>
+        </div>
+
+        <div class="results-block" id="results-block">
+
+          <div class="blueprint-header">
+            <div class="blueprint-label">Deployment Blueprint</div>
+            <div class="blueprint-title" id="bp-title"></div>
+            <div class="blueprint-summary" id="bp-summary"></div>
+          </div>
+
+          <div class="blueprint-specs" id="bp-specs"></div>
+
+          <div class="platform-recs" id="bp-recs"></div>
+
+          <div class="export-gate">
+            <div class="export-gate-label">Export blueprint</div>
+            <p style="font-size:11px; color:var(--muted); margin:0 0 0.5rem;">Subscribe to The Independent Defender to export this blueprint as PDF or JSON.</p>
+            <div class="export-buttons">
+              <button class="export-btn" id="export-pdf-btn">Export PDF</button>
+              <button class="export-btn" id="export-json-btn">Export JSON</button>
+            </div>
+            <div class="export-gate-form" id="export-gate-form">
+              <p style="font-size:11px; color:var(--muted); margin:0 0 0.4rem;">Enter your email to subscribe and unlock export:</p>
+              <div class="newsletter-form">
+                <input type="email" placeholder="your@email.com" aria-label="Email address">
+                <button type="button">Subscribe &amp; Export</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="calc-btn" id="recalc-btn" style="margin-top:1rem; background:transparent; color:var(--accent); border:1px solid var(--accent);">Recalculate</button>
+        </div>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/nav.js"></script>
+  <script src="/newsletter.js"></script>
+  <script>
+  (function() {
+    let pendingExport = null;
+    let blueprintData = {};
+
+    document.getElementById('calc-btn').addEventListener('click', calculate);
+
+    function fmt(n) { return n.toLocaleString(); }
+
+    function calculate() {
+      const engineers = parseInt(document.getElementById('engineers').value) || 0;
+      const humanReqs = parseInt(document.getElementById('human-requests').value) || 0;
+      const nhiReqs = parseInt(document.getElementById('nhi-requests').value) || 0;
+      const humanLatency = document.getElementById('human-latency').value;
+      const nhiLatency = document.getElementById('nhi-latency').value;
+      const envType = document.getElementById('env-type').value;
+
+      if (!engineers || !humanReqs) {
+        alert('Please enter at least engineer count and daily human requests.');
+        return;
+      }
+
+      const nhiInScope = nhiReqs > 0;
+      const highNhi = nhiReqs > 10000;
+      const ultraHighNhi = nhiReqs > 100000;
+      const realtimeNhi = nhiLatency === 'sub100ms';
+
+      let title, summary;
+      const specs = [];
+      const recs = [];
+
+      const weeklyHumanReqs = humanReqs * 7;
+      const annualHumanReqs = humanReqs * 365;
+      const reqPerEngineer = humanReqs / (engineers || 1);
+
+      specs.push({ label: 'Daily Human Requests', value: fmt(humanReqs) });
+      specs.push({ label: 'Annual Human Requests', value: fmt(annualHumanReqs) });
+      if (nhiInScope) {
+        specs.push({ label: 'Daily NHI Issuances', value: fmt(nhiReqs) });
+        specs.push({ label: 'Annual NHI Issuances', value: fmt(nhiReqs * 365) });
+      }
+      specs.push({ label: 'Requests per Engineer/Day', value: fmt(Math.round(reqPerEngineer * 10) / 10) });
+      specs.push({ label: 'Human Latency Target', value: { realtime: '< 30 seconds', minutes: '1–5 minutes', async: '5–30 minutes' }[humanLatency] });
+
+      if (ultraHighNhi && realtimeNhi) {
+        title = 'Dedicated NHI Platform Required (Separate from Human JIT)';
+        summary = 'At ' + fmt(nhiReqs) + ' NHI credential issuances per day with sub-100ms latency requirements, a purpose-built NHI JIT platform (Aembit) is required for the workload credential use case. No human JIT platform is architected for this throughput at this latency. Human JIT (Britive, Apono, or StrongDM) handles the human access surface; NHI JIT handles the workload surface. These platforms are complementary, not competing.';
+        recs.push({ name: 'Aembit', reason: 'Purpose-built NHI JIT; sub-100ms credential issuance for service accounts, APIs, and AI agents using platform-native attestation. Required at this NHI volume and latency target.' });
+        recs.push({ name: 'Britive or Apono', reason: 'For the human access surface. Britive for multi-cloud IAM breadth; Apono for contextual policy automation.' });
+      } else if (highNhi && !realtimeNhi) {
+        title = 'Multi-Platform Architecture: Human JIT + NHI JIT Overlay';
+        summary = 'At ' + fmt(nhiReqs) + ' NHI credential issuances per day, the NHI volume is significant but the latency tolerance (sub-1 second or seconds) may be achievable with Teleport Machine ID or StrongDM\'s service account extension rather than a dedicated NHI platform. Evaluate whether the human JIT platform\'s NHI coverage handles the workload before adding a third platform.';
+        if (envType === 'onprem-heavy' || envType === 'hybrid') {
+          recs.push({ name: 'StrongDM', reason: 'Proxy-based architecture covers on-premises databases and servers for both human and service account access. Gateway is the network-layer control point.' });
+        } else {
+          recs.push({ name: 'Teleport', reason: 'Certificate-based JIT with Machine ID for CI/CD pipelines and Kubernetes workloads. Open-source tier available for evaluation.' });
+          recs.push({ name: 'Apono', reason: 'Policy engine supports NHI access via automated grants; evaluate whether the NHI volume stays within platform throughput limits.' });
+        }
+      } else if (envType === 'onprem-heavy') {
+        title = 'Vault-Centric PAM or Proxy-Based JIT (On-Premises Primary)';
+        summary = 'Your infrastructure is primarily on-premises. Cloud-native JIT platforms provide minimal coverage for this estate. For new deployments, StrongDM\'s proxy model provides JIT without vault infrastructure for databases and servers. For organizations with an existing PAM platform, a JIT workflow overlay on the existing PAM is lower risk and lower migration cost than a full replacement.';
+        recs.push({ name: 'StrongDM', reason: 'Proxy-based coverage of on-premises databases, servers, and Kubernetes clusters. Gateway architecture; no vault required.' });
+        recs.push({ name: 'Palo Alto (CyberArk) or Delinea', reason: 'If an existing PAM platform is in place, evaluate native JIT workflow capabilities before committing to a replacement.' });
+      } else if (envType === 'hybrid') {
+        title = 'Hybrid Architecture: JIT-Native for Cloud, Proxy/PAM for On-Premises';
+        summary = 'A hybrid environment requires coverage in two architectural domains. Cloud-native JIT (Britive or Apono) covers the cloud IAM surface efficiently. On-premises targets require either a proxy-based JIT platform (StrongDM) or an overlay on existing vault-centric PAM. Evaluate whether StrongDM\'s unified proxy model can cover both, reducing the operational overhead of two separate platforms.';
+        recs.push({ name: 'StrongDM', reason: 'Unified proxy architecture covers cloud and on-premises targets; reduces the two-platform problem for hybrid environments.' });
+        recs.push({ name: 'Britive', reason: 'Multi-cloud IAM breadth for the cloud portion of the estate.' });
+        recs.push({ name: 'Apono', reason: 'If oncall access automation is a priority alongside the cloud IAM coverage.' });
+      } else {
+        if (humanLatency === 'realtime' && reqPerEngineer > 5) {
+          title = 'Policy-Automation-First Cloud JIT (High-Volume Low-Friction)';
+          summary = 'At ' + fmt(humanReqs) + ' daily requests across ' + fmt(engineers) + ' engineers, approval workflow friction at human-in-the-loop latency would be a significant productivity drain. Near-real-time access requires automated policy decisions for the majority of requests. Apono\'s policy engine is designed for this pattern; Britive handles high-volume multi-cloud provisioning with automated session timers.';
+          recs.push({ name: 'Apono', reason: 'Policy-engine-first automation handles high-volume access patterns without human-in-the-loop approval for qualifying requests.' });
+          recs.push({ name: 'Britive', reason: 'Multi-cloud provisioning at scale; automated session timers rather than manual approvals for routine access.' });
+        } else {
+          title = 'Standard Cloud-Native JIT Deployment';
+          summary = 'Your access volume and latency tolerance are within standard parameters for cloud-native JIT platforms. The choice between Britive and Apono depends primarily on whether multi-cloud IAM breadth (Britive) or contextual policy automation for incident response (Apono) is the higher priority. Both handle this volume without architectural concerns.';
+          recs.push({ name: 'Britive', reason: 'If multi-cloud coverage across AWS, Azure, GCP, and SaaS is the primary requirement.' });
+          recs.push({ name: 'Apono', reason: 'If oncall access automation and incident response bundling are priorities.' });
+          if (engineers > 500) {
+            recs.push({ name: 'Teleport', reason: 'At ' + fmt(engineers) + ' engineers, certificate-based JIT for Kubernetes-heavy environments provides strong audit trails and eliminates credential storage at scale.' });
+          }
+        }
+      }
+
+      blueprintData = { engineers, humanReqs, nhiReqs, humanLatency, nhiLatency, envType, title, recs };
+
+      document.getElementById('bp-title').textContent = title;
+      document.getElementById('bp-summary').textContent = summary;
+
+      document.getElementById('bp-specs').innerHTML = specs.map(s =>
+        `<div class="spec-cell"><div class="spec-label">${s.label}</div><div class="spec-value">${s.value}</div></div>`
+      ).join('');
+
+      document.getElementById('bp-recs').innerHTML = `
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;">Platform Recommendations</div>
+        ${recs.map(r => `<div class="platform-rec"><div class="platform-rec-name">${r.name}</div><div class="platform-rec-reason">${r.reason}</div></div>`).join('')}
+      `;
+
+      document.getElementById('calc-form').style.display = 'none';
+      document.getElementById('results-block').classList.add('visible');
+    }
+
+    document.getElementById('recalc-btn').addEventListener('click', () => {
+      document.getElementById('calc-form').style.display = '';
+      document.getElementById('results-block').classList.remove('visible');
+      document.getElementById('export-gate-form').classList.remove('visible');
+    });
+
+    function showExportGate(type) {
+      pendingExport = type;
+      document.getElementById('export-gate-form').classList.add('visible');
+    }
+
+    document.getElementById('export-pdf-btn').addEventListener('click', () => showExportGate('pdf'));
+    document.getElementById('export-json-btn').addEventListener('click', () => showExportGate('json'));
+
+    window._onExportGateSuccess = function() {
+      if (pendingExport === 'pdf') {
+        window.print();
+      } else if (pendingExport === 'json') {
+        const blob = new Blob([JSON.stringify({ tool: 'jit-velocity-calculator', inputs: { engineers: blueprintData.engineers, humanReqs: blueprintData.humanReqs, nhiReqs: blueprintData.nhiReqs, humanLatency: blueprintData.humanLatency, nhiLatency: blueprintData.nhiLatency, envType: blueprintData.envType }, results: { blueprintTitle: blueprintData.title, recommendations: blueprintData.recs } }, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'jit-velocity-blueprint.json';
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+      pendingExport = null;
+    };
+  })();
+  </script>
+</body>
+</html>
