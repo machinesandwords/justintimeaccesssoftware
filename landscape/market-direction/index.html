@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <title>Market Direction: From Feature to Prerequisite | Just-in-Time Access Software</title>
+  <meta name="description" content="Where the JIT access category is headed: the identity fabric and cloud platform cores absorbing standalone JIT, the forces driving the shift to zero standing privilege, and what it means for the buying decision.">
+  <link rel="canonical" href="https://justintimeaccesssoftware.com/landscape/market-direction/">
+
+  <meta property="og:title" content="Market Direction: From Feature to Prerequisite | Just-in-Time Access Software">
+  <meta property="og:description" content="Where the JIT access category is headed: the identity fabric and cloud platform cores absorbing standalone JIT, the forces driving the shift to zero standing privilege, and what it means for the buying decision.">
+  <meta property="og:url" content="https://justintimeaccesssoftware.com/landscape/market-direction/">
+  <meta property="og:type" content="article">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Market Direction: From Feature to Prerequisite",
+    "description": "Where the JIT access category is headed: the identity fabric and cloud platform cores absorbing standalone JIT, the forces driving the shift to zero standing privilege, and what it means for the buying decision.",
+    "url": "https://justintimeaccesssoftware.com/landscape/market-direction/",
+    "publisher": { "@type": "Organization", "name": "Just-in-Time Access Software", "url": "https://justintimeaccesssoftware.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://justintimeaccesssoftware.com" },
+      { "@type": "ListItem", "position": 2, "name": "Landscape", "item": "https://justintimeaccesssoftware.com/landscape/" },
+      { "@type": "ListItem", "position": 3, "name": "Market Direction", "item": "https://justintimeaccesssoftware.com/landscape/market-direction/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js" defer></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+<div class="layout">
+
+  <nav id="sidebar-nav" class="sidebar"></nav>
+
+  <main class="content">
+
+    <article>
+
+      <header class="page-header">
+        <p class="eyebrow">Landscape</p>
+        <h1>Market Direction: From Feature to Prerequisite</h1>
+      </header>
+
+      <p>The JIT access category is moving from a checkbox feature inside broader platforms to a structural requirement for identity security. The technology itself isn't going anywhere. What's in question is which vendors will survive the consolidation currently underway in the sector.</p>
+
+      <h2>Where the market is heading</h2>
+
+      <p>Market sizing for "JIT access management" specifically is thin and inconsistent across research firms, a sign the category itself hasn't fully separated from PAM and broader IAM in analyst taxonomies yet. The adjacent PAM market, which is where most JIT capability actually ships today, is larger and better tracked, but the category boundaries are still being drawn by the vendors themselves.</p>
+
+      <p>What's clearer is the structural shift. Two gravity wells are absorbing standalone JIT functionality:</p>
+
+      <p><strong>The identity fabric core.</strong> Directory providers are building JIT directly into the login layer. Microsoft Entra PIM and Okta's privileged access capabilities mean an enterprise can often get basic human-access JIT inside a license it already has. That undercuts the willingness to buy a separate point tool for the same workflow.</p>
+
+      <p><strong>The cloud platform core.</strong> CNAPP and CIEM vendors are rolling JIT into broader cloud security platforms. A tool that already detects standing risk, an engineer with permanent admin on a production bucket, has an obvious next move: offer a one-click fix that converts that standing grant into an ephemeral one. JIT becomes a remediation action inside a platform rather than a destination purchase.</p>
+
+      <p>A standalone vendor whose only value is routing a human approval request through Slack or email is competing against free. The defensible ground is elsewhere: deep protocol enforcement (terminating live sessions on expiry, not just revoking future access) and machine identity, where the workflow-routing model doesn't apply at all.</p>
+
+      <h2>What's driving the shift</h2>
+
+      <p>Three forces are pushing the market past simple approval workflows.</p>
+
+      <p>Machine identities now outnumber human identities by roughly 40 to 1 in many enterprise environments. CI/CD pipelines, Kubernetes workloads, and API integrations don't wait two minutes for a manager's approval; they need credential issuance at the speed of the pipeline, which means JIT for machines is an entirely different engineering problem than JIT for people, rather than a smaller version of the same one.</p>
+
+      <p>Regulatory and insurance frameworks are hardening from recommending least privilege to expecting zero standing privilege as a baseline. Frameworks like NIST SP 800-53 and the conditions cyber insurers attach to underwriting increasingly treat a permanent administrative credential as a finding, not a configuration choice.</p>
+
+      <p>Attackers have adapted to vaulted secrets by targeting something vaults don't protect: live session tokens. Infostealer malware and session hijacking go after credentials that are already in use, not credentials at rest. Shrinking the validity window from days to minutes neutralizes a stolen token faster than rotating a vaulted password ever could.</p>
+
+      <h2>What this means for the buying decision</h2>
+
+      <p>The practical implication for anyone evaluating this category now: a platform's roadmap matters as much as its current feature set. A tool that handles human approval workflows well today but has no answer for machine-to-machine credential issuance is solving the easier half of the problem. A tool built around workload identity from the start, but with a clunky human approval layer bolted on, may be closer to where the category is actually heading.</p>
+
+      <p>Neither gap is disqualifying on its own. But it's worth knowing which one you're looking at before you sign a multi-year contract with a vendor whose core architecture was built for the JIT market of 2023, not the one forming now.</p>
+
+    </article>
+
+  </main>
+
+</div>
+
+<script src="/nav.js" defer></script>
+<script src="/newsletter.js" defer></script>
+</body>
+</html>

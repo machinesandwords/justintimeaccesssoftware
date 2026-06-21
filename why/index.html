@@ -54,80 +54,80 @@
     <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
   </header>
 
-  <div class="layout">
-    <nav class="sidebar">
-      <div id="sidebar-nav"></div>
-    </nav>
+<div class="layout">
 
-    <main class="main">
-      <article class="content">
+  <nav id="sidebar-nav" class="sidebar"></nav>
 
-        <nav class="breadcrumb">
-          <a href="/">Home</a>
-          <span class="breadcrumb-sep">/</span>
-          <span>Why</span>
-        </nav>
+  <main class="content">
 
-        <span class="page-label">Why this site exists</span>
+    <article>
+
+      <header class="page-header">
+        <p class="eyebrow">About this site</p>
         <h1>The Vault Solves the Wrong Problem</h1>
+      </header>
 
-        <p class="lead">Password vaulting was the right answer to the credential exposure problem. Store secrets centrally, rotate them on schedule, proxy sessions through an audited gateway. For the threat model of the 2010s, that was sound architecture. The threat model has changed. The vault has not.</p>
+      <p>Most JIT access content is written by the vendors selling it: legacy PAM platforms defending the vault architecture their engineering teams are built around, and cloud-native challengers selling ephemeral tokens as a category they happen to own. The security leader trying to figure out whether they need a JIT overlay, a PAM replacement, or something else entirely has no neutral ground to stand on. This site is an attempt to fix that.</p>
 
-        <h2>What vendors are selling, and what they are not saying</h2>
+      <h2>Written for the buyer caught between two incumbents</h2>
 
-        <p>Legacy PAM vendors are not wrong when they position JIT access as a vault capability. Time-limited session brokering through a vault proxy eliminates some standing access while preserving the gateway model their engineering teams and customer support organizations are built around. The problem is what that framing omits: the vault itself is still present, still reachable, and its credentials — however well-rotated — still exist.</p>
+      <p>Legacy PAM vendors are not wrong that JIT can be delivered as a vault capability. Time-limited session brokering through an audited gateway eliminates standing access while preserving the architecture their customers already run. What that framing leaves out is that the vault itself is still present, still reachable, and its credentials still exist between sessions.</p>
 
-        <p>Cloud-native JIT challengers are not wrong when they position ephemeral tokens as architecturally superior for cloud environments. If a credential does not exist, it cannot be stolen. But that framing omits the environments where ephemeral token generation is not viable: legacy on-premises databases, industrial infrastructure, Active Directory workloads that cannot absorb cloud IAM semantics. Claiming zero standing privilege in a cloud-only environment while the hybrid estate runs on vault-brokered access is a narrower win than the positioning implies.</p>
+      <p>Cloud-native JIT challengers are not wrong that ephemeral tokens are architecturally cleaner. A credential that does not exist cannot be stolen. What that framing leaves out is the hybrid estate: legacy on-premises databases, industrial infrastructure, Active Directory workloads that cannot absorb cloud IAM semantics. Zero standing privilege in the cloud-native slice of the environment is a narrower win than the pitch implies when the rest of the estate still runs on vault-brokered access.</p>
 
-        <p>Both sides are selling their existing architecture. Neither has an incentive to describe the full trade-off clearly, because doing so would limit the accounts they can close. The result is a market where most buyer-facing content is accurate within its frame and systematically incomplete outside it.</p>
+      <p>Both sides are selling the architecture they already have. Neither has an incentive to describe the full tradeoff, because doing so narrows the accounts they can close. The result is a market where most buyer-facing content is accurate within its frame and incomplete outside it.</p>
 
-        <h2>What zero standing privilege means in practice</h2>
+      <h2>The picture, by the numbers</h2>
 
-        <p>ZSP is the correct architectural goal. A credential that does not exist when access is not needed cannot be harvested, replayed, or left open as a lateral movement path. The question is not whether ZSP is the right target — it is — but whether any given JIT platform gets you there across your full estate, or only in the parts of your environment it was built for.</p>
+      <div class="stats-grid">
 
-        <p>For cloud-native workloads, ephemeral token generation through an IAM-native JIT platform is a practical path to ZSP. For hybrid environments with legacy infrastructure, the realistic outcome is often a combination: ephemeral tokens where the infrastructure supports them, vault-brokered JIT with short session windows where it does not. That combination is not a failure state. It is a more complete description of where most enterprise environments actually land.</p>
-
-        <p>The operational problems that do not appear in vendor collateral — zombie sessions that persist after token expiration, policy sprawl across heterogeneous cloud environments, on-call workflows that break when JIT approval latency exceeds incident response time — are the problems this site is built to address.</p>
-
-        <h2>The NHI complication</h2>
-
-        <p>The fastest-growing JIT use case is not a human engineer requesting temporary prod access. It is a service account, a CI/CD pipeline, or an AI agent that needs a millisecond-latency ephemeral credential to touch one resource. The human approval workflow model does not scale to machine-to-machine requests at the velocity and latency that automated systems require.</p>
-
-        <p>This creates a genuine split inside the JIT market: platforms built for human access workflows are not the right architecture for workload JIT, and platforms built for workload JIT do not cover the human access use case. Both call themselves JIT access platforms. The buyer looking at both on the same vendor shortlist may not realize they are solving different problems until they are well into a proof of concept.</p>
-
-        <p>JIT access and non-human identity governance are converging on the same underlying problem from two different category names. This site covers both, with explicit content on where they overlap and where they do not. The sibling site <a href="https://nonhumanidentitysoftware.com">nonhumanidentitysoftware.com</a> covers the NHI side in more depth.</p>
-
-        <h2>How to use this site</h2>
-
-        <p>If you are at the beginning of a JIT evaluation: start with the <a href="/landscape/">landscape</a> and the <a href="/guides/pam-replacement-vs-jit-overlay/">PAM replacement vs. JIT overlay guide</a>. The landscape maps the market. The guide walks through the environmental factors that determine whether you need a replacement or an overlay before you look at a single vendor.</p>
-
-        <p>If you are comparing specific platforms: use the <a href="/comparisons/">comparisons</a>. Each one identifies the specific environmental conditions under which one platform wins over the other. If neither condition matches your environment, that is in the comparison too.</p>
-
-        <p>If you are in a proof of concept or mid-evaluation: the <a href="/guides/">guides</a> cover the operational problems — zombie sessions, on-call friction, policy sprawl, telemetry exposure — that surface after the demo and before the contract.</p>
-
-        <p>If you want a structured way to work through the architecture decision: the <a href="/tools/architecture-fit/">architecture fit selector</a> and the <a href="/tools/approval-friction-calculator/">approval friction calculator</a> produce outputs based on your environment, not the vendor's.</p>
-
-        <div class="newsletter-block">
-          <span class="page-label">The Independent Defender</span>
-          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
-          <div class="newsletter-form">
-            <input type="email" placeholder="your@email.com" aria-label="Email address">
-            <button type="button">Subscribe free</button>
-          </div>
+        <div class="stat-card">
+          <p class="stat-label">Initial access vector</p>
+          <p class="stat-number">22%</p>
+          <p class="stat-detail">Share of confirmed breaches where credential abuse was the entry point, the single largest initial-access category in Verizon's 2025 Data Breach Investigations Report.</p>
         </div>
 
-      </article>
-    </main>
-  </div>
+        <div class="stat-card">
+          <p class="stat-label">Cost of a credential breach</p>
+          <p class="stat-number">$4.50M</p>
+          <p class="stat-detail">Average cost of a breach involving stolen or compromised credentials, the costliest attack vector tracked in IBM's 2025 Cost of a Data Breach Report.</p>
+        </div>
 
-  <footer>
-    <div class="footer-inner">
-      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
-      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
-    </div>
-  </footer>
+        <div class="stat-card">
+          <p class="stat-label">Time to contain</p>
+          <p class="stat-number">292 days</p>
+          <p class="stat-detail">Average time to identify and contain a breach involving stolen credentials, well above the all-vector average, because valid-credential activity is hard to distinguish from legitimate use (IBM 2025).</p>
+        </div>
 
-  <script src="/nav.js"></script>
-  <script src="/newsletter.js"></script>
+      </div>
+
+      <p>Standing privilege is what makes the third number possible. A credential that exists continuously gives an attacker, or a compromised script, months of cover before anyone notices the access was never supposed to be there.</p>
+
+      <h2>What zero standing privilege actually requires</h2>
+
+      <p>ZSP is the right target. The question is not whether it's correct, but whether a given platform gets you there across your full estate or only the part it was built for. For cloud-native workloads, ephemeral token generation through an IAM-native platform is a practical path. For hybrid environments, the realistic outcome is usually a combination: ephemeral tokens where the infrastructure supports them, vault-brokered JIT with short windows where it doesn't. That combination is not a failure state. It is a more accurate description of where most enterprise environments actually sit.</p>
+
+      <p>The operational problems that don't make it into vendor decks, zombie sessions that outlive token expiration, policy sprawl across heterogeneous cloud accounts, approval latency that breaks on-call response, are the problems this site is built to address.</p>
+
+      <h2>The machine identity complication</h2>
+
+      <p>The fastest-growing JIT use case isn't a human engineer requesting prod access. It's a service account, a CI/CD pipeline, or an agent that needs a millisecond-latency credential to touch one resource. Human approval workflows don't scale to that velocity. This splits the market in two: platforms built for human access aren't the right architecture for workload JIT, and platforms built for workload JIT don't cover the human use case. Both call themselves JIT access platforms. A buyer evaluating both on the same shortlist may not realize they're solving different problems until well into a proof of concept.</p>
+
+      <p>JIT access and non-human identity governance are converging on the same underlying problem from two different category names. This site covers both, with explicit content on where they overlap and where they don't. The sibling site <a href="https://nonhumanidentitysoftware.com/">nonhumanidentitysoftware.com</a> covers the NHI side in more depth.</p>
+
+      <h2>What independent means on this site</h2>
+
+      <p>This site does not favor vault-brokered architecture over ephemeral tokens, or cloud-native platforms over hybrid-capable ones. Every approach is evaluated against the environment it actually targets. Analysis is based on public documentation, practitioner input, and direct evaluation where possible. Where the evidence for a claim is thin, this site says so.</p>
+
+      <p>The people making JIT decisions are trying to close the gap between a security principle everyone agrees on and an environment too heterogeneous for any single vendor's architecture to fully cover. They need better information than the market currently gives them. That is the only reason this site exists.</p>
+
+    </article>
+
+  </main>
+
+</div>
+
+<script src="/nav.js" defer></script>
+<script src="/newsletter.js" defer></script>
 </body>
 </html>
