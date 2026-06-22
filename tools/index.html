@@ -8,11 +8,11 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
 
   <title>JIT Access Tools | Just-in-Time Access Software</title>
-  <meta name="description" content="Interactive tools for JIT access platform evaluation. Vendor comparison, architecture fit assessment, approval friction calculator, policy sprawl index, and JIT velocity calculator.">
+  <meta name="description" content="Interactive tools for just-in-time access buyers and practitioners. Approval friction calculator, architecture fit assessment, JIT velocity calculator, and policy sprawl index. No vendor affiliation.">
   <link rel="canonical" href="https://justintimeaccesssoftware.com/tools/">
 
   <meta property="og:title" content="JIT Access Tools | Just-in-Time Access Software">
-  <meta property="og:description" content="Interactive tools for JIT access platform evaluation and deployment planning. Free to use.">
+  <meta property="og:description" content="Interactive tools for just-in-time access buyers and practitioners. No vendor affiliation.">
   <meta property="og:url" content="https://justintimeaccesssoftware.com/tools/">
   <meta property="og:type" content="website">
 
@@ -26,21 +26,72 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "JIT Access Tools",
+    "description": "Interactive tools for just-in-time access buyers and practitioners.",
+    "url": "https://justintimeaccesssoftware.com/tools/",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "url": "https://justintimeaccesssoftware.com/tools/approval-friction-calculator/", "name": "Approval Friction Calculator" },
+      { "@type": "ListItem", "position": 2, "url": "https://justintimeaccesssoftware.com/tools/architecture-fit/", "name": "JIT Architecture Fit Assessment" },
+      { "@type": "ListItem", "position": 3, "url": "https://justintimeaccesssoftware.com/tools/jit-velocity-calculator/", "name": "JIT Velocity Calculator" },
+      { "@type": "ListItem", "position": 4, "url": "https://justintimeaccesssoftware.com/tools/policy-sprawl-index/", "name": "Policy Sprawl Index" }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
   <link rel="stylesheet" href="/styles.css">
+  <style>
+    :root {
+      --accent: #2E7D4F;
+      --accent-dark: #235E3B;
+      --accent-light: #E5F1EA;
+    }
+  </style>
   <script src="/config.js" defer></script>
+  <script src="/nav.js" defer></script>
+
+  <style>
+    .tool-list { list-style: none; padding: 0; margin-bottom: 32px; }
+    .tool-list li { border-bottom: var(--hairline); }
+    .tool-list li:last-child { border-bottom: none; }
+    .tool-list a {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 0;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+    .tool-list a:hover .tool-list-name { color: var(--accent); }
+    .tool-list-body { flex: 1; }
+    .tool-list-name { font-size: var(--small); font-weight: 700; margin-bottom: 2px; }
+    .tool-list-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
+    .tool-list-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .tool-list-arrow { color: var(--border); font-size: 11px; padding-top: 2px; flex-shrink: 0; }
+    .tool-list a:hover .tool-list-arrow { color: var(--accent); }
+  </style>
 </head>
 <body>
 
   <header class="topbar">
     <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
     <div class="topbar-divider"></div>
-    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
+    <span class="topbar-tagline">Independent guidance for enterprise security software buyers</span>
     <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
   </header>
 
@@ -59,51 +110,66 @@
         </nav>
 
         <span class="page-label">Tools</span>
-        <h1>JIT Access Evaluation Tools</h1>
+        <h1>Just-in-Time Access Tools</h1>
 
-        <p class="lead">Interactive tools for vendor evaluation, architecture decisions, and deployment planning. Results display immediately. Export PDF and JSON are available after subscribing to The Independent Defender.</p>
+        <p class="lead">Interactive tools for JIT access buyers and practitioners. Use them to size the real cost of approval overhead, find the deployment architecture that fits your environment, measure rollout momentum, and diagnose policy sprawl before it compounds.</p>
 
-        <div class="card-grid">
+        <ul class="tool-list">
 
-          <a href="/tools/vendor-comparison/" style="text-decoration:none;" class="card">
-            <div class="card-label">Vendor Research</div>
-            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Vendor Comparison Tool</div>
-            <div class="card-sub">Filter 22 JIT platforms by cluster, deployment model, access type, JIT approach, and company size. Rich card grid with matched-filter tagging.</div>
-          </a>
+          <li>
+            <a href="/tools/approval-friction-calculator/">
+              <div class="tool-list-body">
+                <span class="tool-list-tag">Procurement</span>
+                <div class="tool-list-name">Approval friction calculator</div>
+                <div class="tool-list-desc">JIT access introduces an approval step that standing permissions don't have. That overhead is real and affects how engineers work. Enter your approval workflow parameters — number of approvers, response time targets, access request volume — and the calculator surfaces the aggregate friction cost across your engineering population, along with the scenarios where self-approval or pre-approval rules are warranted.</div>
+              </div>
+              <span class="tool-list-arrow">&rsaquo;</span>
+            </a>
+          </li>
 
-          <a href="/tools/architecture-fit/" style="text-decoration:none;" class="card">
-            <div class="card-label">Architecture</div>
-            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Architecture Fit Assessment</div>
-            <div class="card-sub">Five questions about your environment map to one of four architecture paths: cloud-native JIT, PAM overlay, PAM replacement, or IdP-native. No export needed.</div>
-          </a>
+          <li>
+            <a href="/tools/architecture-fit/">
+              <div class="tool-list-body">
+                <span class="tool-list-tag">Evaluation</span>
+                <div class="tool-list-name">JIT architecture fit assessment</div>
+                <div class="tool-list-desc">JIT-native platform, PAM with a JIT layer, or IDP-native JIT: the right answer depends on what you already own, what your access patterns look like, and where your standing privilege exposure actually lives. Answer questions about your current stack, environment complexity, and use case priorities. The assessment maps your inputs to the architecture most likely to cover your requirements without requiring infrastructure you don't have.</div>
+              </div>
+              <span class="tool-list-arrow">&rsaquo;</span>
+            </a>
+          </li>
 
-          <a href="/tools/approval-friction-calculator/" style="text-decoration:none;" class="card">
-            <div class="card-label">Cost</div>
-            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Approval Friction Calculator</div>
-            <div class="card-sub">Engineering team size, weekly access requests, and approval latency translate into engineering hours lost per year to JIT friction. Export PDF and JSON gated behind newsletter signup.</div>
-          </a>
+          <li>
+            <a href="/tools/jit-velocity-calculator/">
+              <div class="tool-list-body">
+                <span class="tool-list-tag">Program operations</span>
+                <div class="tool-list-name">JIT velocity calculator</div>
+                <div class="tool-list-desc">Standing privilege reduction is a program outcome, not a product feature. Progress depends on how quickly your team can scope, approve, and enforce JIT policies across target systems. Enter your current coverage baseline, team capacity, and rollout cadence. The calculator projects time-to-coverage across your environment and identifies the constraint — policy authoring, system integration, or stakeholder approval — most likely to slow the program.</div>
+              </div>
+              <span class="tool-list-arrow">&rsaquo;</span>
+            </a>
+          </li>
 
-          <a href="/tools/policy-sprawl-index/" style="text-decoration:none;" class="card">
-            <div class="card-label">Operational Health</div>
-            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">Policy Sprawl Index</div>
-            <div class="card-sub">Multi-cloud access policy distribution produces an Operational Overhead Index score. Sliders must sum to 100% of your access policy surface. Export PDF and JSON gated behind newsletter signup.</div>
-          </a>
+          <li>
+            <a href="/tools/policy-sprawl-index/">
+              <div class="tool-list-body">
+                <span class="tool-list-tag">Program operations</span>
+                <div class="tool-list-name">Policy sprawl index</div>
+                <div class="tool-list-desc">Access policies accumulate. Roles get duplicated, exception grants persist past their purpose, and scope definitions drift from what's actually enforced. Score your current policy environment across five dimensions: policy count relative to user population, exception rate, review cadence, orphaned policy rate, and scope overlap. The index produces a sprawl score with a prioritized remediation sequence based on where your environment is most exposed.</div>
+              </div>
+              <span class="tool-list-arrow">&rsaquo;</span>
+            </a>
+          </li>
 
-          <a href="/tools/jit-velocity-calculator/" style="text-decoration:none;" class="card">
-            <div class="card-label">Deployment</div>
-            <div class="card-value" style="font-size:13px; font-weight:700; color:var(--charcoal); margin-bottom:4px;">JIT Velocity Calculator</div>
-            <div class="card-sub">Human access volume, NHI token volume, and latency tolerance produce a deployment blueprint: which architecture handles your scale, and at what cost. Export PDF and JSON gated behind newsletter signup.</div>
-          </a>
-
-        </div>
+        </ul>
 
         <div class="newsletter-block">
-          <span class="page-label">The Independent Defender</span>
-          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
+          <span class="page-label">Stay current</span>
+          <p>The Independent Defender covers the enterprise identity and access security market the way your vendors hope you won't. Twice monthly.</p>
           <div class="newsletter-form">
-            <input type="email" placeholder="your@email.com" aria-label="Email address">
-            <button type="button">Subscribe free</button>
+            <input type="email" id="nl-email" placeholder="your@email.com" aria-label="Email address">
+            <button type="button" id="nl-submit">Subscribe free</button>
           </div>
+          <div id="nl-msg" style="display:none;font-size:11px;margin-top:8px;"></div>
         </div>
 
       </article>
@@ -117,7 +183,6 @@
     </div>
   </footer>
 
-  <script src="/nav.js"></script>
   <script src="/newsletter.js"></script>
 </body>
 </html>
