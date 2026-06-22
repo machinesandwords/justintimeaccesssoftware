@@ -36,64 +36,92 @@
   <script src="/config.js" defer></script>
 </head>
 <body>
-
-  <header class="topbar">
-    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
-    <div class="topbar-divider"></div>
-    <span class="topbar-tagline">Independent guidance for JIT access buyers</span>
-    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
-  </header>
-
-  <div class="layout">
-    <nav class="sidebar">
-      <div id="sidebar-nav"></div>
-    </nav>
-
-    <main class="main">
-      <article class="content">
-
-        <nav class="breadcrumb">
-          <a href="/">Home</a>
-          <span class="breadcrumb-sep">/</span>
-          <span>Subscribe</span>
-        </nav>
-
-        <span class="page-label">Newsletter</span>
-        <h1>The Independent Defender</h1>
-
-        <p class="lead">Coverage of the JIT access, PAM, and privileged access management market written for practitioners who are already in the work. No vendor announcements repackaged as analysis. No rankings paid for with sponsored placements.</p>
-
-        <h2>What it covers</h2>
-
-        <p>The Independent Defender covers the JIT access market with the same editorial standards as the rest of this site. That means practitioner register throughout, vendor-neutral framing, and a willingness to say when a product category is being oversold relative to what it delivers in production environments.</p>
-
-        <p>Each issue covers one or more of the following: architectural developments in the JIT and PAM market, operational problems that practitioners report encountering after deployment, significant vendor moves (acquisitions, major product changes, pricing shifts), and the JIT/NHI convergence space where service account governance and ephemeral workload credentials are being addressed from two different category names.</p>
-
-        <p>The Defender is part of a newsletter family covering the broader cybersecurity software market. Sibling issues cover non-human identity governance (<a href="https://nonhumanidentitysoftware.com">nonhumanidentitysoftware.com</a>), data security posture management (<a href="https://dspmsoftware.com">dspmsoftware.com</a>), and attack surface management (<a href="https://attacksurfacemanagementsoftware.com">attacksurfacemanagementsoftware.com</a>). A single subscription covers all of them.</p>
-
-        <h2>Subscribe free</h2>
-
-        <div class="newsletter-block" style="margin-top:1.5rem;">
-          <span class="page-label">The Independent Defender</span>
-          <p>Covers the JIT access market the way your PAM vendors hope you won't. Twice monthly.</p>
-          <div class="newsletter-form">
-            <input type="email" placeholder="your@email.com" aria-label="Email address">
-            <button type="button">Subscribe free</button>
-          </div>
-        </div>
-
-      </article>
-    </main>
-  </div>
-
-   <footer>
-    <div class="footer-inner">
-      <span class="page-label">Just in Time Access Software</span>
-      <p>An independent publication. Built by <a href="https://machinesandwords.com">Machines &amp; Words</a>.</p>
+  <div id="sidebar-nav"></div>
+  <main class="content-wrapper">
+ 
+    <header class="page-header">
+      <p class="overline">Newsletter</p>
+      <h1>The Independent Defender</h1>
+      <p class="lede">Covers the just-in-time access market the way your vendors hope you won't.</p>
+    </header>
+ 
+    <section class="content-section">
+      <p>Independent analysis of emerging cybersecurity software categories, written for practitioners who don't have time to separate real capability from marketing whitewash.</p>
+ 
+      <p>You're three months deep in talks with a promising vendor. Then you hear a rumor: acquisition by a legacy enterprise famous for neutering what it buys. Do you move forward or start over with your second choice?</p>
+ 
+      <p>New threat categories have spawned new software categories, and vendors are making promises you can't easily verify. Some are building something real. Some are rewarming old tech that won't fully mitigate your risks. Who has time to do the forensic work on every claim?</p>
+ 
+      <p>A vendor says it solves your problem. But is that a core feature or a bolt-on built to capture market share? Bolt-ons get deprioritized, under-supported, and quietly sunset. You could be back where you started in 18 months.</p>
+ 
+      <p>The Independent Defender covers these decisions biweekly, without vendor relationships or advertiser obligations.</p>
+    </section>
+ 
+    <div class="newsletter-block">
+      <p class="nl-headline">Subscribe free</p>
+      <p class="nl-subhead">Twice monthly. Free. No vendor relationships. No advertiser obligations.</p>
+      <div class="nl-form-row">
+        <input type="email" id="nl-email" placeholder="you@company.com" autocomplete="email">
+        <button id="nl-submit">Subscribe</button>
+      </div>
+      <span id="nl-msg"></span>
     </div>
-  </footer>
-
+ 
+    <section class="content-section">
+      <p>The Independent Defender also covers the broader Defender family: attack surface management, non-human identity, DSPM, and adjacent enterprise security categories. One list, one frequency.</p>
+    </section>
+ 
+  </main>
+ 
+  <script src="/config.js"></script>
   <script src="/nav.js"></script>
-  <script src="/newsletter.js"></script>
+  <script>
+    const WORKER_URL = 'https://newsletter.justintimeaccesssoftware.com/subscribe';
+    const GROUP_ID = '189858273326793780';
+ 
+    const emailInput = document.getElementById('nl-email');
+    const submitBtn = document.getElementById('nl-submit');
+    const msg = document.getElementById('nl-msg');
+ 
+    submitBtn.addEventListener('click', async () => {
+      const email = emailInput.value.trim();
+      msg.style.display = 'block';
+ 
+      if (!email || !email.includes('@')) {
+        msg.textContent = 'Please enter a valid email address.';
+        return;
+      }
+ 
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Subscribing...';
+      msg.textContent = '';
+ 
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, group_id: GROUP_ID })
+        });
+        const data = await res.json();
+        if (data.message === 'Subscribed') {
+          msg.textContent = 'You\'re on the list.';
+          msg.classList.add('nl-success');
+          emailInput.value = '';
+        } else {
+          msg.textContent = 'Something went wrong. Try again.';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Subscribe';
+        }
+      } catch (e) {
+        msg.textContent = 'Something went wrong. Try again.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+      }
+    });
+ 
+    emailInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitBtn.click();
+    });
+  </script>
 </body>
 </html>
