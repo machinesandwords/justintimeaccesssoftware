@@ -11,7 +11,7 @@
   <meta name="description" content="The Independent Defender covers the JIT access and privileged access management market the way your vendors hope you won't. Twice monthly. Free.">
   <link rel="canonical" href="https://justintimeaccesssoftware.com/subscribe/">
 
-  <meta property="og:title" content="Subscribe — The Independent Defender | Just-in-Time Access Software">
+  <meta property="og:title" content="Subscribe — The Independent Defender">
   <meta property="og:description" content="The Independent Defender covers the JIT access and privileged access management market the way your vendors hope you won't. Twice monthly. Free.">
   <meta property="og:url" content="https://justintimeaccesssoftware.com/subscribe/">
   <meta property="og:type" content="website">
@@ -31,97 +31,72 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
   <link rel="stylesheet" href="/styles.css">
+  <style>:root{--accent:#2E7D4F;--accent-dim:#235E3B;--accent-pale:#E5F1EA}</style>
   <script src="/config.js" defer></script>
+  <script src="/nav.js" defer></script>
 </head>
 <body>
-  <div id="sidebar-nav"></div>
-  <main class="content-wrapper">
- 
-    <header class="page-header">
-      <p class="overline">Newsletter</p>
-      <h1>The Independent Defender</h1>
-      <p class="lede">Covers the just-in-time access market the way your vendors hope you won't.</p>
-    </header>
- 
-    <section class="content-section">
-      <p>Independent analysis of emerging cybersecurity software categories, written for practitioners who don't have time to separate real capability from marketing whitewash.</p>
- 
-      <p>You're three months deep in talks with a promising vendor. Then you hear a rumor: acquisition by a legacy enterprise famous for neutering what it buys. Do you move forward or start over with your second choice?</p>
- 
-      <p>New threat categories have spawned new software categories, and vendors are making promises you can't easily verify. Some are building something real. Some are rewarming old tech that won't fully mitigate your risks. Who has time to do the forensic work on every claim?</p>
- 
-      <p>A vendor says it solves your problem. But is that a core feature or a bolt-on built to capture market share? Bolt-ons get deprioritized, under-supported, and quietly sunset. You could be back where you started in 18 months.</p>
- 
-      <p>The Independent Defender covers these decisions biweekly, without vendor relationships or advertiser obligations.</p>
-    </section>
- 
-    <div class="newsletter-block">
-      <p class="nl-headline">Subscribe free</p>
-      <p class="nl-subhead">Twice monthly. Free. No vendor relationships. No advertiser obligations.</p>
-      <div class="nl-form-row">
-        <input type="email" id="nl-email" placeholder="you@company.com" autocomplete="email">
-        <button id="nl-submit">Subscribe</button>
-      </div>
-      <span id="nl-msg"></span>
+
+  <header class="topbar">
+    <a href="/" class="topbar-brand">Just-in-Time Access <span>Software</span></a>
+    <div class="topbar-divider"></div>
+    <span class="topbar-tagline">Independent guidance for enterprise security software buyers</span>
+    <div class="topbar-right"><a href="/subscribe/">Subscribe &rarr;</a></div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sidebar-nav"></div>
+    </nav>
+
+    <main class="main">
+      <article class="content">
+
+        <nav class="breadcrumb">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Subscribe</span>
+        </nav>
+
+        <span class="page-label">Newsletter</span>
+        <h1>The Independent Defender</h1>
+
+        <p class="lead">Covers the just-in-time access market the way your vendors hope you won't.</p>
+
+        <p>Independent analysis of emerging cybersecurity software categories, written for practitioners who don't have time to separate real capability from marketing whitewash.</p>
+
+        <p>You're three months deep in talks with a promising vendor. Then you hear a rumor: acquisition by a legacy enterprise famous for neutering what it buys. Do you move forward or start over with your second choice?</p>
+
+        <p>New threat categories have spawned new software categories, and vendors are making promises you can't easily verify. Some are building something real. Some are rewarming old tech that won't fully mitigate your risks. Who has time to do the forensic work on every claim?</p>
+
+        <p>A vendor says it solves your problem. But is that a core feature or a bolt-on built to capture market share? Bolt-ons get deprioritized, under-supported, and quietly sunset. You could be back where you started in 18 months.</p>
+
+        <p>The Independent Defender covers these decisions biweekly, without vendor relationships or advertiser obligations.</p>
+
+        <div class="newsletter-block">
+          <span class="page-label">Subscribe free</span>
+          <p>Twice monthly. Free. No vendor relationships. No advertiser obligations.</p>
+          <div class="newsletter-form">
+            <input type="email" id="nl-email" placeholder="you@company.com" autocomplete="email" aria-label="Email address">
+            <button type="button" id="nl-submit">Subscribe</button>
+          </div>
+          <div id="nl-msg" style="display:none;font-size:11px;margin-top:8px;"></div>
+        </div>
+
+        <p>The Independent Defender also covers the broader Defender family: attack surface management, non-human identity, DSPM, and adjacent enterprise security categories. One list, one frequency.</p>
+
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Just-in-Time Access Software is an independent publication. No sponsored content. No affiliate arrangements. Vendor coverage is editorially determined.</p>
+      <p>&copy; 2026 Machines &amp; Words. All rights reserved.</p>
     </div>
- 
-    <section class="content-section">
-      <p>The Independent Defender also covers the broader Defender family: attack surface management, non-human identity, DSPM, and adjacent enterprise security categories. One list, one frequency.</p>
-    </section>
- 
-  </main>
- 
-  <script src="/config.js"></script>
-  <script src="/nav.js"></script>
-  <script>
-    const WORKER_URL = 'https://newsletter.justintimeaccesssoftware.com/subscribe';
-    const GROUP_ID = '189858273326793780';
- 
-    const emailInput = document.getElementById('nl-email');
-    const submitBtn = document.getElementById('nl-submit');
-    const msg = document.getElementById('nl-msg');
- 
-    submitBtn.addEventListener('click', async () => {
-      const email = emailInput.value.trim();
-      msg.style.display = 'block';
- 
-      if (!email || !email.includes('@')) {
-        msg.textContent = 'Please enter a valid email address.';
-        return;
-      }
- 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Subscribing...';
-      msg.textContent = '';
- 
-      try {
-        const res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, group_id: GROUP_ID })
-        });
-        const data = await res.json();
-        if (data.message === 'Subscribed') {
-          msg.textContent = 'You\'re on the list.';
-          msg.classList.add('nl-success');
-          emailInput.value = '';
-        } else {
-          msg.textContent = 'Something went wrong. Try again.';
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Subscribe';
-        }
-      } catch (e) {
-        msg.textContent = 'Something went wrong. Try again.';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Subscribe';
-      }
-    });
- 
-    emailInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') submitBtn.click();
-    });
-  </script>
+  </footer>
+
+  <script src="/newsletter.js"></script>
 </body>
 </html>

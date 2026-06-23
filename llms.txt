@@ -1,0 +1,67 @@
+# Just-in-Time Access Software
+
+An independent buyer's guide to the just-in-time access and privileged access management market. Covers vendor comparisons, architectural guides, and decision frameworks for security practitioners evaluating JIT access platforms, PAM replacements, and zero standing privilege architectures. No vendor relationships or advertising.
+
+## Pages
+
+- [Home](https://justintimeaccesssoftware.com/): Introduction to the site and how to navigate the JIT access evaluation framework.
+- [Why This Site Exists](https://justintimeaccesssoftware.com/why/): Why legacy PAM vendors frame the JIT question around their own architecture, and what zero standing privilege means in practice.
+- [Subscribe — The Independent Defender](https://justintimeaccesssoftware.com/subscribe/): Bimonthly newsletter covering the JIT access and PAM market without vendor relationships or advertising obligations.
+
+### Landscape
+
+- [JIT Access Market Overview](https://justintimeaccesssoftware.com/landscape/): How the JIT access and PAM market is structured in 2026: four architectural fault lines, vendor categories, and consolidation dynamics.
+- [Market Direction: From Feature to Prerequisite](https://justintimeaccesssoftware.com/landscape/market-direction/): Where JIT access is headed as identity fabric and cloud platforms absorb standalone tools and zero standing privilege becomes a compliance baseline.
+- [Regulatory and Compliance Pressure](https://justintimeaccesssoftware.com/landscape/regulatory-pressures/): How NIST SP 800-53, PCI DSS 4.0.1, DORA, and NIS2 turned least privilege and JIT access from best practice into named, enforceable requirements.
+- [JIT Vendor Comparison Tool](https://justintimeaccesssoftware.com/landscape/vendor-comparison/): Interactive filter tool to compare 22 JIT access platforms by deployment model, access type, JIT approach, and vendor cluster.
+- [JIT Access Vendor Index](https://justintimeaccesssoftware.com/landscape/vendor-index/): All 22 JIT access and PAM vendors organized by architectural approach: cloud-native JIT, legacy PAM, IdP-native, and workload/NHI.
+
+### Comparisons
+
+- [Comparisons Index](https://justintimeaccesssoftware.com/comparisons/): Index of all head-to-head JIT access and PAM platform comparisons.
+- [Apono vs. Indent](https://justintimeaccesssoftware.com/comparisons/apono-vs-indent/): Policy-engine access bundles vs. Slack-native access requests.
+- [Apono vs. StrongDM](https://justintimeaccesssoftware.com/comparisons/apono-vs-strongdm/): Policy-engine access bundles vs. proxied session model for cloud IAM versus infrastructure access use cases.
+- [BeyondTrust vs. Delinea](https://justintimeaccesssoftware.com/comparisons/beyondtrust-vs-delinea/): PEDM-first endpoint privilege vs. vault-centric PAM built for deployment simplicity.
+- [BeyondTrust vs. Okta Privileged Access](https://justintimeaccesssoftware.com/comparisons/beyondtrust-vs-okta/): Dedicated PAM depth vs. PAM as an Okta module.
+- [Britive vs. Apono](https://justintimeaccesssoftware.com/comparisons/britive-vs-apono/): Multi-cloud IAM breadth vs. policy-engine-first access bundles in the cloud-native JIT category.
+- [Britive vs. P0 Security](https://justintimeaccesssoftware.com/comparisons/britive-vs-p0security/): Established multi-cloud IAM breadth vs. a developer-experience-focused challenger.
+- [Britive vs. StrongDM](https://justintimeaccesssoftware.com/comparisons/britive-vs-strongdm/): Ephemeral IAM provisioning across multi-cloud vs. a proxied session model for databases and infrastructure.
+- [CyberArk vs. BeyondTrust](https://justintimeaccesssoftware.com/comparisons/cyberark-vs-beyondtrust/): Vault-centric PAM brokering vs. PEDM-first delegation, including what the Palo Alto acquisition means for buyers.
+- [CyberArk vs. Britive](https://justintimeaccesssoftware.com/comparisons/cyberark-vs-britive/): Vault-centric legacy PAM vs. cloud-native ephemeral IAM for teams deciding whether to extend, overlay, or replace.
+- [CyberArk vs. Delinea](https://justintimeaccesssoftware.com/comparisons/cyberark-vs-delinea/): Enterprise vault-centric PAM depth vs. a lighter-deployment hybrid PAM from the Thycotic/Centrify merger.
+- [CyberArk vs. One Identity](https://justintimeaccesssoftware.com/comparisons/cyberark-vs-oneidentity/): Pure-play PAM depth vs. PAM embedded in a governance-first identity platform.
+- [Delinea vs. ManageEngine PAM360](https://justintimeaccesssoftware.com/comparisons/delinea-vs-manageengine/): Mid-to-large enterprise hybrid PAM vs. cost-conscious foundational PAM for mid-tier IT departments.
+- [Delinea vs. One Identity](https://justintimeaccesssoftware.com/comparisons/delinea-vs-oneidentity/): Standalone hybrid PAM vs. PAM embedded in an IGA and lifecycle management platform.
+- [Microsoft Entra PIM vs. Britive](https://justintimeaccesssoftware.com/comparisons/microsoft-entra-vs-britive/): Built-in license JIT vs. a dedicated multi-cloud JIT platform.
+- [Okta vs. Microsoft Entra PIM](https://justintimeaccesssoftware.com/comparisons/okta-vs-microsoft-entra/): The two license-included JIT options: infrastructure access vs. Azure and M365 role activation.
+- [Opal vs. Indent](https://justintimeaccesssoftware.com/comparisons/opal-vs-indent/): Org-structure-aware peer-approval JIT vs. Slack-native ChatOps access requests.
+- [StrongDM vs. Opal](https://justintimeaccesssoftware.com/comparisons/strongdm-vs-opono/): Proxied session model with full audit trail vs. decentralized self-service and peer-approval JIT.
+- [Teleport vs. Aembit](https://justintimeaccesssoftware.com/comparisons/teleport-vs-aembit/): Certificate-based infrastructure access vs. a pure-play NHI machine-to-machine identity platform.
+- [Teleport vs. SSH.COM PrivX](https://justintimeaccesssoftware.com/comparisons/teleport-vs-privx/): Open-source certificate access vs. a commercial certificate-based SSH/RDP specialist.
+- [Teleport vs. StrongDM](https://justintimeaccesssoftware.com/comparisons/teleport-vs-strongdm/): Certificate-based infrastructure access vs. a proxied session model for database, server, and Kubernetes JIT.
+
+### Guides
+
+- [Guides Index](https://justintimeaccesssoftware.com/guides/): Index of all JIT access buyer and practitioner guides.
+- [JIT-Native vs. PAM-with-JIT](https://justintimeaccesssoftware.com/guides/jit-native-vs-pam-with-jit/): The defining architectural comparison: ephemeral-first platforms vs. vault-centric PAM with JIT layered on.
+- [JIT and NHI Convergence](https://justintimeaccesssoftware.com/guides/jit-nhi-convergence/): How human JIT and non-human identity management converge and what it means for platform selection.
+- [JIT Rollout for On-Call Teams](https://justintimeaccesssoftware.com/guides/jit-rollout-oncall/): A phased rollout sequence and the configuration required before deploying JIT access in on-call environments.
+- [JIT Telemetry Overexposure](https://justintimeaccesssoftware.com/guides/jit-telemetry-overexposure/): Why JIT audit logs create exposure risk and how to scope telemetry access appropriately.
+- [PAM Replacement vs. JIT Overlay](https://justintimeaccesssoftware.com/guides/pam-replacement-vs-jit-overlay/): How to frame the replace-PAM-with-JIT vs. overlay-JIT-on-existing-PAM decision before a sales cycle.
+- [Third-Party JIT vs. IdP-Native](https://justintimeaccesssoftware.com/guides/third-party-jit-vs-idp-native/): Third-party JIT overlays vs. Okta Privileged Access and Microsoft Entra PIM — the consolidation argument and its limits.
+- [Zombie Session Revocation](https://justintimeaccesssoftware.com/guides/zombie-session-revocation/): Why IAM credential revocation does not terminate active sessions and how to close the gap.
+
+### Vendor Profiles
+
+- [Aembit](https://justintimeaccesssoftware.com/vendors/aembit/): Independent analysis of Aembit workload identity and NHI JIT — dynamic credentials for service accounts, APIs, and AI agents.
+- [Apono](https://justintimeaccesssoftware.com/vendors/apono/): Independent analysis of Apono JIT access — context-aware policy engine, incident response bundles, and automated approval workflows.
+- [BeyondTrust](https://justintimeaccesssoftware.com/vendors/beyondtrust/): Independent analysis of BeyondTrust PAM — PEDM-first architecture, endpoint privilege management, and vendor remote access.
+- [Britive](https://justintimeaccesssoftware.com/vendors/britive/): Independent analysis of Britive cloud-native JIT — ephemeral IAM role provisioning and multi-cloud session timers.
+- [Palo Alto Networks (CyberArk)](https://justintimeaccesssoftware.com/vendors/cyberark/): Independent analysis of CyberArk PAM, now part of Palo Alto Networks — architecture, JIT capabilities, and acquisition implications.
+- [Delinea](https://justintimeaccesssoftware.com/vendors/delinea/): Independent analysis of Delinea PAM — Thycotic and Centrify merger product with hybrid vault-centric JIT.
+- [StrongDM](https://justintimeaccesssoftware.com/vendors/strongdm/): Independent analysis of StrongDM JIT platform — zero-trust proxy model, database and SSH access, session recording.
+- [Teleport](https://justintimeaccesssoftware.com/vendors/teleport/): Independent analysis of Teleport open-source JIT — certificate-based access for Kubernetes, SSH, databases, and internal apps.
+
+### Tools
+
+- [JIT Access Tools](https://justintimeaccesssoftware.com/tools/): Index of interactive tools for JIT access buyers: approval friction calculator, architecture fit assessment, velocity calculator, and policy sprawl index.

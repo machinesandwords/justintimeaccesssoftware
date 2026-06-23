@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
 
   <title>JIT Rollout for On-Call Teams | Just-in-Time Access Software</title>
-  <meta name="description" content="JIT access and on-call workflows are in direct tension. A phased rollout sequence, the configuration that has to be in place before production goes live, and the metrics that tell you whether the rollout is actually working.">
+  <meta name="description" content="JIT and on-call workflows are in direct tension. A phased rollout sequence, required pre-production configuration, and the metrics that confirm it's working.">
   <link rel="canonical" href="https://justintimeaccesssoftware.com/guides/jit-rollout-oncall/">
 
   <meta property="og:title" content="JIT Rollout for On-Call Teams | Just-in-Time Access Software">
@@ -155,7 +155,7 @@
         <p>A break-glass invocation rate that climbs after a phase goes live is the clearest signal that the access pattern inventory missed something real. Treat it as a policy gap to close, not as a tolerance threshold to raise.</p>
 
         <div class="callout">
-          <strong>Regulatory note:</strong> Frameworks like DORA explicitly anticipate break-glass access for declared incidents, provided it carries the same time-limit, automatic expiration, and audit-trail requirements as routine JIT access. A break-glass path that isn't logged and time-bound isn't compliant cover, it's just standing access with extra steps. See <a href="/landscape/regulatory-pressure/">Regulatory and Compliance Pressure</a> for the framework-by-framework detail.
+          <strong>Regulatory note:</strong> Frameworks like DORA explicitly anticipate break-glass access for declared incidents, provided it carries the same time-limit, automatic expiration, and audit-trail requirements as routine JIT access. A break-glass path that isn't logged and time-bound isn't compliant cover, it's just standing access with extra steps. See <a href="/landscape/regulatory-pressures/">Regulatory and Compliance Pressure</a> for the framework-by-framework detail.
         </div>
 
         <div class="verdict">
@@ -163,7 +163,7 @@
           <p>JIT on production resources without on-call automation and tested break-glass is a liability, not a control. The rollout order, non-critical first, then production with break-glass already in place, then on-call automation last, is the difference between a deployment that improves security posture and one that manufactures availability incidents. Do the access pattern inventory before production rollout, not during it, and instrument the metrics from day one so the rollout's effects are measured rather than assumed.</p>
         </div>
 
-        <p style="font-size:var(--small);">Related: <a href="/landscape/regulatory-pressure/">Regulatory and Compliance Pressure</a> &nbsp;&middot;&nbsp; <a href="/guides/zombie-session-revocation/">Zombie Session Revocation</a> &nbsp;&middot;&nbsp; <a href="/landscape/vendor-comparison/">Full vendor comparison tool</a></p>
+        <p style="font-size:var(--small);">Related: <a href="/landscape/regulatory-pressures/">Regulatory and Compliance Pressure</a> &nbsp;&middot;&nbsp; <a href="/guides/zombie-session-revocation/">Zombie Session Revocation</a> &nbsp;&middot;&nbsp; <a href="/landscape/vendor-comparison/">Full vendor comparison tool</a></p>
 
         <div class="newsletter-block">
           <span class="page-label">Stay current</span>
